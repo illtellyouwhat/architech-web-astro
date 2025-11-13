@@ -1,0 +1,40 @@
+---
+import ServiceTemplate from '@/components/services/ServiceTemplate.astro';
+
+const capabilities = [
+  'Real-time and batch processing frameworks',
+  'API integration with monitoring dashboards',
+  'Automated validation / reconciliation tooling',
+  'Scalable scraping with residential + rotating proxies',
+  'Ingestion to warehouses, data lakes, and vector DBs'
+];
+
+const benefits = [
+  {
+    title: 'Real-time Processing',
+    description: 'Process and analyze data as it arrives for instant insights and action.'
+  },
+  {
+    title: 'Scalable Architecture',
+    description: 'Handle massive data volumes with distributed compute and storage planning.'
+  },
+  {
+    title: 'Quality Assurance',
+    description: 'Built-in validation, dedupe, and alerting keeps downstream teams confident.'
+  },
+  {
+    title: 'Automated Workflows',
+    description: 'Set up once and let our systems keep the data current across platforms.'
+  }
+];
+---
+<ServiceTemplate
+  title="Data Pipelines & Scrapers"
+  subtitle="Robust, scalable data collection and transformation."
+  icon="lucide:database"
+  summary="We design pipelines that start with compliant collection, layer on cleansing and validation, and end with analytics-ready datasets."
+  image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop"
+  imageAlt="Engineer reviewing a streaming data dashboard"
+  capabilities={capabilities}
+  benefits={benefits}
+/>

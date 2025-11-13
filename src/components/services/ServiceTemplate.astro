@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components';
+import Layout from '@/layouts/Layout.astro';
+
+interface FeatureListItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  icon: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  capabilities: string[];
+  benefits: FeatureListItem[];
+}
+
+const { title, subtitle, icon, summary, image, imageAlt, capabilities, benefits } = Astro.props;
+---
+<Layout title={`${title} · Automation Architech`} description={subtitle}>
+  <article class="bg-white">
+    <section class="bg-gradient-to-br from-gray-50 to-white pb-16 pt-28">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <a
+          class="mb-8 inline-flex items-center gap-2 text-gray-600 transition hover:text-gray-900"
+          href="/#services"
+        >
+          <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to Services
+        </a>
+        <div class="flex flex-col gap-8 md:flex-row md:items-center">
+          <div class="flex-1">
+            <div class="mb-6 flex items-center gap-4">
+              <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
+                <Icon name={icon} class="h-8 w-8 text-gray-500" />
+              </span>
+              <div>
+                <p class="text-sm uppercase tracking-[0.3em] text-gray-500">Service</p>
+                <h1 class="text-4xl font-light text-gray-900 md:text-5xl">{title}</h1>
+              </div>
+            </div>
+            <p class="text-xl text-gray-600">{subtitle}</p>
+          </div>
+          <img
+            src={image}
+            alt={imageAlt}
+            class="h-64 w-full rounded-2xl object-cover shadow-lg md:w-1/2"
+            loading="lazy"
+          />
+        </div>
+        <p class="mt-8 text-lg text-gray-600">{summary}</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div>
+          <h2 class="text-2xl font-light text-gray-900">Our Capabilities</h2>
+          <ul class="mt-8 space-y-4">
+            {capabilities.map((capability) => (
+              <li class="flex items-start gap-3 text-gray-600">
+                <Icon name="lucide:check-circle" class="mt-1 h-5 w-5 text-gray-400" />
+                <span>{capability}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-light text-gray-900">Why It Matters</h2>
+          <div class="mt-8 space-y-6">
+            {benefits.map((benefit) => (
+              <article class="border-l-4 border-gray-200 pl-6">
+                <h3 class="text-lg font-medium text-gray-900">{benefit.title}</h3>
+                <p class="mt-2 text-gray-600">{benefit.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-16">
+      <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-light text-gray-900">Need this capability?</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Let’s design the automation, content, and analytics layers together from one Astro codebase.
+        </p>
+        <a
+          href="/#contact"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-white transition hover:bg-gray-800"
+        >
+          Start Your Project
+          <Icon name="lucide:arrow-right" class="h-4 w-4" />
+        </a>
+      </div>
+    </section>
+  </article>
+</Layout>

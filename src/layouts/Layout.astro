@@ -1,22 +1,54 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import Navigation from '@/components/react/Navigation';
+import Footer from '@/components/Footer.astro';
+import SeoHead, { type JsonLdInput } from '@/components/SeoHead.astro';
+import { siteConfig } from '@/config/site';
+import '@/styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  hero?: string;
+  seoType?: 'website' | 'article';
+  publishedAt?: Date;
+  updatedAt?: Date;
+  jsonLd?: JsonLdInput;
+  hideFooter?: boolean;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  hero,
+  seoType = 'website',
+  publishedAt,
+  updatedAt,
+  jsonLd,
+  hideFooter = false
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <SeoHead
+    title={title}
+    description={description}
+    hero={hero}
+    seoType={seoType}
+    publishedAt={publishedAt}
+    updatedAt={updatedAt}
+    jsonLd={jsonLd}
+  />
+  <body class="bg-background text-foreground">
+    <a
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-gray-900"
+      href="#main"
+    >
+      Skip to content
+    </a>
+    <Navigation client:load />
+    <main id="main" class="pt-20 md:pt-24">
+      <slot />
+    </main>
+    {!hideFooter && <Footer />}
+  </body>
+</html>

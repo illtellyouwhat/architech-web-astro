@@ -1,0 +1,40 @@
+---
+import ServiceTemplate from '@/components/services/ServiceTemplate.astro';
+
+const capabilities = [
+  'Chat and copilot interfaces deployed inside your stack',
+  'Retrieval Augmented Generation (RAG) architecture',
+  'Fine-tuning + model selection guidance',
+  'Guardrails, evaluations, and analytics instrumentation',
+  'Content + editorial workflow automation'
+];
+
+const benefits = [
+  {
+    title: 'Context-Aware Experiences',
+    description: 'Ground models in your knowledge bases with secure embeddings and RAG pipelines.'
+  },
+  {
+    title: 'Faster Decision Cycles',
+    description: 'Give teams copilots that summarize, draft, and reason directly from source-of-truth docs.'
+  },
+  {
+    title: 'Governed Launches',
+    description: 'We bake in evaluation harnesses and analytics before the first user touches the UI.'
+  },
+  {
+    title: 'One Design Language',
+    description: 'Astro layouts and shadcn components keep AI surfaces visually consistent with marketing.'
+  }
+];
+---
+<ServiceTemplate
+  title="LLM Applications"
+  subtitle="Custom copilots and assistants rooted in your data."
+  icon="lucide:brain"
+  summary="From concept to launch, we pair UX, prompt engineering, and infrastructure so your AI experiences feel native to the rest of the site."
+  image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=600&fit=crop"
+  imageAlt="Two people collaborating with AI UI"
+  capabilities={capabilities}
+  benefits={benefits}
+/>

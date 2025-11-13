@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<section id="home" class="relative flex min-h-screen items-center bg-white">
+  <div class="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Automation Architech</p>
+    <h1 class="mt-6 text-4xl font-light leading-tight text-gray-900 md:text-6xl lg:text-7xl">
+      AI That Works With You
+    </h1>
+    <p class="mt-6 text-lg text-gray-600 md:text-xl">
+      We build intelligent LLM applications, deploy resilient data pipelines, and craft system workflows
+      that scale with your ambitions.
+    </p>
+
+    <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+      <a
+        href="/#contact"
+        class="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-lg font-light text-white transition hover:bg-gray-800"
+      >
+        Start Your Project
+        <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
+      <a
+        href="/#services"
+        class="rounded-lg border border-gray-300 px-8 py-3 text-lg font-light text-gray-600 transition hover:border-gray-900 hover:text-gray-900"
+      >
+        View Services
+      </a>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      {[
+        {
+          icon: 'lucide:code',
+          title: 'LLM Applications',
+          copy: 'Custom copilots, document analysis, and RAG assistants.'
+        },
+        {
+          icon: 'lucide:database',
+          title: 'Data Pipelines',
+          copy: 'High-fidelity scraping, ETL/ELT, and validation layers.'
+        },
+        {
+          icon: 'lucide:workflow',
+          title: 'System Workflows',
+          copy: 'Zapier/n8n orchestration and event-driven middleware.'
+        }
+      ].map((tile) => (
+        <article class="rounded-xl border border-gray-100 p-8 text-center transition hover:bg-gray-50">
+          <Icon name={tile.icon} class="mx-auto mb-4 h-8 w-8 text-gray-400" />
+          <h3 class="text-lg font-medium text-gray-900">{tile.title}</h3>
+          <p class="mt-2 text-sm text-gray-500">{tile.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

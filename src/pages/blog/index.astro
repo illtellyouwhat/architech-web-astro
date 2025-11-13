@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import PostListItem from '@/components/blog/PostListItem.astro';
+import BlogAside from '@/components/blog/BlogAside.astro';
+import { siteConfig } from '@/config/site';
+
+const pageTitle = 'Automation Architech Blog';
+const pageDescription = 'Playbooks on automation, observability, and resilient delivery across our Astro stack.';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const tags = Array.from(
+  new Set(posts.flatMap((post) => post.data.tags ?? []))
+).sort((a, b) => a.localeCompare(b));
+
+const listingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: pageTitle,
+  description: pageDescription,
+  url: `${siteConfig.url}/blog/`,
+  blogPost: posts.slice(0, 10).map((post) => ({
+    '@type': 'BlogPosting',
+    url: `${siteConfig.url}/blog/${post.slug}/`,
+    headline: post.data.title,
+    datePublished: post.data.date.toISOString()
+  }))
+};
+---
+<Layout title={pageTitle} description={pageDescription} jsonLd={listingJsonLd}>
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-10 lg:flex-row">
+      <div class="flex-1 space-y-8">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Blog</p>
+          <h1 class="mt-3 text-4xl font-light text-gray-900">{pageTitle}</h1>
+          <p class="mt-3 max-w-2xl text-lg text-gray-600">{pageDescription}</p>
+        </div>
+        <ul class="space-y-6">
+          {posts.map((post) => (
+            <PostListItem post={post} />
+          ))}
+        </ul>
+      </div>
+      <aside class="w-full lg:w-80">
+        <BlogAside latestPosts={posts.slice(0, 5)} tags={tags} />
+      </aside>
+    </div>
+  </section>
+</Layout>

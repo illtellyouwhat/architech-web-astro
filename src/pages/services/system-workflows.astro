@@ -1,0 +1,40 @@
+---
+import ServiceTemplate from '@/components/services/ServiceTemplate.astro';
+
+const capabilities = [
+  'API-first integration design and development',
+  'Zapier, Make, and n8n orchestration',
+  'Event-driven middleware + queue-based patterns',
+  'Cross-platform data synchronization',
+  'Observability + runbook automation'
+];
+
+const benefits = [
+  {
+    title: 'Connected Platforms',
+    description: 'Break down silos between marketing, product, and support tooling with resilient bridges.'
+  },
+  {
+    title: 'Operational Visibility',
+    description: 'Monitoring, retries, and logging built in so teams know when automation needs attention.'
+  },
+  {
+    title: 'Faster Launches',
+    description: 'Reusable reactors and workflows keep future automations on-brand and maintainable.'
+  },
+  {
+    title: 'Scale with Confidence',
+    description: 'Design reviews ensure automations survive surges, migrations, and roadmap pivots.'
+  }
+];
+---
+<ServiceTemplate
+  title="System Workflows"
+  subtitle="Connect every platform with thoughtful automation."
+  icon="lucide:workflow"
+  summary="From simple approvals to bespoke middleware, we create orchestration layers that keep data moving and humans in the loop."
+  image="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&h=600&fit=crop"
+  imageAlt="Workflow diagram on a collaborative whiteboard"
+  capabilities={capabilities}
+  benefits={benefits}
+/>

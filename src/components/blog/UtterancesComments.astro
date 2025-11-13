@@ -1,0 +1,28 @@
+---
+interface Props {
+  issueTerm?: string;
+}
+
+const repository = import.meta.env.PUBLIC_UTTERANCES_REPO;
+const label = import.meta.env.PUBLIC_UTTERANCES_LABEL ?? 'blog-comment';
+const theme = import.meta.env.PUBLIC_UTTERANCES_THEME ?? 'github-light';
+const commentsEnabled = (import.meta.env.PUBLIC_BLOG_ENABLE_COMMENTS ?? 'true') !== 'false';
+const issueTerm = Astro.props.issueTerm ?? Astro.url.pathname;
+const utterancesEmbed = `<script src="https://utteranc.es/client.js"
+  repo="${repository}"
+  issue-term="${issueTerm}"
+  label="${label}"
+  theme="${theme}"
+  crossorigin="anonymous"
+  async
+></script>`;
+---
+{repository && commentsEnabled && (
+  <section class="mt-16 rounded-2xl border border-gray-100 bg-white px-6 py-8 shadow-sm">
+    <h2 class="text-lg font-semibold text-gray-900">Join the conversation</h2>
+    <p class="mt-1 text-sm text-gray-500">
+      Comments are powered by GitHub Discussions via Utterances. Sign in with GitHub to participate.
+    </p>
+    <div class="mt-6" set:html={utterancesEmbed} />
+  </section>
+)}

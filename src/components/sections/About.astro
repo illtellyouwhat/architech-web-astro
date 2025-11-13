@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const stats = [
+  { icon: 'lucide:users', number: '50+', label: 'Projects Delivered' },
+  { icon: 'lucide:award', number: '5+', label: 'Years Experience' },
+  { icon: 'lucide:target', number: '100%', label: 'Client Satisfaction' },
+  { icon: 'lucide:trending-up', number: '300%', label: 'Avg. ROI Increase' }
+];
+
+const differentiators = [
+  {
+    title: 'Tailored Solutions',
+    copy: 'Every engagement starts from your processes. We design systems that map to how your teams work.'
+  },
+  {
+    title: 'Proven Results',
+    copy: 'We ship measurable efficiency gains through automation, validation, and observability.'
+  },
+  {
+    title: 'Expert Team',
+    copy: 'Automation engineers, content strategists, and platform specialists collaborating from one repo.'
+  }
+];
+---
+<section id="about" class="bg-gray-50 py-20">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">About</p>
+      <h2 class="mt-4 text-4xl font-light text-gray-900">Why Automation Architech</h2>
+      <p class="mt-6 text-lg text-gray-600">
+        We are automation specialists who sit at the intersection of AI engineering, content operations, and platform
+        reliability. The new Astro stack means the marketing site, blog, and product updates stay in lockstep.
+      </p>
+
+      <div class="mt-8 space-y-6">
+        {differentiators.map((item) => (
+          <article class="rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
+            <h3 class="text-lg font-medium text-gray-900">{item.title}</h3>
+            <p class="mt-2 text-gray-500">{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6">
+      {stats.map((stat) => (
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
+          <Icon name={stat.icon} class="mx-auto mb-4 h-6 w-6 text-gray-400" />
+          <p class="text-2xl font-light text-gray-900">{stat.number}</p>
+          <p class="text-sm text-gray-500">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
