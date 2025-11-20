@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import RevealOnScroll from '../react/RevealOnScroll';
 ---
 <section id="home" class="relative flex min-h-screen items-center bg-white">
   <div class="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
@@ -46,10 +47,12 @@ import { Icon } from 'astro-icon/components';
           copy: 'Zapier/n8n orchestration and event-driven middleware.'
         }
       ].map((tile) => (
-        <article class="rounded-xl border border-gray-100 p-8 text-center transition hover:bg-gray-50">
+        <article class="group rounded-xl border border-gray-100 p-8 text-center transition hover:bg-gray-50">
           <Icon name={tile.icon} class="mx-auto mb-4 h-8 w-8 text-gray-400" />
           <h3 class="text-lg font-medium text-gray-900">{tile.title}</h3>
-          <p class="mt-2 text-sm text-gray-500">{tile.copy}</p>
+          <RevealOnScroll client:load>
+            <p class="mt-2 text-sm text-gray-500">{tile.copy}</p>
+          </RevealOnScroll>
         </article>
       ))}
     </div>
