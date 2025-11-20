@@ -1,10 +1,9 @@
 ---
-import { Icon } from 'astro-icon/components';
-import RevealOnScroll from '../react/RevealOnScroll';
+import ServiceCard from '../react/ServiceCard';
 
 const services = [
   {
-    icon: 'lucide:brain',
+    icon: '🤖',
     title: 'LLM Applications',
     description:
       'Custom AI copilots, document intelligence, and retrieval-augmented systems designed for your teams.',
@@ -17,7 +16,7 @@ const services = [
     link: '/services/llm-applications'
   },
   {
-    icon: 'lucide:database',
+    icon: '⚙️',
     title: 'Data Pipelines & Scrapers',
     description:
       'Collect, normalize, and distribute trustworthy data with resilient scraping + ETL infrastructure.',
@@ -30,7 +29,7 @@ const services = [
     link: '/services/data-pipelines'
   },
   {
-    icon: 'lucide:workflow',
+    icon: '🔄',
     title: 'System Workflows',
     description:
       'Connect platforms using event-driven middleware, Zapier/n8n, and custom webhook services.',
@@ -57,34 +56,14 @@ const services = [
 
     <div class="mt-16 grid gap-8 lg:grid-cols-3">
       {services.map((service) => (
-        <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <div class="border-b border-gray-50 p-8">
-            <Icon name={service.icon} class="mb-4 h-8 w-8 text-gray-400" />
-            <h3 class="text-xl font-medium text-gray-900">{service.title}</h3>
-            <RevealOnScroll client:visible>
-              <p class="mt-3 text-gray-600">{service.description}</p>
-            </RevealOnScroll>
-          </div>
-          <RevealOnScroll client:visible>
-            <div class="flex flex-1 flex-col justify-between p-8">
-              <ul class="space-y-3 text-sm text-gray-600">
-                {service.features.map((feature) => (
-                  <li class="flex items-start gap-3">
-                    <Icon name="lucide:check-circle" class="mt-0.5 h-4 w-4 text-gray-400" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={service.link}
-                class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-gray-700 transition hover:text-gray-900"
-              >
-                Learn more
-                <Icon name="lucide:arrow-right" class="h-4 w-4" />
-              </a>
-            </div>
-          </RevealOnScroll>
-        </article>
+        <ServiceCard
+          icon={service.icon}
+          title={service.title}
+          description={service.description}
+          features={service.features}
+          learnMoreUrl={service.link}
+          client:idle
+        />
       ))}
     </div>
   </div>
