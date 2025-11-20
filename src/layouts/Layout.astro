@@ -3,6 +3,7 @@ import Navigation from '@/components/react/Navigation';
 import Footer from '@/components/Footer.astro';
 import SeoHead, { type JsonLdInput } from '@/components/SeoHead.astro';
 import { siteConfig } from '@/config/site';
+import { Toaster } from 'sonner';
 import '@/styles/global.css';
 
 interface Props {
@@ -50,5 +51,6 @@ const {
       <slot />
     </main>
     {!hideFooter && <Footer />}
+    <Toaster position="top-center" richColors client:load />
   </body>
 </html>

@@ -1,16 +1,22 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { siteConfig } from '@/config/site';
+import ContactForm from '../react/ContactForm';
 ---
 <section id="contact" class="bg-white py-20">
   <div class="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
     <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Contact</p>
     <h2 class="mt-4 text-4xl font-light text-gray-900">Ready to Automate?</h2>
     <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-      Tell us about your goals and we’ll design a roadmap that unifies marketing pages, blog content, and interactive
-      islands without fragmenting the design system.
+      Let's discuss how we can streamline your business with intelligent automation solutions.
     </p>
 
+    {/* Contact Form */}
+    <div class="mt-12 mb-16">
+      <ContactForm client:visible />
+    </div>
+
+    {/* Contact Info Cards */}
     <div class="mt-12 grid gap-6 md:grid-cols-2">
       <article class="rounded-2xl border border-gray-100 p-6 text-left shadow-sm">
         <div class="flex items-center gap-3">

@@ -1,0 +1,171 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { toast } from 'sonner';
+
+// Validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  company: z.string().min(2, 'Company name must be at least 2 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      setIsSubmitting(true);
+
+      // Submit to Netlify Forms
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          message: data.message,
+        }).toString(),
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      // Success
+      toast.success('Message received!', {
+        description: "We'll be in touch soon.",
+      });
+      reset(); // Clear form
+    } catch (error) {
+      // Error
+      toast.error('Failed to send message', {
+        description:
+          'Please email us directly at hello@automationarchitech.com',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      className="space-y-6 max-w-2xl mx-auto"
+    >
+      {/* Hidden fields for Netlify */}
+      <input type="hidden" name="form-name" value="contact" />
+      <div className="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </div>
+
+      {/* Name field */}
+      <div>
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Name <span className="text-red-500">*</span>
+        </label>
+        <input
+          {...register('name')}
+          type="text"
+          id="name"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          placeholder="Your name"
+        />
+        {errors.name && (
+          <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+        )}
+      </div>
+
+      {/* Email field */}
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Email <span className="text-red-500">*</span>
+        </label>
+        <input
+          {...register('email')}
+          type="email"
+          id="email"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          placeholder="your@email.com"
+        />
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+        )}
+      </div>
+
+      {/* Company field */}
+      <div>
+        <label
+          htmlFor="company"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Company <span className="text-red-500">*</span>
+        </label>
+        <input
+          {...register('company')}
+          type="text"
+          id="company"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          placeholder="Your company"
+        />
+        {errors.company && (
+          <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>
+        )}
+      </div>
+
+      {/* Message field */}
+      <div>
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Message <span className="text-red-500">*</span>
+        </label>
+        <textarea
+          {...register('message')}
+          id="message"
+          rows={5}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors"
+          placeholder="Tell us about your project..."
+        />
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+        )}
+      </div>
+
+      {/* Submit button */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? 'Sending...' : 'Send Message'}
+      </button>
+    </form>
+  );
+}
