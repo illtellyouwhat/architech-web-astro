@@ -1,0 +1,104 @@
+---
+// Industries We Serve section
+// Simple Astro component with hover-reveal descriptions
+---
+
+<section id="industries" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    {/* Section Header */}
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-light text-gray-900 mb-4">
+        Industries We Serve
+      </h2>
+      <p class="text-xl text-gray-600 font-normal max-w-4xl mx-auto">
+        Our automation expertise spans across diverse industries, delivering tailored solutions that drive efficiency and innovation.
+      </p>
+    </div>
+
+    {/* Industries Grid */}
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {/* Industry Card 1: Legal Tech */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        {/* Icon */}
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          ⚖️
+        </div>
+
+        {/* Title */}
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Legal Tech
+        </h3>
+
+        {/* Description - visible on hover (desktop), always visible (mobile) */}
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          Automating legal document processing, contract analysis, and compliance workflows to streamline legal operations.
+        </p>
+      </div>
+
+      {/* Industry 2: Admin Automation */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          🏢
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Admin Automation
+        </h3>
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          [Placeholder: Add description for admin automation solutions]
+        </p>
+      </div>
+
+      {/* Industry 3: Health + Medicine */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          ❤️
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Health + Medicine
+        </h3>
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          [Placeholder: Add description for healthcare automation solutions]
+        </p>
+      </div>
+
+      {/* Industry 4: Ecommerce */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          🛒
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Ecommerce
+        </h3>
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          [Placeholder: Add description for ecommerce automation solutions]
+        </p>
+      </div>
+
+      {/* Industry 5: Education Technology */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          🎓
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Education Technology
+        </h3>
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          [Placeholder: Add description for education technology solutions]
+        </p>
+      </div>
+
+      {/* Industry 6: Manufacturing */}
+      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
+          📊
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          Manufacturing
+        </h3>
+        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+          [Placeholder: Add description for manufacturing automation solutions]
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
