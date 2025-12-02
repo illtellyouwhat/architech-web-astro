@@ -14,7 +14,7 @@ export const siteConfig = {
   email: 'hello@automationarchitech.com',
   navigation: <NavLink[]>[
     { label: 'Home', href: '/#home' },
-    { label: 'Services', href: '/#services' },
+    { label: 'Services', href: '/#' },
     { label: 'Industries', href: '/#industries' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'Insights', href: '/blog/' },

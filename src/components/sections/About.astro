@@ -1,13 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
 import RevealOnScroll from '../react/RevealOnScroll';
-
-const stats = [
-  { icon: 'lucide:trending-up', number: '6-7x', label: 'Capacity Increase', context: 'Clinical trial patient matching' },
-  { icon: 'lucide:clock', number: '87.5%', label: 'Time Reduction', context: 'Production scheduling optimization' },
-  { icon: 'lucide:alarm-clock', number: '16 hrs', label: 'Saved Per Week', context: 'Ad performance reporting' },
-  { icon: 'lucide:check-circle', number: '99%', label: 'AI Accuracy', context: 'Dual-LLM verification' }
-];
 
 const differentiators = [
   {
@@ -25,37 +17,51 @@ const differentiators = [
 ];
 ---
 <section id="about" class="bg-gray-50 py-20">
-  <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-    <div class="animate-fade-in">
-      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">About</p>
-      <h2 class="mt-4 text-4xl font-light text-gray-900">Why Companies Choose Us</h2>
-      <p class="mt-6 text-lg text-gray-600">
-        We combine LLM expertise, low-code implementation, and a focus on measurable results. From 6-week implementations to 99% AI accuracy and API workarounds—we solve the problems other agencies can't.
-      </p>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-      <div class="mt-8 space-y-6">
-        {differentiators.map((item, index) => (
-          <article class={`group rounded-xl border border-gray-100 bg-white p-5 shadow-sm animate-fade-in delay-${(index + 1) * 100} hover:bg-gray-50 transition-colors`}>
+    <!-- Eyebrow -->
+    <p class="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-gray-900">
+      About
+    </p>
+
+    <!-- Headline -->
+    <h2 class="mb-6 text-4xl font-light text-gray-900">
+      Why Companies Choose Us
+    </h2>
+
+    <!-- Subheadline -->
+    <p class="mb-12 text-lg text-gray-600">
+      We combine LLM expertise, low-code implementation, and a focus on measurable results. From 6-week implementations to 99% AI accuracy and API workarounds—we solve the problems other agencies can't.
+    </p>
+
+    <!-- Two-Column Grid -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+      <!-- Left Column: Differentiator Cards -->
+      <div class="space-y-8">
+
+        {differentiators.map((item) => (
+          <div class="rounded-xl border border-gray-100 bg-white p-6">
             <h3 class="text-lg font-medium text-gray-900">{item.title}</h3>
             <RevealOnScroll client:visible>
               <p class="mt-2 text-gray-500">{item.copy}</p>
             </RevealOnScroll>
-          </article>
+          </div>
         ))}
-      </div>
-    </div>
 
-    <div class="grid grid-cols-2 gap-6">
-      {stats.map((stat, index) => (
-        <div class={`group rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm animate-fade-in delay-${(index + 1) * 100} hover:shadow-md transition-shadow`}>
-          <Icon name={stat.icon} class="mx-auto mb-4 h-6 w-6 text-gray-400" />
-          <p class="text-2xl font-light text-gray-900">{stat.number}</p>
-          <RevealOnScroll client:visible>
-            <p class="text-sm font-medium text-gray-500">{stat.label}</p>
-            <p class="mt-1 text-xs text-gray-400">{stat.context}</p>
-          </RevealOnScroll>
+      </div>
+
+      <!-- Right Column: Team Photo Placeholder -->
+      <div class="flex items-center justify-center">
+        <div class="flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 bg-white" style="aspect-ratio: 3/4;">
+          <svg class="mb-4 h-16 w-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-400">Team/Founder Photo</span>
+          <span class="mt-1 text-xs text-gray-400">Placeholder</span>
         </div>
-      ))}
+      </div>
+
     </div>
   </div>
 </section>

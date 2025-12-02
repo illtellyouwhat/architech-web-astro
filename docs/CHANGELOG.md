@@ -1,5 +1,83 @@
 # Changelog
 
+## Case Study Pages Implementation - December 2, 2025
+**Goal:** Build complete case studies section with index page and 5 individual case study detail pages to establish credibility through concrete proof of past work.
+
+**Pages created:**
+1. **Case Studies Index** (`/case-studies/index.astro`) - Grid of 5 case studies with "Real Projects. Real Results." hero section, priority ordering (Manufacturing → Clinical Trial → Ad Reporting → Email Campaign → Content Strategy), hover animations, and bottom CTA section.
+
+2. **Manufacturing Production Scheduling** - 87.5% time reduction, Paper Product Manufacturer (confidential), Process Automation solution, 6-week timeline. Includes Problem/Solution/Impact sections, expandable Technical Highlights, 2 screenshot placeholders, 3 related cases.
+
+3. **Clinical Trial Patient Matching** - 6-7x capacity increase, Vextras (with logo placeholder), Healthcare industry, AI Decision Support, early LLM era project. Includes detailed technical approach (5 subsections), dual-LLM verification details, expandable sections.
+
+4. **Ad Performance Reporting** - 16 hrs/week saved, Digital Media Publisher (confidential), Multi-Platform Data Integration, 6-month timeline. Most detailed case study with 4 Impact subsections, 4 Key Learnings subsections, comprehensive architecture details.
+
+5. **Email Campaign Link Management** - $1-5K monthly savings, E-commerce Company (confidential), Process Automation, 2-month timeline. Includes Notion + Coda integration architecture, Zapier event listener details, 3 technical highlights subsections.
+
+6. **Content Strategy Growth** - 900% growth (200K → 2M MAU), Mixed Analytics (with logo placeholder), SaaS industry, AI Decision Support, pre-ChatGPT era. Includes analytics approach, two-pronged content strategy (blog + YouTube), SEO optimization details.
+
+**Implementation features:**
+- Hero sections with breadcrumb navigation, clickable industry/solution tags linking to `/#industries` and `/#`
+- Company logo placeholders ONLY for Vextras and Mixed Analytics (confidential clients show industry icon)
+- Quick facts grid (4 columns: Industry, Company, Timeline, Solution Type - responsive: 1 col → 2 col → 4 col)
+- Full body content sections with preserved markdown structure and authentic project voice
+- Expandable `<details>` sections for Technical Highlights (open by default desktop, closed mobile)
+- 2 screenshot placeholders per case study
+- Related case studies section (3 cards) with priority logic: same industry > same solution type > other cases
+- SEO meta tags with proper titles and descriptions
+- Responsive design tested: mobile (single column), tablet (2 cols), desktop (full layouts)
+
+**Navigation updates:**
+- All homepage `/case-studies` links now work (hero CTA, service card CTAs, footer links - no more 404s)
+- Bidirectional navigation: case study tags link back to homepage `/#industries` and `/#` sections
+- Related cases create discovery loop between case studies
+
+**Design system:**
+- Maintained gray-900 primary color (NOT blue) throughout
+- Typography: `text-5xl font-light` (H1), `text-4xl font-light` (H2), `text-2xl font-semibold` (H3)
+- Spacing: `py-20` sections, `max-w-4xl` content containers, `gap-8` grids
+- Hover states: cards lift with shadow-xl, arrows translate-x on hover
+- All animations match existing site patterns
+
+**Build status:**
+- Build successful: 0 errors, 14 pages generated (8 original + 6 case study pages)
+- All internal links verified and working
+- Responsive layouts tested across breakpoints
+
+---
+
+## Homepage Layout Restructure - December 2, 2025
+**Goal:** Reorganize homepage sections to reduce redundancy, consolidate stats, and prepare for client logos/team photos.
+
+**Changes implemented:**
+1. **Hero Section** - Converted 3 simple service cards to fully expandable ServiceCard components (hover on desktop, auto-expand on mobile scroll). Cards now show features list and CTA buttons ("See [X] case studies →") on expansion.
+
+2. **New Stats Section** - Created dedicated stats section immediately after Hero with 4 metric cards in horizontal row (2 cols mobile, 4 cols desktop). Moved stats from About section: 6-7x capacity, 87.5% time reduction, 16 hrs/week saved, 99% AI accuracy.
+
+3. **New Client Logos Section** - Added placeholder section after Stats with "Trusted By" headline and 5 logo placeholders (2 cols mobile, 3 tablet, 5 desktop). Ready for real client logos.
+
+4. **Deleted Services Section** - Removed redundant "How We Help" section entirely since Hero now contains expandable service cards.
+
+5. **Industries Section** - Moved up to new position after Client Logos (was previously after Services).
+
+6. **About Section Restructure** - Removed stats cards (now at top), converted to two-column layout: 3 differentiator cards on left, team/founder photo placeholder on right (portrait 3:4 aspect ratio).
+
+7. **Navigation Update** - Changed "Services" nav link from `/#services` to `/#` (scrolls to top where service cards now live).
+
+**New page structure:**
+```
+Hero (with expandable service cards) → Stats → Client Logos → Industries → About (differentiators + photo) → Contact
+```
+
+**Notes:**
+- NO copy changes - layout restructure only
+- Maintained gray-based design system (gray-900 primary, NOT blue)
+- All existing animations and transitions preserved
+- ServiceCard expand functionality works identically in Hero as it did in old Services section
+- Build successful: 0 errors, 8 pages generated
+
+---
+
 ## Content Update - December 1, 2025
 **Goal:** Update all website copy to match approved redesign focused on measurable results and industry-specific solutions.
 

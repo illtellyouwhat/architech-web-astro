@@ -1,0 +1,336 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const caseStudy = {
+  title: 'Vextras: AI-Powered Clinical Trial Patient Matching',
+  company: 'Vextras',
+  industry: 'Healthcare',
+  industryIcon: '❤️',
+  solutionType: 'AI Decision Support',
+  metric: '6-7x',
+  metricLabel: 'Capacity Increase',
+  timeline: 'Early LLM era project',
+};
+
+const relatedCases = [
+  {
+    slug: 'manufacturing-production-scheduling',
+    title: 'Manufacturing Production Scheduling',
+    industryIcon: '🏭',
+    metric: '87.5%',
+    metricLabel: 'Time Reduction',
+  },
+  {
+    slug: 'ad-performance-reporting',
+    title: 'Automated Ad Performance Reporting',
+    industryIcon: '📰',
+    metric: '16 hrs',
+    metricLabel: 'Saved Per Week',
+  },
+  {
+    slug: 'content-strategy-growth',
+    title: 'Data-Driven Content Strategy',
+    industryIcon: '💻',
+    metric: '900%',
+    metricLabel: 'Growth',
+  },
+];
+---
+
+<Layout
+  title="AI-Powered Clinical Trial Patient Matching | Case Studies | Automation Architech"
+  description="Increased clinical trial patient matching capacity 6-7x through AI automation. Processed 200+ patient records per week vs. 30 manually."
+>
+  <!-- Hero Section -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <div class="mb-8">
+        <a href="/case-studies" class="text-gray-500 hover:text-gray-900 transition-colors">
+          ← Back to Case Studies
+        </a>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        <!-- Industry Tag -->
+        <a
+          href="/#industries"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+        >
+          <span class="text-xl">{caseStudy.industryIcon}</span>
+          {caseStudy.industry}
+        </a>
+
+        <!-- Solution Type Tag -->
+        <a
+          href="/#services"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+        >
+          {caseStudy.solutionType}
+        </a>
+      </div>
+
+      <!-- Company Logo Placeholder -->
+      <div class="mb-6">
+        <div class="w-48 h-24 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+          <span class="text-sm text-gray-400 text-center px-4">
+            Vextras<br/>Logo Placeholder
+          </span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-5xl font-light text-gray-900 mb-6">
+        {caseStudy.title}
+      </h1>
+
+      <!-- Primary Metric -->
+      <div class="bg-gray-50 rounded-xl p-8 mb-8">
+        <div class="text-6xl font-light text-gray-900 mb-2">
+          {caseStudy.metric}
+        </div>
+        <div class="text-xl font-medium text-gray-600">
+          {caseStudy.metricLabel}
+        </div>
+      </div>
+
+      <!-- Quick Facts Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Industry
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.industry}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Company
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.company}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Timeline
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.timeline}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Solution Type
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.solutionType}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+
+        <!-- Problem Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-0">
+          Problem
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          Vextras, a software agency, was working with a healthcare client conducting clinical trials. The client faced a critical bottleneck in matching patients to appropriate clinical trials. Each trial had 50+ complex eligibility criteria, and manually reviewing patient records to determine trial eligibility was:
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Extremely time-consuming (60+ minutes per patient record)</li>
+          <li>Prone to human error when evaluating complex nested criteria</li>
+          <li>Limited to processing approximately 30 patient records per week</li>
+        </ul>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          This capacity limitation was preventing the organization from scaling their clinical trial recruitment efforts and delaying critical research timelines.
+        </p>
+
+        <!-- Solution Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-12">
+          Solution
+        </h2>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Technical Approach
+        </h3>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          We designed an AI-powered patient matching system in the early LLM era that automated the eligibility evaluation process while maintaining high accuracy. The system used a multi-stage approach to ensure reliability:
+        </p>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">1. Document Processing Pipeline</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Automated extraction of patient data from medical records</li>
+          <li>Structured data transformation for LLM processing</li>
+          <li>Handling of various medical document formats</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">2. Dual-LLM Verification Architecture</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Primary LLM evaluated patient eligibility against trial criteria</li>
+          <li>Secondary LLM independently verified the primary assessment</li>
+          <li>Flagged discrepancies for human review</li>
+          <li>Achieved 99% reduction in hallucinations through cross-validation</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">3. RAG (Retrieval Augmented Generation) Implementation</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Built vector database of trial eligibility criteria</li>
+          <li>Semantic search for relevant criteria retrieval</li>
+          <li>Grounded LLM responses in specific trial documentation</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">4. Complex Criteria Evaluation</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Handled nested Boolean logic (AND/OR conditions)</li>
+          <li>Temporal reasoning for time-based eligibility requirements</li>
+          <li>Multi-criteria scoring and ranking system</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">5. Human-in-the-Loop Quality Control</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Confidence scoring for each eligibility determination</li>
+          <li>Automatic flagging of low-confidence matches for review</li>
+          <li>Audit trail for all matching decisions</li>
+          <li>Feedback loop to improve model accuracy over time</li>
+        </ul>
+
+        <!-- Impact Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-12">
+          Impact
+        </h2>
+        <ul class="space-y-3 list-disc pl-6 text-gray-600 mb-8">
+          <li>
+            <strong class="font-semibold text-gray-900">6-7x Capacity Increase:</strong> System processed 200+ patient records per week compared to 30 manually
+          </li>
+          <li>
+            <strong class="font-semibold text-gray-900">60+ Minutes Saved Per Record:</strong> Reduced evaluation time from over an hour to minutes per patient
+          </li>
+          <li>
+            <strong class="font-semibold text-gray-900">99% Hallucination Reduction:</strong> Dual-LLM verification architecture virtually eliminated false positives
+          </li>
+          <li>
+            <strong class="font-semibold text-gray-900">Improved Match Quality:</strong> Systematic evaluation of all 50+ criteria ensured no eligibility factors were overlooked
+          </li>
+          <li>
+            <strong class="font-semibold text-gray-900">Accelerated Trial Recruitment:</strong> Faster patient matching enabled the organization to fill trial slots more quickly
+          </li>
+          <li>
+            <strong class="font-semibold text-gray-900">Scalable Infrastructure:</strong> System designed to handle increasing patient volumes as trial programs expanded
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Highlights Section -->
+  <section class="bg-white py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <details class="group" open>
+        <summary class="cursor-pointer list-none">
+          <div class="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <h3 class="text-2xl font-semibold text-gray-900">
+              Technical Highlights
+            </h3>
+            <svg class="w-6 h-6 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+
+        <div class="mt-6 prose prose-lg max-w-none">
+          <ul class="space-y-2 list-disc pl-6 text-gray-600">
+            <li>Built in early LLM era, pioneering RAG architecture for healthcare applications</li>
+            <li>Dual-LLM verification system to ensure accuracy and reduce hallucinations</li>
+            <li>Vector database implementation for semantic search across trial criteria</li>
+            <li>Custom prompt engineering for complex medical criteria evaluation</li>
+            <li>HIPAA-compliant data handling and encryption</li>
+            <li>Confidence scoring algorithm to flag uncertain matches for human review</li>
+            <li>Audit logging for regulatory compliance and quality assurance</li>
+            <li>Modular architecture allowing easy addition of new trials and criteria</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Visual Evidence Section -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Placeholder 1 -->
+        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+          <span class="text-sm text-gray-400">Screenshot Placeholder 1</span>
+        </div>
+
+        <!-- Placeholder 2 -->
+        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+          <span class="text-sm text-gray-400">Screenshot Placeholder 2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Case Studies -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-light text-gray-900 mb-12 text-center">
+        Related Case Studies
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {relatedCases.map((study) => (
+          <a
+            href={`/case-studies/${study.slug}`}
+            class="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 group"
+          >
+            <!-- Icon -->
+            <span class="text-3xl mb-4 block">{study.industryIcon}</span>
+
+            <!-- Title -->
+            <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
+              {study.title}
+            </h3>
+
+            <!-- Metric -->
+            <div class="text-3xl font-light text-gray-900 mb-1">
+              {study.metric}
+            </div>
+            <div class="text-sm font-medium text-gray-500 mb-4">
+              {study.metricLabel}
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center text-gray-900 font-medium group-hover:text-gray-700 transition-colors">
+              Read more
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

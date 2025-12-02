@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import RevealOnScroll from '../react/RevealOnScroll';
+import ServiceCard from '../react/ServiceCard';
 ---
 <section id="home" class="relative flex min-h-screen items-center bg-white">
   <div class="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
@@ -31,32 +31,49 @@ import RevealOnScroll from '../react/RevealOnScroll';
       </a>
     </div>
 
-    <div class="mt-16 grid gap-6 md:grid-cols-3">
-      {[
-        {
-          icon: 'lucide:workflow',
-          title: 'Process Automation',
-          copy: 'Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero.'
-        },
-        {
-          icon: 'lucide:brain',
-          title: 'AI Decision Support',
-          copy: 'Accelerate expert decisions—process thousands of documents in minutes instead of weeks.'
-        },
-        {
-          icon: 'lucide:database',
-          title: 'Multi-Platform Data Integration',
-          copy: 'Stop manually compiling data from 5+ platforms. Get unified reporting automatically.'
-        }
-      ].map((tile) => (
-        <article class="group rounded-xl border border-gray-100 p-8 text-center transition hover:bg-gray-50">
-          <Icon name={tile.icon} class="mx-auto mb-4 h-8 w-8 text-gray-400" />
-          <h3 class="text-lg font-medium text-gray-900">{tile.title}</h3>
-          <RevealOnScroll client:load>
-            <p class="mt-2 text-sm text-gray-500">{tile.copy}</p>
-          </RevealOnScroll>
-        </article>
-      ))}
+    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+      <ServiceCard
+        icon="⚙️"
+        title="Process Automation"
+        description="Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero."
+        features={[
+          'Reduce error rates from 5-10% to <1%',
+          'Scale capacity 5-10x without additional headcount',
+          'Free your team to focus on strategic work, not data entry',
+          'Examples: Email campaign management, production scheduling, link coordination'
+        ]}
+        learnMoreUrl="/case-studies"
+        ctaText="See automation case studies →"
+        client:idle
+      />
+      <ServiceCard
+        icon="🤖"
+        title="AI-Powered Decision Support"
+        description="Accelerate expert decisions—process thousands of documents in minutes instead of weeks."
+        features={[
+          "Match patterns across massive datasets humans can't manually review",
+          'Reduce expert bottlenecks (legal review, clinical assessment, due diligence)',
+          'Built-in verification layers to prevent AI hallucinations (99% accuracy)',
+          'Examples: Clinical trial patient matching, contract analysis, medical record review'
+        ]}
+        learnMoreUrl="/case-studies"
+        ctaText="See AI case studies →"
+        client:idle
+      />
+      <ServiceCard
+        icon="📊"
+        title="Multi-Platform Data Integration"
+        description="Stop manually compiling data from 5+ platforms. Get unified reporting automatically."
+        features={[
+          'Connect Google Analytics, Klaviyo, Salesforce, Shopify, and 50+ other platforms',
+          'Automate report generation that currently takes hours',
+          'Enable historical analysis (3+ years) impossible in spreadsheets',
+          "API workarounds when platforms don't provide direct access"
+        ]}
+        learnMoreUrl="/case-studies"
+        ctaText="See integration case studies →"
+        client:idle
+      />
     </div>
   </div>
 </section>

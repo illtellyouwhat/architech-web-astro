@@ -1,7 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/sections/Hero.astro';
-import Services from '@/components/sections/Services.astro';
+import Stats from '@/components/sections/Stats.astro';
+import ClientLogos from '@/components/sections/ClientLogos.astro';
 import Industries from '@/components/sections/Industries.astro';
 import About from '@/components/sections/About.astro';
 import Contact from '@/components/sections/Contact.astro';
@@ -9,7 +10,8 @@ import { siteConfig } from '@/config/site';
 ---
 <Layout title={`${siteConfig.title} · Unified Astro Platform`} description={siteConfig.description}>
   <Hero />
-  <Services />
+  <Stats />
+  <ClientLogos />
   <Industries />
   <About />
   <Contact />

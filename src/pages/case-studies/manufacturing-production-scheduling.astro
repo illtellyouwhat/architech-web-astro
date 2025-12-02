@@ -1,0 +1,426 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const caseStudy = {
+  title: 'Modernizing Manufacturing Production Scheduling',
+  company: 'Paper Product Manufacturer',
+  industry: 'Manufacturing',
+  industryIcon: '🏭',
+  solutionType: 'Process Automation',
+  metric: '87.5%',
+  metricLabel: 'Time Reduction',
+  timeline: '6 weeks',
+};
+
+const relatedCases = [
+  {
+    slug: 'clinical-trial-patient-matching',
+    title: 'AI-Powered Clinical Trial Patient Matching',
+    industryIcon: '❤️',
+    metric: '6-7x',
+    metricLabel: 'Capacity Increase',
+  },
+  {
+    slug: 'ad-performance-reporting',
+    title: 'Automated Ad Performance Reporting',
+    industryIcon: '📰',
+    metric: '16 hrs',
+    metricLabel: 'Saved Per Week',
+  },
+  {
+    slug: 'email-campaign-link-management',
+    title: 'Email Campaign Link Management',
+    industryIcon: '📰',
+    metric: '$1-5K',
+    metricLabel: 'Monthly Savings',
+  },
+];
+---
+
+<Layout
+  title="Manufacturing Production Scheduling | Case Studies | Automation Architech"
+  description="Reduced production scheduling time by 87.5% for a $60M Texas manufacturing facility. Automated production run management saved 7 hours per week."
+>
+  <!-- Hero Section -->
+  <section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <div class="mb-8">
+        <a href="/case-studies" class="text-gray-500 hover:text-gray-900 transition-colors">
+          ← Back to Case Studies
+        </a>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        <!-- Industry Tag -->
+        <a
+          href="/#industries"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+        >
+          <span class="text-xl">{caseStudy.industryIcon}</span>
+          {caseStudy.industry}
+        </a>
+
+        <!-- Solution Type Tag -->
+        <a
+          href="/#services"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+        >
+          {caseStudy.solutionType}
+        </a>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-5xl font-light text-gray-900 mb-6">
+        {caseStudy.title}
+      </h1>
+
+      <!-- Primary Metric -->
+      <div class="bg-gray-50 rounded-xl p-8 mb-8">
+        <div class="text-6xl font-light text-gray-900 mb-2">
+          {caseStudy.metric}
+        </div>
+        <div class="text-xl font-medium text-gray-600">
+          {caseStudy.metricLabel}
+        </div>
+      </div>
+
+      <!-- Quick Facts Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Industry
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.industry}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Company
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.company}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Timeline
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.timeline}
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            Solution Type
+          </div>
+          <div class="text-lg text-gray-900">
+            {caseStudy.solutionType}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+
+        <!-- Problem Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-0">
+          Problem
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          A $60M paper product manufacturer in Texas faced significant operational bottlenecks in their production scheduling process. With 27 machines operating across multiple shifts and 116 operators, the production manager spent 8 hours every week manually creating production schedules in Excel.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          The scheduling process involved:
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-8">
+          <li>Reviewing customer orders and production requirements</li>
+          <li>Manually assigning jobs to machines based on capacity and operator availability</li>
+          <li>Tracking machine downtimes and maintenance schedules</li>
+          <li>Adjusting schedules when rush orders came in</li>
+          <li>Distributing updated schedules to shift supervisors via email</li>
+        </ul>
+
+        <!-- Solution Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-12">
+          Solution
+        </h2>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Low-Code Production Management System
+        </h3>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          We built a custom production scheduling system using low-code tools that automated the entire scheduling workflow while maintaining the flexibility needed for the manufacturing environment.
+        </p>
+
+        <h4 class="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          Implementation Timeline
+        </h4>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          The project was completed in 6 weeks with the following phases:
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li><strong class="font-semibold text-gray-900">Week 1-2:</strong> Requirements gathering and system design</li>
+          <li><strong class="font-semibold text-gray-900">Week 3-4:</strong> Core system development and testing</li>
+          <li><strong class="font-semibold text-gray-900">Week 5:</strong> User training and feedback integration</li>
+          <li><strong class="font-semibold text-gray-900">Week 6:</strong> Production deployment and optimization</li>
+        </ul>
+
+        <h4 class="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          Core System Architecture
+        </h4>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">1. Data Integration Layer</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Connected to existing ERP system for order data</li>
+          <li>Real-time machine status monitoring</li>
+          <li>Operator availability tracking from HR system</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">2. Automated Scheduling Engine</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Rule-based job assignment algorithm</li>
+          <li>Capacity optimization across machines</li>
+          <li>Priority handling for rush orders</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">3. User Interface</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Drag-and-drop schedule adjustment capability</li>
+          <li>Visual capacity planning dashboard</li>
+          <li>Mobile-friendly views for shift supervisors</li>
+        </ul>
+
+        <p class="text-gray-600 leading-relaxed mb-4">
+          <strong class="font-semibold text-gray-900">4. Distribution & Notifications</strong>
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Automated schedule distribution via email and SMS</li>
+          <li>Real-time alerts for schedule changes</li>
+          <li>Shift handoff reports</li>
+        </ul>
+
+        <h4 class="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          Performance Optimization
+        </h4>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          The system was optimized to handle the facility's scale, processing schedules for 27 machines and 116 operators in under 2 minutes. The automated scheduling engine reduced manual intervention from 8 hours to 1 hour per week.
+        </p>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Users
+        </h3>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          The system serves three primary user groups:
+        </p>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-8">
+          <li><strong class="font-semibold text-gray-900">Production Manager:</strong> Creates and adjusts weekly schedules</li>
+          <li><strong class="font-semibold text-gray-900">Shift Supervisors:</strong> View daily schedules and report machine status</li>
+          <li><strong class="font-semibold text-gray-900">Operators:</strong> Receive their daily assignments via mobile notifications</li>
+        </ul>
+
+        <!-- Impact Section -->
+        <h2 class="text-4xl font-light text-gray-900 mb-6 mt-12">
+          Impact
+        </h2>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Time Savings
+        </h3>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Reduced scheduling time from 8 hours to 1 hour per week (87.5% reduction)</li>
+          <li>Freed up 7 hours weekly for strategic planning and optimization</li>
+          <li>Eliminated manual schedule distribution time</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Quality Improvements
+        </h3>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Eliminated scheduling conflicts and double-bookings</li>
+          <li>Improved operator utilization through better capacity planning</li>
+          <li>Reduced communication errors through automated distribution</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          Business Outcomes
+        </h3>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-6">
+          <li>Faster response time to rush orders</li>
+          <li>Better visibility into production capacity</li>
+          <li>Improved on-time delivery rates</li>
+          <li>Enhanced shift handoff communication</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4 mt-8">
+          System Performance
+        </h3>
+        <ul class="space-y-2 list-disc pl-6 text-gray-600 mb-8">
+          <li>Schedule generation: Under 2 minutes for 27 machines</li>
+          <li>99.9% uptime since deployment</li>
+          <li>Real-time updates across all user devices</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Highlights Section -->
+  <section class="bg-white py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <details class="group" open>
+        <summary class="cursor-pointer list-none">
+          <div class="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <h3 class="text-2xl font-semibold text-gray-900">
+              Technical Highlights
+            </h3>
+            <svg class="w-6 h-6 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+
+        <div class="mt-6 prose prose-lg max-w-none">
+          <ul class="space-y-2 list-disc pl-6 text-gray-600">
+            <li>Low-code platform chosen for rapid development and easy maintenance by internal IT team</li>
+            <li>RESTful API integration with legacy ERP system</li>
+            <li>Rule engine for automated job-to-machine assignment based on capacity, priority, and operator skills</li>
+            <li>Real-time data synchronization across multiple user interfaces</li>
+            <li>Mobile-responsive design for shift supervisors and operators</li>
+            <li>Automated backup and disaster recovery procedures</li>
+            <li>Role-based access control for different user types</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Key Learnings Section -->
+  <section class="bg-white py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <details class="group" open>
+        <summary class="cursor-pointer list-none">
+          <div class="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <h3 class="text-2xl font-semibold text-gray-900">
+              Key Learnings
+            </h3>
+            <svg class="w-6 h-6 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </summary>
+
+        <div class="mt-6 prose prose-lg max-w-none">
+          <div class="mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4">
+              <strong class="font-semibold text-gray-900">Low-Code Advantage</strong>
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Using a low-code platform enabled rapid iteration during the design phase and made it easier for the client's IT team to maintain and enhance the system after deployment.
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4">
+              <strong class="font-semibold text-gray-900">Change Management</strong>
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Early involvement of shift supervisors in the design process was critical to adoption. Their feedback during week 5 led to several UX improvements that increased system usage.
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4">
+              <strong class="font-semibold text-gray-900">Flexibility vs. Automation</strong>
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Finding the right balance between automated scheduling and manual override capabilities was essential. The drag-and-drop interface for schedule adjustments proved crucial for handling exceptions.
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-gray-600 leading-relaxed mb-4">
+              <strong class="font-semibold text-gray-900">Integration Challenges</strong>
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              The legacy ERP system's API documentation was incomplete, requiring additional discovery time. Building robust error handling for API failures prevented downstream issues in the scheduling system.
+            </p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Visual Evidence Section -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Placeholder 1 -->
+        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+          <span class="text-sm text-gray-400">Screenshot Placeholder 1</span>
+        </div>
+
+        <!-- Placeholder 2 -->
+        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
+          <span class="text-sm text-gray-400">Screenshot Placeholder 2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Case Studies -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-light text-gray-900 mb-12 text-center">
+        Related Case Studies
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {relatedCases.map((study) => (
+          <a
+            href={`/case-studies/${study.slug}`}
+            class="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 group"
+          >
+            <!-- Icon -->
+            <span class="text-3xl mb-4 block">{study.industryIcon}</span>
+
+            <!-- Title -->
+            <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
+              {study.title}
+            </h3>
+
+            <!-- Metric -->
+            <div class="text-3xl font-light text-gray-900 mb-1">
+              {study.metric}
+            </div>
+            <div class="text-sm font-medium text-gray-500 mb-4">
+              {study.metricLabel}
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center text-gray-900 font-medium group-hover:text-gray-700 transition-colors">
+              Read more
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

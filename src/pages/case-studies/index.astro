@@ -1,0 +1,156 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const caseStudies = [
+  {
+    slug: 'manufacturing-production-scheduling',
+    title: 'Manufacturing Production Scheduling',
+    company: 'Paper Product Manufacturer',
+    industry: 'Manufacturing',
+    industryIcon: '🏭',
+    metric: '87.5%',
+    metricLabel: 'Time Reduction',
+    summary: 'Reduced production scheduling time from 8 hours per week to 1 hour through automated production run management.',
+    link: '/case-studies/manufacturing-production-scheduling'
+  },
+  {
+    slug: 'clinical-trial-patient-matching',
+    title: 'AI-Powered Clinical Trial Patient Matching',
+    company: 'Vextras',
+    industry: 'Healthcare',
+    industryIcon: '❤️',
+    metric: '6-7x',
+    metricLabel: 'Capacity Increase',
+    summary: 'Automated clinical trial patient matching, processing 200+ records per week vs. 30 manually.',
+    link: '/case-studies/clinical-trial-patient-matching'
+  },
+  {
+    slug: 'ad-performance-reporting',
+    title: 'Automated Ad Performance Reporting',
+    company: 'Digital Media Publisher',
+    industry: 'Publishing & Media',
+    industryIcon: '📰',
+    metric: '16 hrs',
+    metricLabel: 'Saved Per Week',
+    summary: 'Automated multi-platform ad reporting, eliminating manual CSV downloads and compilation.',
+    link: '/case-studies/ad-performance-reporting'
+  },
+  {
+    slug: 'email-campaign-link-management',
+    title: 'Email Campaign Link Management',
+    company: 'E-commerce Company',
+    industry: 'Publishing & E-commerce',
+    industryIcon: '📰',
+    metric: '$1-5K',
+    metricLabel: 'Monthly Savings',
+    summary: 'Eliminated costly link errors through automated Notion + Coda integration.',
+    link: '/case-studies/email-campaign-link-management'
+  },
+  {
+    slug: 'content-strategy-growth',
+    title: 'Data-Driven Content Strategy',
+    company: 'Mixed Analytics',
+    industry: 'SaaS',
+    industryIcon: '💻',
+    metric: '900%',
+    metricLabel: 'Growth',
+    summary: 'Grew MAU from 200K to 2M+ through analytics-driven content strategy.',
+    link: '/case-studies/content-strategy-growth'
+  }
+];
+---
+
+<Layout title="Case Studies | Automation Architech" description="From 6-7x capacity increases to 87.5% time reductions—see how we've helped companies automate their most critical processes.">
+  <!-- Hero Section -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-500">
+          Case Studies
+        </p>
+        <h1 class="mb-6 text-5xl font-light text-gray-900">
+          Real Projects. Real Results.
+        </h1>
+        <p class="text-xl leading-relaxed text-gray-600">
+          From 6-7x capacity increases to 87.5% time reductions—see how we've helped companies automate their most critical processes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="bg-gray-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {caseStudies.map((study) => (
+          <a
+            href={study.link}
+            class="group rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:shadow-xl"
+          >
+            <!-- Industry Tag -->
+            <div class="mb-4 flex items-center gap-3">
+              <span class="text-3xl">{study.industryIcon}</span>
+              <span class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                {study.industry}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="mb-4 text-2xl font-semibold text-gray-900 transition-colors group-hover:text-gray-700">
+              {study.title}
+            </h3>
+
+            <!-- Metric -->
+            <div class="mb-4 rounded-lg bg-gray-50 p-4">
+              <div class="mb-1 text-4xl font-light text-gray-900">
+                {study.metric}
+              </div>
+              <div class="text-sm font-medium text-gray-500">
+                {study.metricLabel}
+              </div>
+            </div>
+
+            <!-- Summary -->
+            <p class="mb-6 leading-relaxed text-gray-600">
+              {study.summary}
+            </p>
+
+            <!-- CTA -->
+            <div class="flex items-center font-medium text-gray-900 transition-colors group-hover:text-gray-700">
+              Read case study
+              <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="mb-6 text-4xl font-light text-gray-900">
+        Ready to See Similar Results?
+      </h2>
+      <p class="mb-8 text-xl text-gray-600">
+        Tell us about your biggest bottleneck—we'll tell you if we can help.
+      </p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a
+          href="/#contact"
+          class="rounded-lg bg-gray-900 px-8 py-4 font-medium text-white transition-colors duration-200 hover:bg-gray-800"
+        >
+          Start a Conversation
+        </a>
+        <a
+          href="/#"
+          class="rounded-lg border-2 border-gray-300 bg-white px-8 py-4 font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50"
+        >
+          Explore Our Services
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
