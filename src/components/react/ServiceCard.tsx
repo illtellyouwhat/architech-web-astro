@@ -7,6 +7,7 @@ interface ServiceCardProps {
   description: string;
   features: string[];
   learnMoreUrl?: string;
+  ctaText?: string;
 }
 
 export default function ServiceCard({
@@ -15,6 +16,7 @@ export default function ServiceCard({
   description,
   features,
   learnMoreUrl = '#contact',
+  ctaText,
 }: ServiceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { ref, isIntersecting, isMobile } = useIntersectionObserver();
@@ -76,20 +78,27 @@ export default function ServiceCard({
                 : '0ms',
             }}
           >
-            Learn more
-            <svg
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            {ctaText || (() => {
+              if (title.includes('Process Automation')) return 'See automation case studies →';
+              if (title.includes('AI')) return 'See AI case studies →';
+              if (title.includes('Data Integration')) return 'See integration case studies →';
+              return 'Learn more';
+            })()}
+            {!ctaText && (
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            )}
           </a>
         </div>
       </div>

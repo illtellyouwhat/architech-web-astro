@@ -151,7 +151,7 @@ export default function ContactForm() {
           id="message"
           rows={5}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors"
-          placeholder="Tell us about your project..."
+          placeholder="Tell us about your biggest operational bottleneck. What manual process is consuming the most time or creating the most errors?"
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>

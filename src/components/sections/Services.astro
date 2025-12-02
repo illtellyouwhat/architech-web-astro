@@ -3,43 +3,43 @@ import ServiceCard from '../react/ServiceCard';
 
 const services = [
   {
-    icon: '🤖',
-    title: 'LLM Applications',
-    description:
-      'Custom AI copilots, document intelligence, and retrieval-augmented systems designed for your teams.',
-    features: [
-      'ChatGPT-style copilots branded for your org',
-      'Document analysis + summarization pipelines',
-      'Retrieval Augmented Generation (RAG) stacks',
-      'Fine-tuned assistants for support workflows'
-    ],
-    link: '/services/llm-applications'
-  },
-  {
     icon: '⚙️',
-    title: 'Data Pipelines & Scrapers',
+    title: 'Process Automation',
     description:
-      'Collect, normalize, and distribute trustworthy data with resilient scraping + ETL infrastructure.',
+      "Eliminate repetitive tasks that don't require human judgment—save 10-20 hours per week and reduce error rates to near-zero.",
     features: [
-      'High-volume scraping frameworks',
-      'Streaming + batch ETL orchestration',
-      'Automated validation & alerting',
-      'API integrations and monitoring'
+      'Reduce error rates from 5-10% to <1%',
+      'Scale capacity 5-10x without additional headcount',
+      'Free your team to focus on strategic work, not data entry',
+      'Examples: Email campaign management, production scheduling, link coordination'
     ],
-    link: '/services/data-pipelines'
+    link: '/case-studies'
   },
   {
-    icon: '🔄',
-    title: 'System Workflows',
+    icon: '🤖',
+    title: 'AI-Powered Decision Support',
     description:
-      'Connect platforms using event-driven middleware, Zapier/n8n, and custom webhook services.',
+      'Accelerate expert decisions with AI that processes complex information at scale—analyze thousands of documents in minutes, not weeks.',
     features: [
-      'Zapier / n8n automation architecture',
-      'Event-driven middleware & queues',
-      'Cross-platform data synchronization',
-      'Custom webhook development'
+      "Match patterns across massive datasets humans can't manually review",
+      'Reduce expert bottlenecks (legal review, clinical assessment, due diligence)',
+      'Built-in verification layers to prevent AI hallucinations (99% accuracy)',
+      'Examples: Clinical trial patient matching, contract analysis, medical record review'
     ],
-    link: '/services/system-workflows'
+    link: '/case-studies'
+  },
+  {
+    icon: '📊',
+    title: 'Multi-Platform Data Integration',
+    description:
+      'Stop manually compiling data from 5+ platforms—eliminate CSV downloads and get unified, automated reporting.',
+    features: [
+      'Connect Google Analytics, Klaviyo, Salesforce, Shopify, and 50+ other platforms',
+      'Automate report generation that currently takes hours',
+      'Enable historical analysis (3+ years) impossible in spreadsheets',
+      "API workarounds when platforms don't provide direct access"
+    ],
+    link: '/case-studies'
   }
 ];
 ---
@@ -47,10 +47,9 @@ const services = [
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Services</p>
-      <h2 class="mt-4 text-4xl font-light text-gray-900">Our Expertise</h2>
+      <h2 class="mt-4 text-4xl font-light text-gray-900">How We Help</h2>
       <p class="mx-auto mt-4 max-w-3xl text-lg text-gray-500">
-        We pair LLM strategy with production-ready engineering so marketing sites, blogs, and internal tools all share
-        one design system and deployment pipeline.
+        From process automation to AI-powered decision support to data consolidation—we build systems that save time, reduce errors, and multiply your capacity.
       </p>
     </div>
 

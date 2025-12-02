@@ -15,8 +15,9 @@ export const siteConfig = {
   navigation: <NavLink[]>[
     { label: 'Home', href: '/#home' },
     { label: 'Services', href: '/#services' },
-    { label: 'About', href: '/#about' },
-    { label: 'Blog', href: '/blog/' },
+    { label: 'Industries', href: '/#industries' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Insights', href: '/blog/' },
     { label: 'Contact', href: '/#contact' }
   ],
   services: [

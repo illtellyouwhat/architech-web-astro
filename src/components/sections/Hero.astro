@@ -6,45 +6,47 @@ import RevealOnScroll from '../react/RevealOnScroll';
   <div class="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
     <p class="animate-fade-in text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Automation Architech</p>
     <h1 class="animate-fade-in delay-100 mt-6 text-4xl font-light leading-tight text-gray-900 md:text-6xl lg:text-7xl">
-      AI That Works With You
+      Still Spending 15+ Hours Per Week on Tasks a Computer Could Handle?
     </h1>
     <p class="animate-fade-in delay-200 mt-6 text-lg text-gray-600 md:text-xl">
-      We build intelligent LLM applications, deploy resilient data pipelines, and craft system workflows
-      that scale with your ambitions.
+      We've helped companies reclaim hundreds of hours through intelligent automation. From clinical trial patient matching to production scheduling to ad performance reporting—we build systems that deliver measurable results.
     </p>
 
     <div class="animate-fade-in delay-300 mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+      <div class="flex flex-col items-center gap-2">
+        <a
+          href="/case-studies"
+          class="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-lg font-light text-white transition hover:bg-gray-800"
+        >
+          See Our Work
+          <Icon name="lucide:arrow-right" class="h-4 w-4" />
+        </a>
+        <p class="text-sm text-gray-600">Real projects. Real results. Real metrics.</p>
+      </div>
       <a
         href="/#contact"
-        class="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-lg font-light text-white transition hover:bg-gray-800"
-      >
-        Start Your Project
-        <Icon name="lucide:arrow-right" class="h-4 w-4" />
-      </a>
-      <a
-        href="/#services"
         class="rounded-lg border border-gray-300 px-8 py-3 text-lg font-light text-gray-600 transition hover:border-gray-900 hover:text-gray-900"
       >
-        View Services
+        Book 15-Minute Discovery Call →
       </a>
     </div>
 
     <div class="mt-16 grid gap-6 md:grid-cols-3">
       {[
         {
-          icon: 'lucide:code',
-          title: 'LLM Applications',
-          copy: 'Custom copilots, document analysis, and RAG assistants.'
+          icon: 'lucide:workflow',
+          title: 'Process Automation',
+          copy: 'Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero.'
+        },
+        {
+          icon: 'lucide:brain',
+          title: 'AI Decision Support',
+          copy: 'Accelerate expert decisions—process thousands of documents in minutes instead of weeks.'
         },
         {
           icon: 'lucide:database',
-          title: 'Data Pipelines',
-          copy: 'High-fidelity scraping, ETL/ELT, and validation layers.'
-        },
-        {
-          icon: 'lucide:workflow',
-          title: 'System Workflows',
-          copy: 'Zapier/n8n orchestration and event-driven middleware.'
+          title: 'Multi-Platform Data Integration',
+          copy: 'Stop manually compiling data from 5+ platforms. Get unified reporting automatically.'
         }
       ].map((tile) => (
         <article class="group rounded-xl border border-gray-100 p-8 text-center transition hover:bg-gray-50">
