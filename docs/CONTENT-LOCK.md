@@ -40,21 +40,21 @@ Link Target: #contact
 
 **Card 1: Process Automation**
 ```
-Icon: Workflow icon (⚙️ or existing workflow icon)
+Icon: lucide:settings
 Title: "Process Automation"
 Description: "Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero."
 ```
 
 **Card 2: AI Decision Support**
 ```
-Icon: Brain icon (🤖 or existing brain icon)
+Icon: lucide:brain
 Title: "AI Decision Support"
 Description: "Accelerate expert decisions—process thousands of documents in minutes instead of weeks."
 ```
 
 **Card 3: Multi-Platform Data Integration**
 ```
-Icon: Database icon (📊 or existing database icon)
+Icon: lucide:database
 Title: "Multi-Platform Data Integration"
 Description: "Stop manually compiling data from 5+ platforms. Get unified reporting automatically."
 ```
@@ -83,7 +83,7 @@ we build systems that save time, reduce errors, and multiply your capacity.
 
 ```
 Title: "Process Automation"
-Icon: ⚙️ (or existing workflow icon)
+Icon: lucide:settings
 
 Description:
 "Eliminate repetitive tasks that don't require human judgment—save 10-20 hours 
@@ -95,7 +95,7 @@ Expandable Features (shown on hover/scroll):
 • Free your team to focus on strategic work, not data entry
 • Examples: Email campaign management, production scheduling, link coordination
 
-CTA Button: "See automation case studies →"
+CTA Button: "See case studies →"
 CTA Link: /case-studies
 ```
 
@@ -103,7 +103,7 @@ CTA Link: /case-studies
 
 ```
 Title: "AI-Powered Decision Support"
-Icon: 🤖 (or existing brain icon)
+Icon: lucide:brain
 
 Description:
 "Accelerate expert decisions with AI that processes complex information at scale—
@@ -115,7 +115,7 @@ Expandable Features (shown on hover/scroll):
 • Built-in verification layers to prevent AI hallucinations (99% accuracy)
 • Examples: Clinical trial patient matching, contract analysis, medical record review
 
-CTA Button: "See AI case studies →"
+CTA Button: "See case studies →"
 CTA Link: /case-studies
 ```
 
@@ -123,7 +123,7 @@ CTA Link: /case-studies
 
 ```
 Title: "Multi-Platform Data Integration"
-Icon: 📊 (or existing database icon)
+Icon: lucide:database
 
 Description:
 "Stop manually compiling data from 5+ platforms—eliminate CSV downloads and 
@@ -135,7 +135,7 @@ Expandable Features (shown on hover/scroll):
 • Enable historical analysis (3+ years) impossible in spreadsheets
 • API workarounds when platforms don't provide direct access
 
-CTA Button: "See integration case studies →"
+CTA Button: "See case studies →"
 CTA Link: /case-studies
 ```
 
@@ -163,55 +163,86 @@ to multi-platform ad reporting. See how we've helped companies in your industry.
 
 **Card 1: Legal Tech**
 ```
-Icon: ⚖️
+Icon: lucide:scale
 Title: "Legal Tech"
-Description: "Automating legal document processing, contract analysis, and compliance 
-workflows to streamline legal operations."
+Description (bullet list format):
+• Legal document processing and contract analysis
+• Compliance workflow automation
+• E-discovery optimization
+• Document automation and management
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 **Card 2: Healthcare**
 ```
-Icon: ❤️ or 🏥
+Icon: lucide:heart
 Title: "Healthcare"
-Description: "Clinical trial patient matching, eligibility verification, medical record 
-processing, and EHR integration to streamline healthcare operations and improve 
-patient outcomes."
+Description (bullet list format):
+• Clinical trial patient matching
+• Eligibility verification
+• Medical record processing and EHR integration
+• Healthcare operations streamlining
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 **Card 3: Publishing & Media**
 ```
-Icon: 📰 or 📢
+Icon: lucide:newspaper
 Title: "Publishing & Media"
-Description: "Campaign coordination and link management, multi-platform ad performance 
-reporting, content distribution automation, and audience analytics consolidation for 
-publishers and media companies."
+Description (bullet list format):
+• Campaign coordination and link management
+• Multi-platform ad performance reporting
+• Content distribution automation
+• Audience analytics consolidation
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 **Card 4: E-commerce**
 ```
-Icon: 🛒
+Icon: lucide:shopping-cart
 Title: "E-commerce"
-Description: "Inventory synchronization across channels, order routing and fulfillment 
-automation, customer data consolidation, and multi-platform performance tracking for 
-online retailers."
+Description (bullet list format):
+• Inventory synchronization across channels
+• Order routing and fulfillment automation
+• Customer data consolidation
+• Multi-platform performance tracking
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 **Card 5: Education Technology**
 ```
-Icon: 🎓
+Icon: lucide:graduation-cap
 Title: "Education Technology"
-Description: "Student data integration, learning management system automation, assessment 
-workflow optimization, and educational content distribution to improve learning outcomes 
-at scale."
+Description (bullet list format):
+• Student data integration
+• Learning management system automation
+• Assessment workflow optimization
+• Educational content distribution at scale
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 **Card 6: Manufacturing**
 ```
-Icon: 🏭 or ⚙️ (change from 📊 to factory/gear icon)
+Icon: lucide:factory
 Title: "Manufacturing"
-Description: "Production scheduling and capacity planning, changeover optimization, shop 
-floor coordination, quality data aggregation, and maintenance tracking to maximize 
-throughput and minimize downtime."
+Description (bullet list format):
+• Production scheduling and capacity planning
+• Changeover optimization
+• Shop floor coordination
+• Quality data aggregation and maintenance tracking
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies
 ```
 
 ---
@@ -263,30 +294,41 @@ Description: "We built LLM applications before ChatGPT was mainstream. Dual-LLM 
 RAG vector search, hallucination reduction—we know how to make AI reliable for production use."
 ```
 
-#### Stats Cards (4 cards, 2x2 grid)
+#### Stats Cards (4 cards, horizontal row)
 
-**Stat 1: Capacity Increase**
+**NOTE**: Stats cards are now company-level metrics (not project-specific) and clickable links to /case-studies
+
+**Stat 1: Projects Delivered**
 ```
-Icon: 📈 trending-up
-Number: "6-7x"
-Label: "Capacity Increase"
-Context/Subtext: "Clinical trial patient matching"
+Icon: lucide:briefcase
+Number: "50+"
+Label: "Projects Delivered"
+Link: /case-studies
 ```
 
-**Stat 2: Time Reduction**
+**Stat 2: Industry Experience**
 ```
-Icon: ⏱️ clock
+Icon: lucide:calendar
+Number: "8 Years"
+Label: "Industry Experience"
+Link: /case-studies
+```
+
+**Stat 3: Average Time Reduction**
+```
+Icon: lucide:clock
 Number: "87.5%"
-Label: "Time Reduction"
-Context/Subtext: "Production scheduling optimization"
+Label: "Average Time Reduction"
+Link: /case-studies
 ```
 
-**Stat 3: Weekly Hours Saved**
+**Stat 4: AI Accuracy**
 ```
-Icon: ⏰ alarm-clock
-Number: "16 hrs"
-Label: "Saved Per Week"
-Context/Subtext: "Ad performance reporting"
+Icon: lucide:check-circle
+Number: "99%"
+Label: "AI Accuracy"
+Link: /case-studies
+```
 ```
 
 **Stat 4: AI Accuracy**
@@ -346,19 +388,28 @@ Message received! We'll be in touch soon.
 Please email us directly at hello@automationarchitech.com
 ```
 
-#### Info Cards (2 cards below form)
+#### Info Cards (3 cards below form)
 
 **Email Card**
 ```
-Icon: Mail icon in gray circle
+Icon: lucide:mail
 Label: "Email"
 Value: "hello@automationarchitech.com" (clickable mailto link)
 Subtext: "Expect a thoughtful reply with next steps inside 24 hours."
 ```
 
+**Calendar Card**
+```
+Icon: lucide:calendar-days
+Label: "Schedule"
+CTA Button: "Book 15-Minute Call"
+Link: # (PLACEHOLDER - to be updated with actual Calendly/booking URL)
+Subtext: "Pick a time that works for you—we'll send a calendar invite."
+```
+
 **Location Card**
 ```
-Icon: Map pin icon in gray circle
+Icon: lucide:map-pin
 Label: "Location"
 Value: "Global Remote Team"
 Subtext: "Distributed team means faster turnaround on your projects."

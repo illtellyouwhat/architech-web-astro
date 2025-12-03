@@ -1,6 +1,7 @@
 ---
 // Industries We Serve section
-// Simple Astro component with hover-reveal descriptions
+// Simple Astro component with bullet list descriptions and CTAs
+import { Icon } from 'astro-icon/components';
 ---
 
 <section id="industries" class="py-20 bg-gray-50">
@@ -18,86 +19,204 @@
     {/* Industries Grid */}
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       {/* Industry Card 1: Legal Tech */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
         {/* Icon */}
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          ⚖️
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:scale" class="h-8 w-8 text-gray-900" />
         </div>
 
         {/* Title */}
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           Legal Tech
         </h3>
 
-        {/* Description - visible on hover (desktop), always visible (mobile) */}
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Automating legal document processing, contract analysis, and compliance workflows to streamline legal operations.
-        </p>
+        {/* Description - bullet list */}
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Legal document processing</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Contract analysis automation</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Compliance workflows</span>
+          </li>
+        </ul>
+
+        {/* CTA */}
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
 
       {/* Industry 2: Healthcare */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          ❤️
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:heart" class="h-8 w-8 text-gray-900" />
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           Healthcare
         </h3>
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Clinical trial patient matching, eligibility verification, medical record processing, and EHR integration to streamline healthcare operations and improve patient outcomes.
-        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Clinical trial patient matching</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Eligibility verification</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Medical record processing</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>EHR integration</span>
+          </li>
+        </ul>
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
 
       {/* Industry 3: Publishing & Media */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          📰
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:newspaper" class="h-8 w-8 text-gray-900" />
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           Publishing & Media
         </h3>
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Campaign coordination and link management, multi-platform ad performance reporting, content distribution automation, and audience analytics consolidation for publishers and media companies.
-        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Campaign coordination and link management</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Multi-platform ad performance reporting</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Content distribution automation</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Audience analytics consolidation</span>
+          </li>
+        </ul>
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
 
       {/* Industry 4: E-commerce */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          🛒
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:shopping-cart" class="h-8 w-8 text-gray-900" />
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           E-commerce
         </h3>
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Inventory synchronization across channels, order routing and fulfillment automation, customer data consolidation, and multi-platform performance tracking for online retailers.
-        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Inventory synchronization across channels</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Order routing and fulfillment automation</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Customer data consolidation</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Multi-platform performance tracking</span>
+          </li>
+        </ul>
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
 
       {/* Industry 5: Education Technology */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          🎓
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:graduation-cap" class="h-8 w-8 text-gray-900" />
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           Education Technology
         </h3>
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Student data integration, learning management system automation, assessment workflow optimization, and educational content distribution to improve learning outcomes at scale.
-        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Student data integration</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Learning management system automation</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Assessment workflow optimization</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Educational content distribution</span>
+          </li>
+        </ul>
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
 
       {/* Industry 6: Manufacturing */}
-      <div class="group bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-2xl mb-4">
-          🏭
+      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
+        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+          <Icon name="lucide:factory" class="h-8 w-8 text-gray-900" />
         </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
           Manufacturing
         </h3>
-        <p class="text-gray-600 font-normal opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          Production scheduling and capacity planning, changeover optimization, shop floor coordination, quality data aggregation, and maintenance tracking to maximize throughput and minimize downtime.
-        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Production scheduling and capacity planning</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Changeover optimization</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Shop floor coordination</span>
+          </li>
+          <li class="flex items-start gap-2 text-gray-600">
+            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+            <span>Quality data aggregation and maintenance tracking</span>
+          </li>
+        </ul>
+        <a href="/case-studies"
+           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
+          See case studies
+          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+        </a>
       </div>
     </div>
   </div>

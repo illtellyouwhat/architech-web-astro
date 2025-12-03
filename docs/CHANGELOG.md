@@ -1,11 +1,89 @@
 # Changelog
 
+## Phase 5: Polish & Connectivity Updates - December 3, 2025
+**Goal:** Replace emoji icons with Lucide icons, update stats to company-level metrics, simplify CTAs, reformat industries section, add service categorization to case studies, and create multiple conversion paths with discovery call CTAs throughout the site.
+
+**Changes implemented:**
+
+### 1. Stats Cards Redesign
+- **New metrics**: Changed from project-specific to company-level metrics
+  - 50+ Projects Delivered (was 6-7x capacity)
+  - 8 Years Industry Experience (was 87.5% time reduction)
+  - 87.5% Average Time Reduction (kept but generalized)
+  - 99% AI Accuracy (kept)
+- **Made clickable**: All 4 stat cards now link to `/case-studies` with hover scale effect
+- **Removed context text**: Eliminated small gray subtext (e.g., "Clinical trial patient matching")
+- **Icons updated**: briefcase, calendar, clock, check-circle (all Lucide)
+
+### 2. Service Card CTAs Simplified
+- **Unified messaging**: All 3 service cards now say "See case studies →"
+- **Removed variations**: Was "See automation/AI/integration case studies →"
+- **Consistency**: Creates clearer path to case studies section
+
+### 3. Icon System Migration - Emoji to Lucide
+- **ServiceCard component**: Modified to handle Lucide icons with dynamic rendering
+  - Added lucide-react imports (Settings, Brain, Database)
+  - Icon mapping system for consistent rendering
+- **Hero service cards**: settings, brain, database icons
+- **Industries section**: All 6 cards converted
+  - Legal Tech: scale → Healthcare: heart → Publishing & Media: newspaper
+  - E-commerce: shopping-cart → Education Technology: graduation-cap → Manufacturing: factory
+- **Checkmark bullets**: All bullet lists use lucide:check icon
+- **Result**: Site-wide consistency with Lucide icon system
+
+### 4. Industries Section Reformatting
+- **Description format**: Changed from paragraph text to bullet lists (4-5 bullets per card)
+- **Added CTAs**: Each industry card now has "See case studies →" button with arrow icon
+- **Removed hover-reveal**: Descriptions always visible (better for mobile, clearer UX)
+- **Visual hierarchy**: Checkmarks provide scannable structure
+
+### 5. Case Studies Index - Service Categorization
+- **Added metadata**: serviceType and serviceIcon fields to each case study
+  - Clinical Trial: "AI Decision Support" with brain icon
+  - Manufacturing: "Process Automation" with settings icon
+  - Ad Reporting: "Data Integration" with database icon
+  - Content Strategy & Email Campaign: null (awaiting client input)
+- **Service icon display**: Icons appear in top-right of cards with tooltip on hover
+- **Tooltip functionality**: Shows service type name (e.g., "Process Automation")
+
+### 6. Case Studies Reordering by Impact
+**New priority order (highest impact first)**:
+1. Content Strategy (900% growth) - was 5th
+2. Clinical Trial (6-7x capacity) - was 2nd
+3. Manufacturing (87.5% time reduction) - was 1st
+4. Ad Reporting (16 hrs/week saved) - was 3rd
+5. Email Campaign ($1-5K monthly savings) - was 4th
+
+### 7. Discovery Call CTAs - Case Studies Index
+- **Two-button layout**: Replaced single "Read case study" link
+  - Primary: "Read case study" (gray-900 background)
+  - Secondary: "Book 15-Min Call" (outlined style)
+- **Equal width buttons**: Both buttons flex-1 for balanced appearance
+- **Links**: Read → detail page, Book → `/#contact`
+
+### 8. Discovery Call CTAs - Case Study Detail Pages
+**Location 1 - Hero section (top right)**: Added "Book 15-Minute Discovery Call" button next to breadcrumb (responsive: stacks vertically on mobile)
+
+**Location 2 - After Key Learnings (before Related Cases)**: New CTA section with "Ready to See Similar Results?" headline and two buttons
+
+Applied to all 5 case study detail pages
+
+### 9. Contact Section - Calendar Booking Card
+- **Added 3rd card**: Calendar booking option (middle position) with lucide:calendar-days icon
+- **Button**: "Book 15-Minute Call" (placeholder href="#")
+- **Grid updated**: Changed from `md:grid-cols-2` to `md:grid-cols-3`
+
+**Files modified**: 11 total (Stats, Hero, ServiceCard, Industries, 6 case study pages, Contact)
+
+**Build status**: Build successful: 0 errors, 14 pages generated
+
+---
+
 ## Case Study Pages Implementation - December 2, 2025
 **Goal:** Build complete case studies section with index page and 5 individual case study detail pages to establish credibility through concrete proof of past work.
 
 **Pages created:**
 1. **Case Studies Index** (`/case-studies/index.astro`) - Grid of 5 case studies with "Real Projects. Real Results." hero section, priority ordering (Manufacturing → Clinical Trial → Ad Reporting → Email Campaign → Content Strategy), hover animations, and bottom CTA section.
-
 2. **Manufacturing Production Scheduling** - 87.5% time reduction, Paper Product Manufacturer (confidential), Process Automation solution, 6-week timeline. Includes Problem/Solution/Impact sections, expandable Technical Highlights, 2 screenshot placeholders, 3 related cases.
 
 3. **Clinical Trial Patient Matching** - 6-7x capacity increase, Vextras (with logo placeholder), Healthcare industry, AI Decision Support, early LLM era project. Includes detailed technical approach (5 subsections), dual-LLM verification details, expandable sections.

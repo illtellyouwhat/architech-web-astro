@@ -2,10 +2,10 @@
 import { Icon } from 'astro-icon/components';
 
 const stats = [
-  { icon: 'lucide:trending-up', number: '6-7x', label: 'Capacity Increase', context: 'Clinical trial patient matching' },
-  { icon: 'lucide:clock', number: '87.5%', label: 'Time Reduction', context: 'Production scheduling optimization' },
-  { icon: 'lucide:alarm-clock', number: '16 hrs', label: 'Saved Per Week', context: 'Ad performance reporting' },
-  { icon: 'lucide:check-circle', number: '99%', label: 'AI Accuracy', context: 'Dual-LLM verification' }
+  { icon: 'lucide:briefcase', number: '50+', label: 'Projects Delivered' },
+  { icon: 'lucide:calendar', number: '8 Years', label: 'Industry Experience' },
+  { icon: 'lucide:clock', number: '87.5%', label: 'Average Time Reduction' },
+  { icon: 'lucide:check-circle', number: '99%', label: 'AI Accuracy' }
 ];
 ---
 <!-- Stats Section -->
@@ -15,14 +15,13 @@ const stats = [
     <div class="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
 
       {stats.map((stat) => (
-        <div class="text-center">
+        <a href="/case-studies" class="block text-center transition-all duration-300 hover:scale-105">
           <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gray-50">
             <Icon name={stat.icon} class="h-6 w-6 text-gray-900" />
           </div>
           <div class="mb-2 text-3xl font-light text-gray-900 md:text-4xl">{stat.number}</div>
-          <div class="mb-1 text-sm font-medium text-gray-900">{stat.label}</div>
-          <div class="text-xs text-gray-500">{stat.context}</div>
-        </div>
+          <div class="text-sm font-medium text-gray-900">{stat.label}</div>
+        </a>
       ))}
 
     </div>

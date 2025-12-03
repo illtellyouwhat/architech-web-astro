@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { Settings, Brain, Database } from 'lucide-react';
 
 interface ServiceCardProps {
   icon: string;
@@ -9,6 +10,12 @@ interface ServiceCardProps {
   learnMoreUrl?: string;
   ctaText?: string;
 }
+
+const iconMap: Record<string, any> = {
+  'lucide:settings': Settings,
+  'lucide:brain': Brain,
+  'lucide:database': Database,
+};
 
 export default function ServiceCard({
   icon,
@@ -37,7 +44,16 @@ export default function ServiceCard({
     >
       {/* Header - Always visible */}
       <div className="border-b border-gray-50 p-8">
-        <div className="mb-4 text-4xl">{icon}</div>
+        <div className="mb-4">
+          {icon.startsWith('lucide:') && iconMap[icon] ? (
+            (() => {
+              const IconComponent = iconMap[icon];
+              return <IconComponent className="h-8 w-8 text-gray-900" />;
+            })()
+          ) : (
+            <div className="text-4xl">{icon}</div>
+          )}
+        </div>
         <h3 className="text-xl font-medium text-gray-900">{title}</h3>
         <p className="mt-3 text-gray-600">{description}</p>
       </div>

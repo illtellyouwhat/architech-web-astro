@@ -44,10 +44,18 @@ const relatedCases = [
   <!-- Hero Section -->
   <section class="bg-white py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Breadcrumb -->
-      <div class="mb-8">
+      <!-- Breadcrumb & Discovery Call Button -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <!-- Left: Breadcrumb -->
         <a href="/case-studies" class="text-gray-500 hover:text-gray-900 transition-colors">
           ← Back to Case Studies
+        </a>
+
+        <!-- Right: Discovery Call CTA -->
+        <a href="/#contact"
+           class="rounded-lg bg-gray-900 px-6 py-3 font-medium text-white
+                  transition-colors duration-200 hover:bg-gray-800 whitespace-nowrap">
+          Book 15-Minute Discovery Call
         </a>
       </div>
 
@@ -288,6 +296,30 @@ const relatedCases = [
         <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
           <span class="text-sm text-gray-400">Screenshot Placeholder 2</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section (After Key Learnings) -->
+  <section class="border-t border-gray-200 bg-gray-50 py-16">
+    <div class="mx-auto max-w-2xl text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="mb-4 text-3xl font-light text-gray-900">
+        Ready to See Similar Results?
+      </h2>
+      <p class="mb-8 text-lg text-gray-600">
+        Tell us about your biggest bottleneck—we'll tell you if we can help.
+      </p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <a href="/#contact"
+           class="rounded-lg bg-gray-900 px-8 py-4 font-medium text-white
+                  transition-colors duration-200 hover:bg-gray-800">
+          Book 15-Minute Discovery Call
+        </a>
+        <a href="/case-studies"
+           class="rounded-lg border-2 border-gray-300 bg-white px-8 py-4 font-medium
+                  text-gray-900 transition-colors duration-200 hover:bg-gray-50">
+          View All Case Studies
+        </a>
       </div>
     </div>
   </section>

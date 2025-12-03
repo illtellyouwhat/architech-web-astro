@@ -248,18 +248,48 @@ Loading:    [Check current implementation for spinner/text]
 
 ## ICONS
 
+### Icon System
+- **Primary System**: **Lucide icons** via `astro-icon/components`
+- **Import Method**: `import { Icon } from 'astro-icon/components';`
+- **Usage**: `<Icon name="lucide:icon-name" class="..." />`
+- **Phase 5 Update**: All emoji icons replaced with Lucide for consistency
+
+### Service Cards (Hero)
+- Process Automation: `lucide:settings`
+- AI Decision Support: `lucide:brain`
+- Data Integration: `lucide:database`
+
+### Industry Cards
+- Legal Tech: `lucide:scale`
+- Healthcare: `lucide:heart`
+- Publishing & Media: `lucide:newspaper`
+- E-commerce: `lucide:shopping-cart`
+- Education Technology: `lucide:graduation-cap`
+- Manufacturing: `lucide:factory`
+
+### Stats Cards
+- Projects Delivered: `lucide:briefcase`
+- Industry Experience: `lucide:calendar`
+- Average Time Reduction: `lucide:clock`
+- AI Accuracy: `lucide:check-circle`
+
+### Contact Cards
+- Email: `lucide:mail`
+- Calendar: `lucide:calendar-days`
+- Location: `lucide:map-pin`
+
 ### Size
 ```
-Large:      text-4xl or w-16 h-16
-Medium:     text-2xl or w-12 h-12
-Small:      text-xl or w-8 h-8
+Large:      w-16 h-16 or w-12 h-12 (industry/service cards)
+Medium:     w-8 h-8 or w-6 w-6 (stats, contact, service icons on case study cards)
+Small:      w-5 h-5 (checkmarks in bullet lists, inline icons)
 ```
 
 ### Container (if used)
 ```
-Background:     bg-gray-200
+Background:     bg-gray-50 or bg-gray-100 or bg-gray-200 (varies by section)
 Border Radius:  rounded-lg
-Padding:        [VARIES BY SIZE]
+Padding:        p-3 to p-4 (icon containers)
 ```
 
 ---
