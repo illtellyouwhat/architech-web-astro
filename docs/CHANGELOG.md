@@ -1,5 +1,159 @@
 # Changelog
 
+## 2025-12-08 - Spec: SPEC-phase-6.md - Commit: b66aaca03f4b9458060e967cff596aba82498c67
+
+### Overview
+Implemented Phase 6 homepage updates including animated rotating headline in hero section, hover-reveal subheadline, equal-sized CTA buttons, updated client logos section with 10 actual client logos, completely restructured About section with new differentiator cards and stats grid, and added two separate calendar booking buttons in Contact section.
+
+### Changes
+
+#### Added
+- Rotating headline animation component
+  - **File**: `src/components/react/RotatingHeadline.tsx` (new file)
+  - **Section**: React component for animated text rotation
+  - **Change**: Created TypeScript React component with useState and useEffect hooks to cycle through 5 words ["company", "reports", "team", "product", "analytics"] with 2.5s interval and 500ms fade transitions, includes aria-label for accessibility
+
+- Hero hover-reveal subheadline
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: Hero subheadline rendering
+  - **Change**: Added new subheadline text "We help organizations build intelligent LLM applications deploy robust data pipelines and create seamless system workflows that scale" with group hover state (opacity-0 default, opacity-100 on hover with 300ms transition)
+
+- About section stats cards grid
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Stats cards display (new section after differentiator cards)
+  - **Change**: Added 4 stats cards in 2x2 grid layout (1 col mobile, 2 cols tablet, 4 cols desktop) showing 6-7x Capacity Increase, 87.5% Time Reduction, 16 hrs Saved Per Week, 99% AI Accuracy with context subtexts and Lucide icons
+
+- Contact calendar booking buttons
+  - **File**: `src/components/sections/Contact.astro`
+  - **Section**: Contact info cards grid
+  - **Change**: Added two separate calendar booking cards with "Schedule via Google Meet" (https://calendar.app.google/EVcS3xj7ud1BWtkL6) and "Schedule a Phone Call" (https://calendar.app.google/mnKPd1jZJn9fyKTu9) buttons, both with video/phone icons and descriptive subtext
+
+#### Modified
+- Hero headline with rotating animation
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: Hero headline rendering (H1)
+  - **Change**: Changed headline from "Still Spending 15+ Hours Per Week on Tasks a Computer Could Handle?" to "Your [rotating word] needs data" with integrated RotatingHeadline component using client:load directive
+
+- Hero CTA buttons styling
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: CTA buttons layout
+  - **Change**: Made both buttons equal size by changing padding from `py-3` to `py-4`, updated primary button font-weight from `font-light` to `font-medium`, updated secondary button from `font-light` to `font-normal`, removed transition classes for consistency (now both use `transition` and `transition-colors duration-200`)
+
+- Hero section container
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: Section wrapper div
+  - **Change**: Added `group` class to enable group-hover functionality for subheadline reveal
+
+- ClientLogos component with actual logos
+  - **File**: `src/components/sections/ClientLogos.astro`
+  - **Section**: Logo array and rendering
+  - **Change**: Updated from 5 placeholder divs to 10 actual client logos (Mixed Analytics, Prakeeto, Aerospace Fittings, Acadexis, Highland Street, CoinGecko, Vextras, Signature MD, Bookshop.org, Greenboy) using img tags with h-12 fixed height, w-auto, object-contain, grayscale filter with hover:grayscale-0 transition
+
+- ClientLogos grid layout
+  - **File**: `src/components/sections/ClientLogos.astro`
+  - **Section**: Grid configuration
+  - **Change**: Changed from `md:grid-cols-3 lg:grid-cols-5` to `md:grid-cols-5` for cleaner desktop layout (2 cols mobile, 5 cols desktop)
+
+- ClientLogos section spacing
+  - **File**: `src/components/sections/ClientLogos.astro`
+  - **Section**: Section padding
+  - **Change**: Reduced vertical padding from `py-16` to `py-12` to minimize vertical space per spec requirement
+
+- About section subheadline
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Section subheadline paragraph
+  - **Change**: Replaced short subheadline with comprehensive paragraph "We're not just another development agency. We're automation specialists who understand the intricacies of modern AI, data processing, and system integration..." (full text from CONTENT-LOCK.md)
+
+- About section differentiator cards
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Differentiator cards array and rendering
+  - **Change**: Completely replaced 3 differentiator cards with new content (Tailored Solutions, Proven Results, Expert Team), removed RevealOnScroll hover functionality, changed to static display with Lucide icons (wrench, trending-up, users), updated grid from 1 col to `md:grid-cols-3` for horizontal layout
+
+- About section layout structure
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Overall section layout
+  - **Change**: Changed from two-column layout (cards left, photo right) to single-column layout with differentiator cards grid followed by stats cards grid, removed team photo placeholder entirely
+
+- Contact section grid layout
+  - **File**: `src/components/sections/Contact.astro`
+  - **Section**: Contact info cards grid
+  - **Change**: Changed grid from 2 or 3 inconsistent columns to consistent 3-column layout on desktop (`md:grid-cols-3`)
+
+#### Removed
+- Hero supporting text
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: CTA buttons area
+  - **Change**: Removed "Real projects. Real results. Real metrics." text that appeared below primary "See Our Work" button, also removed wrapper div that contained the button and supporting text
+
+- Hero original static subheadline
+  - **File**: `src/components/sections/Hero.astro`
+  - **Section**: Hero subheadline (original)
+  - **Change**: Replaced original subheadline "We've helped companies reclaim hundreds of hours through intelligent automation..." with new hover-reveal subheadline with different content
+
+- About section RevealOnScroll component
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Component imports and differentiator card rendering
+  - **Change**: Removed RevealOnScroll import and all instances of hover-reveal functionality from differentiator cards, changed to always-visible static content
+
+- About section team photo placeholder
+  - **File**: `src/components/sections/About.astro`
+  - **Section**: Right column of two-column grid
+  - **Change**: Removed entire team/founder photo placeholder section (portrait 3:4 aspect ratio placeholder with SVG icon)
+
+- Contact section Location card
+  - **File**: `src/components/sections/Contact.astro`
+  - **Section**: Contact info cards grid
+  - **Change**: Removed "Location" card with "Global Remote Team" text and map-pin icon (this content moved to About section's Expert Team card per spec note)
+
+- Contact section single calendar button
+  - **File**: `src/components/sections/Contact.astro`
+  - **Section**: Middle card in contact info grid
+  - **Change**: Removed single generic "Book 15-Minute Call" button card (replaced with two specific calendar booking options)
+
+### Verification Results
+- ✅ Headline rotates through 5 words correctly with continuous loop
+- ✅ Fade animation is smooth with 500ms opacity transitions
+- ✅ No layout shift during word changes (min-width reserved on rotating span)
+- ✅ Subheadline appears on hover with group hover state
+- ✅ Both CTA buttons are equal size (px-8 py-4)
+- ✅ No supporting text below "See Our Work" button
+- ✅ Rotating headline has aria-label for accessibility
+- ✅ Client logos section appears after Stats, before Industries
+- ✅ "Trusted By" headline displays correctly
+- ✅ 10 actual client logos display in horizontal row
+- ✅ Responsive layout works (2 cols mobile, 5 cols desktop)
+- ✅ All 10 client logo files found and integrated from `/public/images/clients/`
+- ✅ About section new subheadline displays correctly (comprehensive paragraph)
+- ✅ Three differentiator cards show new titles and descriptions
+- ✅ No hover-reveal functionality in About cards (all text static)
+- ✅ Differentiator cards use appropriate Lucide icons
+- ✅ Stats cards added with proper 2x2 grid layout
+- ✅ Responsive layout works for About section (1 col → 3 cols for differentiators, 1 col → 2 col → 4 cols for stats)
+- ✅ Three contact info cards display (Email + 2 calendar buttons)
+- ✅ Google Meet button links to correct calendar URL
+- ✅ Phone call button links to correct calendar URL
+- ✅ Location card removed
+- ✅ Contact grid layout works (3 cols desktop, stacks on mobile)
+- ✅ Project builds successfully with no errors (0 errors, 0 warnings, 14 pages generated)
+- ✅ All pages generated correctly
+- ✅ TypeScript checks pass
+
+### Notes
+- Used React component for rotating headline animation instead of pure CSS to enable proper timing control and state management
+- Chose 2.5s rotation interval (spec allowed 2-3s range) for optimal readability
+- Reserved min-width on rotating span to prevent layout shift for longest word ("analytics")
+- Hover-reveal subheadline uses opacity transition (not display/visibility) to maintain smooth animation
+- All copy taken directly from CONTENT-LOCK.md with no modifications
+- All colors follow DESIGN-SYSTEM-LOCK.md (gray-900 primary, gray scale palette)
+- Typography follows design system (font-light for headings, font-medium for buttons)
+- Architecture follows ARCHITECHTURE-LOCK.md (Astro + React islands pattern)
+- Client logo files were already present in `/public/images/clients/` directory
+- About section stats moved from rollover cards to always-visible grid for better mobile UX
+- Location information merged into Expert Team card description as noted in spec
+- Calendar booking URLs are live production links, not placeholders
+
+---
+
 ## Phase 5: Polish & Connectivity Updates - December 3, 2025
 **Goal:** Replace emoji icons with Lucide icons, update stats to company-level metrics, simplify CTAs, reformat industries section, add service categorization to case studies, and create multiple conversion paths with discovery call CTAs throughout the site.
 

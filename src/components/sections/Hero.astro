@@ -1,31 +1,29 @@
 ---
 import { Icon } from 'astro-icon/components';
 import ServiceCard from '../react/ServiceCard';
+import RotatingHeadline from '../react/RotatingHeadline';
 ---
 <section id="home" class="relative flex min-h-screen items-center bg-white">
-  <div class="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
+  <div class="group relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
     <p class="animate-fade-in text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">Automation Architech</p>
     <h1 class="animate-fade-in delay-100 mt-6 text-4xl font-light leading-tight text-gray-900 md:text-6xl lg:text-7xl">
-      Still Spending 15+ Hours Per Week on Tasks a Computer Could Handle?
+      Your <RotatingHeadline client:load /> needs data
     </h1>
-    <p class="animate-fade-in delay-200 mt-6 text-lg text-gray-600 md:text-xl">
-      We've helped companies reclaim hundreds of hours through intelligent automation. From clinical trial patient matching to production scheduling to ad performance reporting—we build systems that deliver measurable results.
+    <p class="animate-fade-in delay-200 mt-6 text-lg text-gray-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-xl">
+      We help organizations build intelligent LLM applications deploy robust data pipelines and create seamless system workflows that scale.
     </p>
 
     <div class="animate-fade-in delay-300 mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-      <div class="flex flex-col items-center gap-2">
-        <a
-          href="/case-studies"
-          class="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-lg font-light text-white transition hover:bg-gray-800"
-        >
-          See Our Work
-          <Icon name="lucide:arrow-right" class="h-4 w-4" />
-        </a>
-        <p class="text-sm text-gray-600">Real projects. Real results. Real metrics.</p>
-      </div>
+      <a
+        href="/case-studies"
+        class="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-4 text-lg font-medium text-white transition-colors duration-200 hover:bg-gray-800"
+      >
+        See Our Work
+        <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
       <a
         href="/#contact"
-        class="rounded-lg border border-gray-300 px-8 py-3 text-lg font-light text-gray-600 transition hover:border-gray-900 hover:text-gray-900"
+        class="rounded-lg border border-gray-300 px-8 py-4 text-lg font-normal text-gray-600 transition hover:border-gray-900 hover:text-gray-900"
       >
         Book 15-Minute Discovery Call →
       </a>

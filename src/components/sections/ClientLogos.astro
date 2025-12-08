@@ -1,41 +1,34 @@
 ---
-// Client Logos Section - Placeholder
+// Client Logos Section - 10 Logos
+const logos = [
+  { src: '/images/clients/logo01-mixed_analytics.png', alt: 'Mixed Analytics' },
+  { src: '/images/clients/logo02-prakeeto.png', alt: 'Prakeeto' },
+  { src: '/images/clients/logo03-aerospace_fittings.png', alt: 'Aerospace Fittings' },
+  { src: '/images/clients/logo04-acadexis.png', alt: 'Acadexis' },
+  { src: '/images/clients/logo05-highland_street.png', alt: 'Highland Street' },
+  { src: '/images/clients/logo06-coingecko.png', alt: 'CoinGecko' },
+  { src: '/images/clients/logo07-vextras.png', alt: 'Vextras' },
+  { src: '/images/clients/logo08-signatureMD.png', alt: 'Signature MD' },
+  { src: '/images/clients/logo09-bookshoporg.png', alt: 'Bookshop.org' },
+  { src: '/images/clients/logo10-greenboy.png', alt: 'Greenboy' },
+];
 ---
-<section class="bg-gray-50 py-16">
+<section class="bg-gray-50 py-12">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Label -->
-    <p class="mb-8 text-center text-sm font-semibold uppercase tracking-[0.3em] text-gray-900">
+    <h2 class="mb-8 text-center text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
       Trusted By
-    </p>
+    </h2>
 
-    <!-- Placeholder Logo Grid -->
-    <div class="grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-3 lg:grid-cols-5">
-
-      <!-- Logo Placeholder 1 -->
-      <div class="flex h-20 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-white">
-        <span class="text-sm font-medium text-gray-400">Client Logo 1</span>
-      </div>
-
-      <!-- Logo Placeholder 2 -->
-      <div class="flex h-20 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-white">
-        <span class="text-sm font-medium text-gray-400">Client Logo 2</span>
-      </div>
-
-      <!-- Logo Placeholder 3 -->
-      <div class="flex h-20 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-white">
-        <span class="text-sm font-medium text-gray-400">Client Logo 3</span>
-      </div>
-
-      <!-- Logo Placeholder 4 -->
-      <div class="flex h-20 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-white">
-        <span class="text-sm font-medium text-gray-400">Client Logo 4</span>
-      </div>
-
-      <!-- Logo Placeholder 5 -->
-      <div class="flex h-20 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-white">
-        <span class="text-sm font-medium text-gray-400">Client Logo 5</span>
-      </div>
-
+    <!-- Logo Grid -->
+    <div class="grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-5">
+      {logos.map((logo) => (
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          class="h-12 w-auto object-contain grayscale transition-all duration-300 hover:grayscale-0"
+        />
+      ))}
     </div>
   </div>
 </section>

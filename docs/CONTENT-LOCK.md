@@ -1,7 +1,7 @@
 # CONTENT-LOCK.md
 ## Automation Architech Website - Final Approved Copy
 
-**Date Locked**: December 1, 2024  
+**Date Locked**: December 8, 2024  
 **Status**: APPROVED - Ready for Implementation  
 **Rule**: This copy is IMMUTABLE. Claude Code must use exact text, no modifications.
 
@@ -11,24 +11,32 @@
 
 ### HERO SECTION
 
-#### Main Headline
+#### Main Headline (Animated)
 ```
-Still Spending 15+ Hours Per Week on Tasks a Computer Could Handle?
+Your [rotating word] needs data
 ```
 
-#### Subheadline
+**Animation behavior:**
+- Words rotate continuously with fade in/fade out animation
+- Rotation sequence: company, reports, team, product, analytics
+- Always visible (no hover required)
+
+#### Subheadline (Hover-Reveal)
 ```
-We've helped companies reclaim hundreds of hours through intelligent automation. 
-From clinical trial patient matching to production scheduling to ad performance 
-reporting—we build systems that deliver measurable results.
+We help organizations build intelligent LLM applications deploy robust data pipelines 
+and create seamless system workflows that scale.
 ```
+
+**Behavior:** Appears on hover below the main headline (hidden by default)
 
 #### Primary CTA
 ```
 Button Text: "See Our Work"
 Button Link: /case-studies
-Supporting Text: "Real projects. Real results. Real metrics."
 ```
+
+**Note:** Supporting text "Real projects. Real results. Real metrics." has been removed.
+**Visual:** Both CTA buttons should be equal size.
 
 #### Secondary CTA
 ```
@@ -40,24 +48,58 @@ Link Target: #contact
 
 **Card 1: Process Automation**
 ```
-Icon: lucide:settings
+Icon: Workflow icon (âš™ï¸ or existing workflow icon)
 Title: "Process Automation"
 Description: "Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero."
 ```
 
 **Card 2: AI Decision Support**
 ```
-Icon: lucide:brain
+Icon: Brain icon (ðŸ¤– or existing brain icon)
 Title: "AI Decision Support"
-Description: "Accelerate expert decisions—process thousands of documents in minutes instead of weeks."
+Description: "Accelerate expert decisionsâ€”process thousands of documents in minutes instead of weeks."
 ```
 
 **Card 3: Multi-Platform Data Integration**
 ```
-Icon: lucide:database
+Icon: Database icon (ðŸ“Š or existing database icon)
 Title: "Multi-Platform Data Integration"
 Description: "Stop manually compiling data from 5+ platforms. Get unified reporting automatically."
 ```
+
+---
+
+### STATS SECTION
+
+**Note:** Stats section already exists on site - no content changes needed for Phase 6.
+Current stats remain as-is:
+- 50+ Projects Delivered
+- 8 Years Industry Experience  
+- 87.5% Average Time Reduction
+- 99% AI Accuracy
+
+All stats link to /case-studies (existing functionality preserved).
+
+---
+
+### CLIENT LOGOS SECTION
+
+#### Section Headline
+```
+Trusted By
+```
+
+#### Logo Display
+- **Total logos**: 10
+- **Logo files**: Located in `/public/images/clients/`
+- **Display style**: Horizontal row, minimized vertical space
+- **Logo sizing**: 200-250px width max (display smaller for space efficiency)
+- **Visual goal**: Show breadth of client base without taking up scroll space
+
+**Logo files to be provided by user:**
+- Client logos formatted to 200-250px width
+- Files placed in `/public/images/clients/` directory
+- Filenames: [To be determined by user]
 
 ---
 
@@ -75,7 +117,7 @@ How We Help
 
 #### Section Subheadline
 ```
-From process automation to AI-powered decision support to data consolidation—
+From process automation to AI-powered decision support to data consolidationâ€”
 we build systems that save time, reduce errors, and multiply your capacity.
 ```
 
@@ -83,19 +125,19 @@ we build systems that save time, reduce errors, and multiply your capacity.
 
 ```
 Title: "Process Automation"
-Icon: lucide:settings
+Icon: âš™ï¸ (or existing workflow icon)
 
 Description:
-"Eliminate repetitive tasks that don't require human judgment—save 10-20 hours 
+"Eliminate repetitive tasks that don't require human judgmentâ€”save 10-20 hours 
 per week and reduce error rates to near-zero."
 
 Expandable Features (shown on hover/scroll):
-• Reduce error rates from 5-10% to <1%
-• Scale capacity 5-10x without additional headcount
-• Free your team to focus on strategic work, not data entry
-• Examples: Email campaign management, production scheduling, link coordination
+â€¢ Reduce error rates from 5-10% to <1%
+â€¢ Scale capacity 5-10x without additional headcount
+â€¢ Free your team to focus on strategic work, not data entry
+â€¢ Examples: Email campaign management, production scheduling, link coordination
 
-CTA Button: "See case studies →"
+CTA Button: "See automation case studies â†’"
 CTA Link: /case-studies
 ```
 
@@ -103,19 +145,19 @@ CTA Link: /case-studies
 
 ```
 Title: "AI-Powered Decision Support"
-Icon: lucide:brain
+Icon: ðŸ¤– (or existing brain icon)
 
 Description:
-"Accelerate expert decisions with AI that processes complex information at scale—
+"Accelerate expert decisions with AI that processes complex information at scaleâ€”
 analyze thousands of documents in minutes, not weeks."
 
 Expandable Features (shown on hover/scroll):
-• Match patterns across massive datasets humans can't manually review
-• Reduce expert bottlenecks (legal review, clinical assessment, due diligence)
-• Built-in verification layers to prevent AI hallucinations (99% accuracy)
-• Examples: Clinical trial patient matching, contract analysis, medical record review
+â€¢ Match patterns across massive datasets humans can't manually review
+â€¢ Reduce expert bottlenecks (legal review, clinical assessment, due diligence)
+â€¢ Built-in verification layers to prevent AI hallucinations (99% accuracy)
+â€¢ Examples: Clinical trial patient matching, contract analysis, medical record review
 
-CTA Button: "See case studies →"
+CTA Button: "See AI case studies â†’"
 CTA Link: /case-studies
 ```
 
@@ -123,19 +165,19 @@ CTA Link: /case-studies
 
 ```
 Title: "Multi-Platform Data Integration"
-Icon: lucide:database
+Icon: ðŸ“Š (or existing database icon)
 
 Description:
-"Stop manually compiling data from 5+ platforms—eliminate CSV downloads and 
+"Stop manually compiling data from 5+ platformsâ€”eliminate CSV downloads and 
 get unified, automated reporting."
 
 Expandable Features (shown on hover/scroll):
-• Connect Google Analytics, Klaviyo, Salesforce, Shopify, and 50+ other platforms
-• Automate report generation that currently takes hours
-• Enable historical analysis (3+ years) impossible in spreadsheets
-• API workarounds when platforms don't provide direct access
+â€¢ Connect Google Analytics, Klaviyo, Salesforce, Shopify, and 50+ other platforms
+â€¢ Automate report generation that currently takes hours
+â€¢ Enable historical analysis (3+ years) impossible in spreadsheets
+â€¢ API workarounds when platforms don't provide direct access
 
-CTA Button: "See case studies →"
+CTA Button: "See integration case studies â†’"
 CTA Link: /case-studies
 ```
 
@@ -155,7 +197,7 @@ Industries We Serve
 
 #### Section Subheadline
 ```
-We understand industry-specific challenges—from production scheduling bottlenecks 
+We understand industry-specific challengesâ€”from production scheduling bottlenecks 
 to multi-platform ad reporting. See how we've helped companies in your industry.
 ```
 
@@ -163,86 +205,55 @@ to multi-platform ad reporting. See how we've helped companies in your industry.
 
 **Card 1: Legal Tech**
 ```
-Icon: lucide:scale
+Icon: âš–ï¸
 Title: "Legal Tech"
-Description (bullet list format):
-• Legal document processing and contract analysis
-• Compliance workflow automation
-• E-discovery optimization
-• Document automation and management
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Automating legal document processing, contract analysis, and compliance 
+workflows to streamline legal operations."
 ```
 
 **Card 2: Healthcare**
 ```
-Icon: lucide:heart
+Icon: â¤ï¸ or ðŸ¥
 Title: "Healthcare"
-Description (bullet list format):
-• Clinical trial patient matching
-• Eligibility verification
-• Medical record processing and EHR integration
-• Healthcare operations streamlining
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Clinical trial patient matching, eligibility verification, medical record 
+processing, and EHR integration to streamline healthcare operations and improve 
+patient outcomes."
 ```
 
 **Card 3: Publishing & Media**
 ```
-Icon: lucide:newspaper
+Icon: ðŸ“° or ðŸ“¢
 Title: "Publishing & Media"
-Description (bullet list format):
-• Campaign coordination and link management
-• Multi-platform ad performance reporting
-• Content distribution automation
-• Audience analytics consolidation
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Campaign coordination and link management, multi-platform ad performance 
+reporting, content distribution automation, and audience analytics consolidation for 
+publishers and media companies."
 ```
 
 **Card 4: E-commerce**
 ```
-Icon: lucide:shopping-cart
+Icon: ðŸ›’
 Title: "E-commerce"
-Description (bullet list format):
-• Inventory synchronization across channels
-• Order routing and fulfillment automation
-• Customer data consolidation
-• Multi-platform performance tracking
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Inventory synchronization across channels, order routing and fulfillment 
+automation, customer data consolidation, and multi-platform performance tracking for 
+online retailers."
 ```
 
 **Card 5: Education Technology**
 ```
-Icon: lucide:graduation-cap
+Icon: ðŸŽ“
 Title: "Education Technology"
-Description (bullet list format):
-• Student data integration
-• Learning management system automation
-• Assessment workflow optimization
-• Educational content distribution at scale
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Student data integration, learning management system automation, assessment 
+workflow optimization, and educational content distribution to improve learning outcomes 
+at scale."
 ```
 
 **Card 6: Manufacturing**
 ```
-Icon: lucide:factory
+Icon: ðŸ­ or âš™ï¸ (change from ðŸ“Š to factory/gear icon)
 Title: "Manufacturing"
-Description (bullet list format):
-• Production scheduling and capacity planning
-• Changeover optimization
-• Shop floor coordination
-• Quality data aggregation and maintenance tracking
-
-CTA Button: "See case studies →"
-CTA Link: /case-studies
+Description: "Production scheduling and capacity planning, changeover optimization, shop 
+floor coordination, quality data aggregation, and maintenance tracking to maximize 
+throughput and minimize downtime."
 ```
 
 ---
@@ -261,79 +272,65 @@ Why Companies Choose Us
 
 #### Section Subheadline
 ```
-We combine LLM expertise, low-code implementation, and a focus on measurable results. 
-From 6-week implementations to 99% AI accuracy and API workarounds—we solve the problems 
-other agencies can't.
+We're not just another development agency. We're automation specialists who understand 
+the intricacies of modern AI, data processing, and system integration. Our expertise 
+spans from cutting-edge LLM applications to robust data pipelines that scale. We combine 
+LLM expertise, low-code implementation, and a focus on measurable results. From 6-week 
+implementations to 99% AI accuracy and API workarounds—we solve the problems other 
+agencies can't.
 ```
 
 #### Differentiator Cards (3 cards)
 
-**Card 1: Technical Problem-Solving**
+**Card 1: Tailored Solutions**
 ```
-Icon: 🔧 or wrench icon
-Title: "We Find Solutions When APIs Don't Cooperate"
-Description: "Platform rate limits? Missing endpoints? We build workarounds that respect 
-Terms of Service while getting you the data you need. (Examples: Klaviyo link-level 
-tracking, Coda API caching layer)"
+Title: "Tailored Solutions"
+Description: "Every project is unique. We build custom solutions that fit your specific needs 
+and scale with your growth."
 ```
 
-**Card 2: Speed via Low-Code**
+**Card 2: Proven Results**
 ```
-Icon: ⚡ or rocket icon
-Title: "6-Week Implementations, Not 6-Month Projects"
-Description: "We combine low-code platforms (Coda, Notion, Zapier) with custom code where 
-needed. You get production systems in weeks, not the multi-month timelines of unnecessary 
-custom development."
+Title: "Proven Results"
+Description: "Our clients see measurable improvements in efficiency cost reduction and revenue 
+growth."
 ```
 
-**Card 3: AI Reliability**
+**Card 3: Expert Team**
 ```
-Icon: ✓ or shield icon
-Title: "AI That Actually Works (99% Accuracy)"
-Description: "We built LLM applications before ChatGPT was mainstream. Dual-LLM verification, 
-RAG vector search, hallucination reduction—we know how to make AI reliable for production use."
+Title: "Expert Team"
+Description: "Our team stays at the forefront of AI and automation technologies to deliver 
+cutting edge solutions. Our globally distributed team means faster turnaround for your projects."
+```
+#### Stats Cards (4 cards, 2x2 grid)
+
+**Stat 1: Capacity Increase**
+```
+Icon: ðŸ“ˆ trending-up
+Number: "6-7x"
+Label: "Capacity Increase"
+Context/Subtext: "Clinical trial patient matching"
 ```
 
-#### Stats Cards (4 cards, horizontal row)
-
-**NOTE**: Stats cards are now company-level metrics (not project-specific) and clickable links to /case-studies
-
-**Stat 1: Projects Delivered**
+**Stat 2: Time Reduction**
 ```
-Icon: lucide:briefcase
-Number: "50+"
-Label: "Projects Delivered"
-Link: /case-studies
-```
-
-**Stat 2: Industry Experience**
-```
-Icon: lucide:calendar
-Number: "8 Years"
-Label: "Industry Experience"
-Link: /case-studies
-```
-
-**Stat 3: Average Time Reduction**
-```
-Icon: lucide:clock
+Icon: â±ï¸ clock
 Number: "87.5%"
-Label: "Average Time Reduction"
-Link: /case-studies
+Label: "Time Reduction"
+Context/Subtext: "Production scheduling optimization"
+```
+
+**Stat 3: Weekly Hours Saved**
+```
+Icon: â° alarm-clock
+Number: "16 hrs"
+Label: "Saved Per Week"
+Context/Subtext: "Ad performance reporting"
 ```
 
 **Stat 4: AI Accuracy**
 ```
-Icon: lucide:check-circle
-Number: "99%"
-Label: "AI Accuracy"
-Link: /case-studies
-```
-```
-
-**Stat 4: AI Accuracy**
-```
-Icon: ✓ check-circle
+Icon: âœ“ check-circle
 Number: "99%"
 Label: "AI Accuracy"
 Context/Subtext: "Dual-LLM verification"
@@ -355,7 +352,7 @@ Ready to Automate?
 
 #### Section Subheadline
 ```
-Tell us about your biggest bottleneck—we'll tell you if we can help.
+Tell us about your biggest bottleneckâ€”we'll tell you if we can help.
 ```
 
 #### Contact Form
@@ -392,27 +389,28 @@ Please email us directly at hello@automationarchitech.com
 
 **Email Card**
 ```
-Icon: lucide:mail
+Icon: Mail icon in gray circle
 Label: "Email"
 Value: "hello@automationarchitech.com" (clickable mailto link)
 Subtext: "Expect a thoughtful reply with next steps inside 24 hours."
 ```
 
-**Calendar Card**
+**Schedule via Google Meet Card**
 ```
-Icon: lucide:calendar-days
-Label: "Schedule"
-CTA Button: "Book 15-Minute Call"
-Link: # (PLACEHOLDER - to be updated with actual Calendly/booking URL)
-Subtext: "Pick a time that works for you—we'll send a calendar invite."
+Icon: Video/Calendar icon in gray circle
+Label: "Schedule via Google Meet"
+Button Text: "Schedule via Google Meet"
+Button Link: https://calendar.app.google/EVcS3xj7ud1BWtkL6
+Subtext: "Book a video call at a time that works for you."
 ```
 
-**Location Card**
+**Schedule Phone Call Card**
 ```
-Icon: lucide:map-pin
-Label: "Location"
-Value: "Global Remote Team"
-Subtext: "Distributed team means faster turnaround on your projects."
+Icon: Phone/Calendar icon in gray circle
+Label: "Schedule a Phone Call"
+Button Text: "Schedule a Phone Call"
+Button Link: https://calendar.app.google/mnKPd1jZJn9fyKTu9
+Subtext: "Prefer to talk by phone? Schedule a call that fits your schedule."
 ```
 
 ---
@@ -428,12 +426,12 @@ Automation Architech
 
 **Navigation Links (Desktop & Mobile):**
 ```
-1. Home → /#home
-2. Services → /#services
-3. Industries → /#industries
-4. Case Studies → /case-studies (Phase 3 - page doesn't exist yet)
-5. Insights → /blog/
-6. Contact → /#contact (styled as button)
+1. Home â†’ /#home
+2. Services â†’ /#services
+3. Industries â†’ /#industries
+4. Case Studies â†’ /case-studies (Phase 3 - page doesn't exist yet)
+5. Insights â†’ /blog/
+6. Contact â†’ /#contact (styled as button)
 ```
 
 **Mobile Menu:**
@@ -468,13 +466,13 @@ and data integration for manufacturing, healthcare, and publishing operations.
 
 **Links:**
 ```
-- Home → /#home
-- Services → /#services
-- Industries → /#industries
-- Case Studies → /case-studies (Phase 3)
-- Insights → /blog/
-- About → /#about
-- Contact → /#contact
+- Home â†’ /#home
+- Services â†’ /#services
+- Industries â†’ /#industries
+- Case Studies â†’ /case-studies (Phase 3)
+- Insights â†’ /blog/
+- About â†’ /#about
+- Contact â†’ /#contact
 ```
 
 ### Services Column
@@ -503,7 +501,7 @@ Email: hello@automationarchitech.com (clickable mailto link with external link i
 
 **Copyright Text:**
 ```
-© 2025 Automation Architech. All rights reserved.
+Â© 2025 Automation Architech. All rights reserved.
 ```
 
 ---
@@ -520,22 +518,22 @@ Email: hello@automationarchitech.com (clickable mailto link with external link i
 
 ### What NOT to Change:
 
-- ❌ Component architecture (Astro + React islands)
-- ❌ Animation timings or transition effects
-- ❌ Color scheme (gray-900, gray-50, etc.)
-- ❌ Typography scale (font-light, font-medium, etc.)
-- ❌ Spacing/layout system
-- ❌ Form validation logic
-- ❌ Hover/scroll reveal interactions
+- âŒ Component architecture (Astro + React islands)
+- âŒ Animation timings or transition effects
+- âŒ Color scheme (gray-900, gray-50, etc.)
+- âŒ Typography scale (font-light, font-medium, etc.)
+- âŒ Spacing/layout system
+- âŒ Form validation logic
+- âŒ Hover/scroll reveal interactions
 
 ### What TO Change:
 
-- ✅ Text content in headlines, descriptions, CTAs
-- ✅ Button labels and link text
-- ✅ Card titles and expandable feature lists
-- ✅ Navigation link labels
-- ✅ Footer copy
-- ✅ Form placeholder text
+- âœ… Text content in headlines, descriptions, CTAs
+- âœ… Button labels and link text
+- âœ… Card titles and expandable feature lists
+- âœ… Navigation link labels
+- âœ… Footer copy
+- âœ… Form placeholder text
 
 ---
 
@@ -562,20 +560,20 @@ The following elements reference content that doesn't exist yet:
 ## CONTENT STATUS
 
 ### Complete and Locked:
-- ✅ Hero section (headline, subheadline, CTAs, quick-reference cards)
-- ✅ Services section (headline, subheadline, 3 service cards with features)
-- ✅ Industries section (headline, subheadline, 6 industry cards)
-- ✅ About section (headline, subheadline, 3 differentiators, 4 stats)
-- ✅ Contact section (headline, subheadline, form placeholder, info cards)
-- ✅ Navigation (header links updated)
-- ✅ Footer (tagline, services list, copyright)
+- âœ… Hero section (headline, subheadline, CTAs, quick-reference cards)
+- âœ… Services section (headline, subheadline, 3 service cards with features)
+- âœ… Industries section (headline, subheadline, 6 industry cards)
+- âœ… About section (headline, subheadline, 3 differentiators, 4 stats)
+- âœ… Contact section (headline, subheadline, form placeholder, info cards)
+- âœ… Navigation (header links updated)
+- âœ… Footer (tagline, services list, copyright)
 
 ### Phase 3 Additions Needed:
-- ⏳ Case studies section on homepage (preview of 3 case studies)
-- ⏳ Case study detail pages (5 full case studies)
-- ⏳ Case studies index page (`/case-studies`)
-- ⏳ Client logos section (below hero)
-- ⏳ Filtering/navigation between solutions and industries
+- â³ Case studies section on homepage (preview of 3 case studies)
+- â³ Case study detail pages (5 full case studies)
+- â³ Case studies index page (`/case-studies`)
+- â³ Client logos section (below hero)
+- â³ Filtering/navigation between solutions and industries
 
 ---
 

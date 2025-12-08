@@ -1,13 +1,13 @@
 # DESIGN SYSTEM LOCK FILE
 # Lock foundational design tokens that should remain consistent across redesigns
 
-**Status**: ✅ FILLED - Extracted from original site documentation
-**Last Updated**: [Current Date]
+**Status**: âœ… FILLED - Extracted from original site documentation
+**Last Updated**: December 8, 2024
 **Purpose**: Lock colors, fonts, and spacing that define brand identity
 
 ---
 
-## ⚠️ CRITICAL: GRAY-BASED DESIGN SYSTEM
+## âš ï¸ CRITICAL: GRAY-BASED DESIGN SYSTEM
 
 **This site uses a GRAY/MONOCHROME palette, NOT blue.**
 
@@ -115,14 +115,14 @@ ServiceTemplate:     Inter 300-400 (hero titles), 400 (body)
 ### Font Sizes (Extract exact values from current implementation)
 **Recommendation based on typical scale:**
 ```
-Heading 1 (Page Title):     text-5xl (48px) or text-6xl (60px) → font-light
-Heading 2 (Section Title):  text-4xl (36px) → font-light
-Heading 3 (Card Title):     text-2xl (24px) → font-semibold
-Section Labels:             text-sm (14px) → font-semibold uppercase
-Body Large (Subtitle):      text-xl (20px) → font-normal
-Body Regular:               text-base (16px) → font-normal/medium
-Body Small:                 text-sm (14px) → font-normal
-Helper/Meta text:           text-sm (14px) → font-normal (gray-500)
+Heading 1 (Page Title):     text-5xl (48px) or text-6xl (60px) â†’ font-light
+Heading 2 (Section Title):  text-4xl (36px) â†’ font-light
+Heading 3 (Card Title):     text-2xl (24px) â†’ font-semibold
+Section Labels:             text-sm (14px) â†’ font-semibold uppercase
+Body Large (Subtitle):      text-xl (20px) â†’ font-normal
+Body Regular:               text-base (16px) â†’ font-normal/medium
+Body Small:                 text-sm (14px) â†’ font-normal
+Helper/Meta text:           text-sm (14px) â†’ font-normal (gray-500)
 ```
 
 ### Line Heights
@@ -199,9 +199,23 @@ Standard:   ease-in-out
 ### Hover Effects
 ```
 Cards:      hover:shadow-xl transition-all duration-300
-Buttons:    hover:bg-blue-700 transition-colors duration-200
+Buttons:    hover:bg-gray-800 transition-colors duration-200
 Links:      hover:underline
 ```
+
+### Text Rotation Animation (Hero Headline)
+```
+Animation Type:     Fade in/fade out
+Duration per word:  2-3 seconds display + 0.5s fade transition
+Timing:            Continuous loop through word array
+Words:             ["company", "reports", "team", "product", "analytics"]
+```
+
+**Implementation notes:**
+- Use CSS keyframes or React animation library
+- Smooth opacity transitions (0 → 1 → 0)
+- No layout shift during word changes (reserve space for longest word)
+- Accessible: Provide full text for screen readers
 
 ---
 
@@ -248,48 +262,18 @@ Loading:    [Check current implementation for spinner/text]
 
 ## ICONS
 
-### Icon System
-- **Primary System**: **Lucide icons** via `astro-icon/components`
-- **Import Method**: `import { Icon } from 'astro-icon/components';`
-- **Usage**: `<Icon name="lucide:icon-name" class="..." />`
-- **Phase 5 Update**: All emoji icons replaced with Lucide for consistency
-
-### Service Cards (Hero)
-- Process Automation: `lucide:settings`
-- AI Decision Support: `lucide:brain`
-- Data Integration: `lucide:database`
-
-### Industry Cards
-- Legal Tech: `lucide:scale`
-- Healthcare: `lucide:heart`
-- Publishing & Media: `lucide:newspaper`
-- E-commerce: `lucide:shopping-cart`
-- Education Technology: `lucide:graduation-cap`
-- Manufacturing: `lucide:factory`
-
-### Stats Cards
-- Projects Delivered: `lucide:briefcase`
-- Industry Experience: `lucide:calendar`
-- Average Time Reduction: `lucide:clock`
-- AI Accuracy: `lucide:check-circle`
-
-### Contact Cards
-- Email: `lucide:mail`
-- Calendar: `lucide:calendar-days`
-- Location: `lucide:map-pin`
-
 ### Size
 ```
-Large:      w-16 h-16 or w-12 h-12 (industry/service cards)
-Medium:     w-8 h-8 or w-6 w-6 (stats, contact, service icons on case study cards)
-Small:      w-5 h-5 (checkmarks in bullet lists, inline icons)
+Large:      text-4xl or w-16 h-16
+Medium:     text-2xl or w-12 h-12
+Small:      text-xl or w-8 h-8
 ```
 
 ### Container (if used)
 ```
-Background:     bg-gray-50 or bg-gray-100 or bg-gray-200 (varies by section)
+Background:     bg-gray-200
 Border Radius:  rounded-lg
-Padding:        p-3 to p-4 (icon containers)
+Padding:        [VARIES BY SIZE]
 ```
 
 ---
@@ -351,57 +335,46 @@ To complete this file, extract from automationarchitech.com:
 **Using Browser DevTools:**
 
 1. **Colors**: 
-   - Inspect headline → Computed Styles → color
-   - Inspect button → Background color
-   - Inspect sections → Background colors
+   - Inspect headline â†’ Computed Styles â†’ color
+   - Inspect button â†’ Background color
+   - Inspect sections â†’ Background colors
 
 2. **Fonts**:
-   - Inspect any text → Computed Styles → font-family
+   - Inspect any text â†’ Computed Styles â†’ font-family
    - Check font-size for headlines, body, etc.
    - Check font-weight values
 
 3. **Spacing**:
-   - Inspect sections → padding values
-   - Inspect cards → padding and margin
+   - Inspect sections â†’ padding values
+   - Inspect cards â†’ padding and margin
    - Check gap between elements
 
 4. **Borders/Shadows**:
-   - Inspect cards → border-radius, box-shadow
+   - Inspect cards â†’ border-radius, box-shadow
    - Check hover states (trigger hover, inspect)
 
 5. **Buttons**:
-   - Inspect CTA buttons → all computed styles
+   - Inspect CTA buttons â†’ all computed styles
    - Check :hover state in DevTools
 
-**Using Tailwind Config (if accessible):**
-- If you have access to the original Lovable.dev project
-- Check `tailwind.config.js` or `tailwind.config.ts`
-- Extract exact color values and custom settings
+**Or use the original project's `tailwind.config.js`:**
+- Extract exact color values and custom settings from config file
 
 ---
 
 ## USAGE RULES
 
 ### Phase 2 (Current)
-✅ Use these values when restoring features
-✅ Match existing color palette exactly
-✅ Use consistent spacing/sizing
+âœ… Use these values when restoring features
+âœ… Match existing color palette exactly
+âœ… Use consistent spacing/sizing
 
 ### Phase 3 (Redesign)
-⚠️ Can modify if brand identity changes
-⚠️ Document any changes to this file
-⚠️ Get approval before changing foundational colors/fonts
+âš ï¸ Can modify if brand identity changes
+âš ï¸ Document any changes to this file
+âš ï¸ Get approval before changing foundational colors/fonts
 
 ### Always
-❌ Never invent new colors not in this palette
-❌ Never use arbitrary spacing (always use defined scale)
-❌ Never change fonts without updating this file
-
----
-
-## NOTES
-
-- This file locks BRAND IDENTITY elements (colors, fonts)
-- Component-specific layouts can vary (that's Phase 3)
-- If redesign changes brand colors, update this file first
-- Keep this in sync with `tailwind.config.ts`
+âŒ Never invent new colors not in this palette
+âŒ Never use arbitrary spacing (always use defined scale)
+âŒ Never change fonts without updating this file
