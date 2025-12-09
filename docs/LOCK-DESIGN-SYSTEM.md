@@ -1,8 +1,8 @@
 # DESIGN SYSTEM LOCK FILE
 # Lock foundational design tokens that should remain consistent across redesigns
 
-**Status**: âœ… FILLED - Extracted from original site documentation
-**Last Updated**: December 8, 2024
+**Status**: âœ… LOCKED
+**Last Updated**: December 9, 2024
 **Purpose**: Lock colors, fonts, and spacing that define brand identity
 
 ---
@@ -325,6 +325,215 @@ Color:          text-red-600
 Size:           text-sm
 Margin:         mt-1
 ```
+
+---
+
+## INTERACTIVE TAGS (Phase 8+)
+
+**Status**: Implemented in Phase 8 - All tags are now clickable links
+
+### Tag Styling Pattern
+
+**Base Tag (All Contexts)**
+```css
+Background:     bg-gray-100
+Text:           text-gray-700
+Font:           font-semibold
+Border Radius:  rounded-lg or rounded-full (depends on context)
+Transition:     transition-colors duration-200
+Display:        inline-flex items-center gap-2
+```
+
+**Tailwind Classes:**
+```
+bg-gray-100 text-gray-700 font-semibold rounded-lg
+inline-flex items-center gap-2
+hover:bg-gray-200 transition-colors duration-200
+```
+
+### Tag Sizes by Context
+
+**Large Tags (Detail Pages)**
+```
+Padding:        px-4 py-2
+Icon Size:      h-4 w-4
+Text Size:      text-sm
+Border Radius:  rounded-lg
+```
+
+**Small Tags (Index Cards)**
+```
+Padding:        px-3 py-1
+Icon Size:      h-3 w-3
+Text Size:      text-xs
+Border Radius:  rounded-full
+```
+
+**Example Implementation:**
+```astro
+<!-- Large tag (detail page) -->
+<a
+  href="/case-studies?industry=healthcare"
+  class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg
+         text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+>
+  <Icon name="lucide:heart" class="h-4 w-4 text-gray-600" />
+  Healthcare
+</a>
+
+<!-- Small tag (index card) -->
+<a
+  href="/case-studies?service=ai-decision-support"
+  class="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full
+         text-xs font-semibold text-gray-600 hover:bg-gray-200 transition-colors"
+>
+  <Icon name="lucide:brain" class="h-3 w-3" />
+  AI Decision Support
+</a>
+```
+
+### Tag Hover States
+```
+Background:     hover:bg-gray-200
+Text:           [No change - remains gray-700/gray-600]
+Cursor:         cursor-pointer (implicit on <a>)
+Transition:     duration-200
+```
+
+### Tag Icon Styling
+```
+Size:           h-4 w-4 (large tags), h-3 w-3 (small tags)
+Color:          text-gray-600 (slightly lighter than text)
+Alignment:      Centered with text (inline-flex items-center)
+Gap:            gap-2 (large), gap-1 (small)
+```
+
+### Tag Consistency Rules
+
+**CRITICAL**: All tags must be clickable links
+- Tags on case study cards (index page) → Clickable
+- Tags on case study detail pages → Clickable
+- Tags on homepage (if any) → Clickable
+- Tags anywhere else → Clickable
+
+**Never**: Create non-clickable tags that look identical to clickable ones
+
+**URL Encoding for Tags:**
+- "Publishing & Media" → `publishing-media`
+- "AI Decision Support" → `ai-decision-support`
+- Lowercase, replace spaces and `&` with hyphens
+
+---
+
+## MARKDOWN CONTENT STYLING (Phase 8+)
+
+**Status**: Implemented in Phase 8 for case study detail pages
+
+### Prose Container
+
+All Markdown content rendered via `<Content />` component uses Tailwind's prose plugin:
+
+```
+Base Classes:
+prose prose-lg max-w-none
+```
+
+### Prose Customization
+
+**Headings:**
+```
+prose-headings:font-light
+prose-headings:text-gray-900
+
+prose-h2:text-4xl
+prose-h2:mb-6
+prose-h2:mt-12
+
+prose-h3:text-2xl
+prose-h3:mb-4
+prose-h3:mt-8
+
+prose-h4:text-xl
+prose-h4:mb-3
+prose-h4:mt-6
+```
+
+**Paragraphs:**
+```
+prose-p:text-gray-600
+prose-p:leading-relaxed
+prose-p:mb-6
+```
+
+**Lists:**
+```
+prose-li:text-gray-600
+prose-ul:space-y-2
+prose-ul:mb-6
+prose-ol:space-y-2
+prose-ol:mb-6
+```
+
+**Emphasis:**
+```
+prose-strong:text-gray-900
+prose-strong:font-semibold
+prose-em:text-gray-600
+prose-em:italic
+```
+
+### Complete Prose Classes
+
+```astro
+<div class="prose prose-lg max-w-none
+            prose-headings:font-light prose-headings:text-gray-900
+            prose-h2:text-4xl prose-h2:mb-6 prose-h2:mt-12
+            prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
+            prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
+            prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
+            prose-li:text-gray-600 prose-ul:space-y-2 prose-ul:mb-6
+            prose-strong:text-gray-900 prose-strong:font-semibold">
+  <Content />
+</div>
+```
+
+### Markdown Heading Hierarchy
+
+**Rules for Markdown files:**
+- Never use `#` (h1) - Reserved for page title from frontmatter
+- Start with `##` (h2) for main sections
+- Use `###` (h3) for subsections
+- Use `####` (h4) for sub-subsections
+- Never skip levels (don't go h2 → h4)
+
+**Visual Hierarchy:**
+```
+Page Title (from frontmatter):  text-5xl font-light (manual render)
+## Main Section (h2):            text-4xl font-light (prose-h2)
+### Subsection (h3):             text-2xl font-semibold (prose-h3)
+#### Sub-subsection (h4):        text-xl font-semibold (prose-h4)
+Body text:                       text-lg text-gray-600 (prose-p)
+```
+
+### Prose Color Consistency
+
+**Headings**: Gray-900 (matches site headings)
+**Body text**: Gray-600 (matches site body copy)
+**Strong/Bold**: Gray-900 with font-semibold
+**Links**: [Use existing link color from BUTTONS section - text-gray-900 hover:text-gray-700]
+
+### Code Blocks (if needed)
+
+If Markdown includes code blocks:
+```
+Background:     bg-gray-900
+Text:           text-gray-100
+Padding:        p-4
+Border Radius:  rounded-lg
+Font:           font-mono (if available, else Inter)
+```
+
+**Note**: Site currently doesn't use code blocks, but this is the pattern if needed.
 
 ---
 

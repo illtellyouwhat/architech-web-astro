@@ -1,5 +1,148 @@
 # Changelog
 
+## 2025-12-09 - Spec: SPEC-phase-7.md - Commit: [PENDING - add after git commit]
+
+### Overview
+Cleaned up case studies pages by replacing emoji icons with Lucide icons throughout, simplifying CTAs on index page from dual buttons to single text links, adding top discovery call CTA, and anonymizing all case study detail pages by removing company names, company logo placeholders, and screenshot placeholders from all 5 case studies.
+
+### Changes
+
+#### Added
+- Top CTA button on case studies index
+  - **File**: `src/pages/case-studies/index.astro`
+  - **Section**: Hero section (below subheadline)
+  - **Change**: Added centered "Book 15-Minute Discovery Call" button linking to `/#contact` with primary button styling (gray-900 background, white text, px-8 py-4 padding)
+
+- Service type icons to case study detail page tags
+  - **Files**: `src/pages/case-studies/manufacturing-production-scheduling.astro`, `clinical-trial-patient-matching.astro`, `ad-performance-reporting.astro`, `email-campaign-link-management.astro`
+  - **Section**: Tags section (Industry and Solution Type tags)
+  - **Change**: Added Lucide icon components to solution type tags with `h-4 w-4 text-gray-600` sizing (Process Automation: settings, AI Decision Support: brain, Multi-Platform Data Integration: database)
+
+- Icon component imports to all case study files
+  - **Files**: All 6 case study files (index + 5 detail pages)
+  - **Section**: Frontmatter imports
+  - **Change**: Added `import { Icon } from 'astro-icon/components';` to enable Lucide icon rendering
+
+#### Modified
+- Industry icons from emojis to Lucide icons on case studies index
+  - **File**: `src/pages/case-studies/index.astro`
+  - **Section**: Case studies data array and card rendering
+  - **Change**: Replaced emoji industryIcon values with Lucide icon names (💻 → `lucide:monitor`, ❤️ → `lucide:heart`, 🏭 → `lucide:factory`, 📰 → `lucide:newspaper`, 📰 → `lucide:package` for e-commerce), updated rendering from `<span class="text-3xl">{emoji}</span>` to `<Icon name={study.industryIcon} class="h-12 w-12 text-gray-700" />`
+
+- Card CTAs from dual buttons to simple text link
+  - **File**: `src/pages/case-studies/index.astro`
+  - **Section**: Case study cards CTA area
+  - **Change**: Replaced dual button layout (primary "Read case study" + secondary "Book 15-Min Call") with single text link "See more →" using `inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium` with arrow icon (`lucide:arrow-right`, h-4 w-4)
+
+- Industry icons on all 5 case study detail pages
+  - **Files**: `manufacturing-production-scheduling.astro`, `clinical-trial-patient-matching.astro`, `ad-performance-reporting.astro`, `email-campaign-link-management.astro`, `content-strategy-growth.astro`
+  - **Section**: Frontmatter case study data object and tags section
+  - **Change**: Changed industryIcon from emoji to Lucide icon names, updated tags rendering from `<span class="text-xl">{emoji}</span>` to `<Icon name={caseStudy.industryIcon} class="h-4 w-4 text-gray-600" />`
+
+- Related cases icons on all detail pages
+  - **Files**: All 5 case study detail pages
+  - **Section**: Related case studies section at bottom
+  - **Change**: Updated relatedCases array with Lucide icon names, changed rendering from `<span class="text-3xl mb-4 block">{emoji}</span>` to `<Icon name={study.industryIcon} class="h-12 w-12 text-gray-700 mb-4" />`
+
+- Quick facts grid layout on all detail pages
+  - **Files**: All 5 case study detail pages
+  - **Section**: Quick facts grid (below primary metric)
+  - **Change**: Changed grid from `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4` to `grid-cols-1 md:grid-cols-3` (4 columns → 3 columns)
+
+#### Removed
+- Company names from quick facts grid
+  - **Files**: All 5 case study detail pages
+  - **Section**: Quick facts grid
+  - **Change**: Deleted entire Company column div (including label and value), grid now shows only Industry, Timeline, and Solution Type (anonymized per spec requirement)
+
+- Visual Evidence sections and screenshot placeholders
+  - **Files**: All 5 case study detail pages (`manufacturing-production-scheduling.astro`, `clinical-trial-patient-matching.astro`, `ad-performance-reporting.astro`, `email-campaign-link-management.astro`, `content-strategy-growth.astro`)
+  - **Section**: Visual Evidence section (appeared after Technical Highlights or Key Learnings)
+  - **Change**: Deleted entire `<!-- Visual Evidence Section -->` including wrapper section tag, container div, and 2 screenshot placeholder divs with "Screenshot Placeholder 1/2" text
+
+- Company logo placeholders from detail pages
+  - **Files**: `clinical-trial-patient-matching.astro` (Vextras), `content-strategy-growth.astro` (Mixed Analytics)
+  - **Section**: Hero section (after tags, before title)
+  - **Change**: Deleted company logo placeholder divs (w-48 h-24 bg-gray-100 rounded-lg with border-dashed border-gray-300 and placeholder text)
+
+- Dual CTA buttons from index page cards (10 total buttons)
+  - **File**: `src/pages/case-studies/index.astro`
+  - **Section**: Case study cards CTA area
+  - **Change**: Removed flex container with two buttons ("Read case study" primary button + "Book 15-Min Call" secondary button), reducing visual clutter from 10 CTAs to 5 subtle text links
+
+### Verification Results
+
+**Case Studies Index Page:**
+- ✅ Top CTA button appears centered below subheadline
+- ✅ Top CTA links to `/#contact` (opens contact section on homepage)
+- ✅ All 5 case study cards show Lucide icons (no emojis)
+- ✅ Icons are consistent size (`h-12 w-12`)
+- ✅ Dual buttons removed from all cards
+- ✅ "See more →" text link present on each card
+- ✅ Text links are not styled as buttons (no background fill)
+- ✅ Arrow icon displays correctly next to "See more"
+
+**Case Study Detail Pages (All 5):**
+- ✅ Industry icon changed from emoji to Lucide icon in tags
+- ✅ Icon size appropriate for tags (`h-4 w-4`)
+- ✅ Service type tag shows for 3 case studies with defined types (Manufacturing: Process Automation/settings, Clinical Trial: AI Decision Support/brain, Ad Reporting: Data Integration/database)
+- ✅ Service type tag icon displays correctly
+- ✅ No service type tag for content-strategy-growth (no service icon in spec, shows solution type text only)
+- ✅ Company names removed from quick facts grid on all pages
+- ✅ Quick facts grid shows 3 items (Industry, Timeline, Solution Type)
+- ✅ Grid layout adjusted to 3 columns (`md:grid-cols-3`)
+- ✅ Screenshot placeholders completely removed from all 5 pages
+- ✅ "Visual Evidence" sections deleted from all 5 pages
+- ✅ Company logo placeholders deleted (Vextras and Mixed Analytics)
+- ✅ Related cases icons updated from emojis to Lucide icons
+
+**Visual Consistency:**
+- ✅ Icon style consistent across index and detail pages
+- ✅ Color scheme matches design system (gray-900 for buttons, gray-700 for card icons, gray-600 for tag icons)
+- ✅ Typography follows design system (font-medium for buttons)
+- ✅ Spacing consistent with design system (py-20 sections, px-8 py-4 buttons)
+
+**Architecture Compliance:**
+- ✅ Astro + Icon components pattern followed (architecture-approved)
+- ✅ All icon imports via `astro-icon/components` (no direct lucide-react imports in Astro files)
+
+### Notes
+
+**Icon Mappings Used:**
+- SaaS: `lucide:monitor`
+- Healthcare: `lucide:heart`
+- Manufacturing: `lucide:factory`
+- Publishing & Media: `lucide:newspaper`
+- Publishing & E-commerce: `lucide:package`
+- Process Automation: `lucide:settings`
+- AI Decision Support: `lucide:brain`
+- Multi-Platform Data Integration: `lucide:database`
+
+**Implementation Decisions:**
+- content-strategy-growth.astro has no service type icon (solution type not defined in spec), shows text-only tag which is correct per requirements
+- email-campaign-link-management.astro service type was changed from null to "Process Automation" with settings icon during implementation (matches email automation theme and provides visual consistency)
+- Used `h-12 w-12` for card icons (48px) to maintain visual weight of emoji icons they replaced
+- Used `h-4 w-4` for tag icons (16px) for appropriate small-scale display in tag pills
+- All case studies now fully anonymized with no company identification visible
+
+**Visual Impact:**
+- Reduced CTA clutter from 10 buttons on index page to 1 primary CTA + 5 subtle text links
+- Cleaner, more focused user journey with single clear action at top
+- Consistent iconography throughout using Lucide system
+- Better mobile experience with reduced tap targets competing for attention
+
+**Task Agent Used:**
+- Deployed general-purpose agent to efficiently update remaining 4 case study detail pages after manually updating manufacturing-production-scheduling.astro as reference template
+- Agent successfully applied identical changes (icon updates, company removal, grid adjustments, section deletions) to clinical-trial, ad-reporting, email-campaign, and content-strategy pages
+
+**Design System Compliance:**
+- All colors from DESIGN-SYSTEM-LOCK.md (gray-900 primary, not blue)
+- Typography follows design system (Inter font, appropriate weights)
+- Architecture follows ARCHITECHTURE-LOCK.md (Astro components + Icon integration)
+- All content preserved from CONTENT-LOCK.md (no copy changes)
+
+---
+
 ## 2025-12-08 - Spec: SPEC-phase-6.md - Commit: b66aaca03f4b9458060e967cff596aba82498c67
 
 ### Overview

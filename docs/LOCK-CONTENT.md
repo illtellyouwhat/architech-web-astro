@@ -524,6 +524,164 @@ AI Decision Support: lucide:brain or lucide:sparkles
 Multi-Platform Data Integration: lucide:database or lucide:link
 ```
 
+---
+
+## CASE STUDIES - MARKDOWN STRUCTURE (Phase 8+)
+
+**Starting Phase 8**, case studies are managed as Markdown files in `/src/content/case-studies/` using Astro Content Collections. The hardcoded `.astro` detail pages are replaced by a single dynamic template.
+
+### Frontmatter Schema
+
+Each case study Markdown file contains the following frontmatter:
+
+```yaml
+---
+title: "Full Case Study Title"
+company: "Company Name"
+industry: ["Industry1", "Industry2"]  # Array to support multiple industries
+industryIcon: "lucide:icon-name"
+solutionType: "Service Type Name"
+solutionIcon: "lucide:icon-name"
+metric: "6-7x"
+metricLabel: "Capacity Increase"
+timeline: "6 weeks"
+slug: "case-study-slug"
+order: 1  # For default sorting (lower number = higher priority)
+featured: true
+summary: "Brief one-line summary for card display"
+relatedCases: ["slug1", "slug2", "slug3"]  # Array of related case study slugs
+---
+```
+
+### Content Structure (Markdown Body)
+
+Each case study contains the following sections in Markdown format:
+
+```markdown
+## Problem
+[Description of client's challenge - 2-4 paragraphs]
+
+## Solution
+[Detailed technical implementation - may include subsections]
+
+### Technical Approach
+[Implementation details]
+
+## Impact
+[Quantified results - bullet list of outcomes]
+
+## Technical Highlights
+[Optional: Key technical details for expandable section]
+
+## Key Learnings
+[Optional: Project insights and takeaways]
+```
+
+### Current Case Studies
+
+**File: `/src/content/case-studies/content-strategy-growth.md`**
+```yaml
+title: "Mixed Analytics: Data-Driven Content Strategy for SaaS Growth"
+industry: ["SaaS"]
+industryIcon: "lucide:monitor"
+solutionType: "AI Decision Support"
+solutionIcon: "lucide:brain"
+metric: "900%"
+metricLabel: "Growth (200K → 2M MAU)"
+slug: "content-strategy-growth"
+order: 1
+```
+
+**File: `/src/content/case-studies/clinical-trial-patient-matching.md`**
+```yaml
+title: "Vextras: AI-Powered Clinical Trial Patient Matching"
+industry: ["Healthcare"]
+industryIcon: "lucide:heart"
+solutionType: "AI Decision Support"
+solutionIcon: "lucide:brain"
+metric: "6-7x"
+metricLabel: "Capacity Increase"
+slug: "clinical-trial-patient-matching"
+order: 2
+```
+
+**File: `/src/content/case-studies/manufacturing-production-scheduling.md`**
+```yaml
+title: "Modernizing Manufacturing Production Scheduling"
+industry: ["Manufacturing"]
+industryIcon: "lucide:factory"
+solutionType: "Process Automation"
+solutionIcon: "lucide:settings"
+metric: "87.5%"
+metricLabel: "Time Reduction"
+slug: "manufacturing-production-scheduling"
+order: 3
+```
+
+**File: `/src/content/case-studies/ad-performance-reporting.md`**
+```yaml
+title: "Automated Ad Performance Reporting for Multi-Channel Media Sales"
+industry: ["Publishing & Media"]
+industryIcon: "lucide:newspaper"
+solutionType: "Multi-Platform Data Integration"
+solutionIcon: "lucide:database"
+metric: "16 hrs"
+metricLabel: "Saved Per Week"
+slug: "ad-performance-reporting"
+order: 4
+```
+
+**File: `/src/content/case-studies/email-campaign-link-management.md`**
+```yaml
+title: "Streamlining Email Campaign Link Management for Publishing Operations"
+industry: ["Publishing & Media", "E-commerce"]  # Multiple industries
+industryIcon: "lucide:package"
+solutionType: "Process Automation"
+solutionIcon: "lucide:settings"
+metric: "$1-5K"
+metricLabel: "Monthly Savings"
+slug: "email-campaign-link-management"
+order: 5
+```
+
+### Filtering Behavior (Phase 8)
+
+**URL Parameter Filtering:**
+- `/case-studies` - Shows all cases in default order (by `order` field)
+- `/case-studies?industry=healthcare` - Shows Healthcare cases first, then others
+- `/case-studies?service=ai-decision-support` - Shows AI Decision Support cases first, then others
+
+**Clickable Tags (All Pages):**
+- Homepage service cards → Link includes `?service=` parameter
+- Homepage industry cards → Link includes `?industry=` parameter
+- Case study index page tags → Click to filter by that tag
+- Case study detail page tags → Click to filter by that tag
+
+**Multiple Industries Handling:**
+- Email Campaign Link Management has TWO industries: "Publishing & Media" AND "E-commerce"
+- When filtering by either industry, this case study appears in matching results
+- Filtering is inclusive (case appears if ANY industry matches)
+
+### Adding New Case Studies
+
+To add a new case study:
+
+1. Create new `.md` file in `/src/content/case-studies/`
+2. Use frontmatter schema above
+3. Write content in Markdown format (Problem, Solution, Impact sections)
+4. Set `order` field for sorting priority
+5. File will automatically appear on index page and generate detail page
+
+### Implementation Notes for Claude Code
+
+- Case studies are read from Content Collections, not hardcoded
+- Dynamic routing uses `/src/pages/case-studies/[slug].astro` template
+- Filtering reads URL search params (`?industry=` or `?service=`)
+- Tags on cards are clickable links that set URL params
+- Related cases render by matching slugs from `relatedCases` array
+
+---
+
 ## NAVIGATION
 
 ### Header Navigation

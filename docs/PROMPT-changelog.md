@@ -1,7 +1,10 @@
 # Changelog Documentation Instructions
 
 **Purpose**: Maintain forensic-level change tracking in `/docs/CHANGELOG.md`  
-**Location**: This file lives in `/docs/CHANGELOG.md`
+**Location**: This file lives in `/docs/CHANGELOG.md` (visible to Claude Code only, not Claude UI)  
+**When to use**: Include this prompt for any significant implementation (new features, bug fixes, multi-file changes)  
+**When to skip**: Minor tasks like typo fixes or single-line copy updates  
+**Format**: Append-only, most recent entries at top
 
 ---
 
@@ -9,9 +12,9 @@
 
 1. **Always check today's actual date** - never assume or use stale dates
 2. **Append to TOP of file** - most recent entries first
-3. **Include git commit hash** - enables tracing back to exact changes
-4. **Reference the spec file** - creates clear audit trail
-5. **Use Git-style context** - describe sections changed, not brittle line numbers
+3. **Include git commit hash** - get the most recent commit hash (user has already committed)
+4. **Reference spec section numbers** - cite section number + heading from spec (e.g., "Section 2.1 'Animation Implementation'")
+5. **Use git diff for line numbers** - include exact lines changed in each file (stable with git hash)
 6. **Categorize all changes** - Added / Modified / Fixed / Removed
 7. **Include verification results** - document what passed/failed from spec checklist
 
@@ -29,33 +32,37 @@
 
 #### Added
 - [New feature/component]
+  - **Spec Reference**: `[spec-filename.md]` > Section [X.X] "[Section Heading]"
   - **File**: `path/to/file.ext`
-  - **Section**: [Which part of the file - e.g., "Hero headline rendering", "Contact form validation"]
+  - **Lines Changed**: [start-end] (from git diff)
   - **Change**: [What was added]
 
 #### Modified
 - [Changed feature/component]
+  - **Spec Reference**: `[spec-filename.md]` > Section [X.X] "[Section Heading]"
   - **File**: `path/to/file.ext`
-  - **Section**: [Which part of the file]
+  - **Lines Changed**: [start-end] (from git diff)
   - **Change**: [What was modified]
 
 #### Fixed
 - [Bug/issue resolved]
+  - **Spec Reference**: `[spec-filename.md]` > Section [X.X] "[Section Heading]"
   - **File**: `path/to/file.ext`
-  - **Section**: [Which part of the file]
+  - **Lines Changed**: [start-end] (from git diff)
   - **Change**: [What was fixed]
 
 #### Removed
 - [Deleted feature/component]
+  - **Spec Reference**: `[spec-filename.md]` > Section [X.X] "[Section Heading]"
   - **File**: `path/to/file.ext`
-  - **Section**: [Which part of the file]
+  - **Lines Changed**: [start-end] (from git diff)
   - **Change**: [What was removed]
 
 ### Verification Results
-- ✅ [Checklist item from spec - passed]
-- ✅ [Checklist item from spec - passed]
-- ⚠️  [Known limitation or pending item]
-- ❌ [Failed check - describe issue]
+- âœ… [Checklist item from spec - passed]
+- âœ… [Checklist item from spec - passed]
+- âš ï¸  [Known limitation or pending item]
+- âŒ [Failed check - describe issue]
 
 ### Notes
 - [Implementation decisions made]
@@ -70,7 +77,9 @@
 
 ## How to Get Git Commit Hash
 
-After completing implementation and before creating changelog entry:
+**This prompt runs AFTER the user has manually committed changes.**
+
+Get the most recent commit hash:
 
 ```bash
 git log -1 --format="%H"
@@ -82,6 +91,43 @@ Example: `a3f5d8c9e2b1f4a6d7e8c9b0a1f2e3d4c5b6a7f8`
 
 ---
 
+## How to Get Line Numbers Changed
+
+Use git diff to identify exact lines modified in the most recent commit:
+
+```bash
+git diff HEAD~1 HEAD --unified=0
+```
+
+This shows line ranges like:
+```
+@@ -42,3 +42,8 @@ src/components/Hero.astro
+```
+
+Which means: Lines 42-50 were modified (42 start, +8 lines added = 50 end)
+
+**In the changelog, record as**: `Lines Changed: 42-50`
+
+**For new files**: Record as `Lines Changed: 1-[total lines]` (entire file is new)
+
+**For deleted files**: Record as `Lines Changed: [all lines that were deleted]`
+
+---
+
+## Spec File Section Numbering
+
+**All spec files must use numbered sections** (1, 2, 2.1, 2.2, 3, etc.)
+
+When referencing the spec in changelog entries, always include both:
+- Section number (e.g., "Section 2.1")
+- Section heading (e.g., "Animation Implementation")
+
+**Format**: `Section 2.1 "Animation Implementation"`
+
+**Why**: Section numbers provide precise location even if headings are similar across different sections.
+
+---
+
 ## Formatting Guidelines
 
 ### Date Format
@@ -89,8 +135,9 @@ Example: `a3f5d8c9e2b1f4a6d7e8c9b0a1f2e3d4c5b6a7f8`
 - **Wrong**: `Dec 8, 2024` or `12/8/24` or `yesterday`
 
 ### Spec Reference
-- Include full filename: `SPEC-phase6-hero-animation.md`
-- Not just: `phase 6` or `hero animation spec`
+- Include section number + heading: `SPEC-phase6-hero-animation.md` > Section 2.1 "Animation Implementation"
+- Not just filename: `phase 6` or `hero animation spec`
+- Not just heading: "Animation Implementation" (missing section number)
 
 ### File Paths
 - Use relative paths from project root: `src/components/Hero.astro`
@@ -98,13 +145,13 @@ Example: `a3f5d8c9e2b1f4a6d7e8c9b0a1f2e3d4c5b6a7f8`
 
 ### Section Descriptions
 Use descriptive section names that identify the area of code:
-- ✅ **Good**: "Hero headline rendering", "Contact form validation logic", "Service card hover states"
-- ❌ **Bad**: "Top of file", "Around line 42", "The main function"
+- âœ… **Good**: "Hero headline rendering", "Contact form validation logic", "Service card hover states"
+- âŒ **Bad**: "Top of file", "Around line 42", "The main function"
 
 ### Change Descriptions
 Be specific about what changed:
-- ✅ **Good**: "Added rotating word array with 5 terms, implemented fade animation with 2.5s interval"
-- ❌ **Bad**: "Added animation", "Updated hero"
+- âœ… **Good**: "Added rotating word array with 5 terms, implemented fade animation with 2.5s interval"
+- âŒ **Bad**: "Added animation", "Updated hero"
 
 ---
 
@@ -135,8 +182,8 @@ Be specific about what changed:
 - Deleted deprecated functionality
 
 **If a change fits multiple categories**, choose the primary intent:
-- Fixing a bug by adding new validation → **Fixed** (not Added)
-- Removing old code and replacing with new → **Modified** (not Removed + Added)
+- Fixing a bug by adding new validation â†’ **Fixed** (not Added)
+- Removing old code and replacing with new â†’ **Modified** (not Removed + Added)
 
 ---
 
@@ -155,27 +202,27 @@ If the spec includes a verification checklist, transcribe each item with its res
 **In changelog:**
 ```markdown
 ### Verification Results
-- ✅ Hero animation plays on page load
-- ✅ Word rotation loops correctly  
-- ✅ No console errors
+- âœ… Hero animation plays on page load
+- âœ… Word rotation loops correctly  
+- âœ… No console errors
 ```
 
 ### Add Context for Failures
 If a check fails, explain why and what needs to happen:
 
 ```markdown
-- ❌ Safari animation timing incorrect
+- âŒ Safari animation timing incorrect
   - Issue: Animation runs 20% faster in Safari than Chrome
   - Cause: Safari handles CSS animation-duration differently
   - Next step: Requires browser-specific keyframe adjustment (flagged for Phase 7)
 ```
 
 ### Note Warnings
-Use ⚠️ for acceptable limitations or minor issues:
+Use âš ï¸ for acceptable limitations or minor issues:
 
 ```markdown
-- ⚠️  Animation timing slightly faster on Safari (acceptable variance)
-- ⚠️  Client logos still using placeholders (awaiting user-provided images)
+- âš ï¸  Animation timing slightly faster on Safari (acceptable variance)
+- âš ï¸  Client logos still using placeholders (awaiting user-provided images)
 ```
 
 ---
@@ -223,39 +270,44 @@ Implemented rotating word animation for hero headline. Added animation keyframes
 
 #### Added
 - Hero headline word rotation
+  - **Spec Reference**: `SPEC-phase6-hero-animation.md` > Section 2.1 "Animation Implementation"
   - **File**: `src/components/Hero.astro`
-  - **Section**: Hero headline rendering
+  - **Lines Changed**: 42-58
   - **Change**: Wrapped headline in animation container with rotating word array ["company", "reports", "team", "product", "analytics"], implemented fade-in/fade-out transitions with 2.5s intervals
   
 - Animation keyframes
+  - **Spec Reference**: `SPEC-phase6-hero-animation.md` > Section 2.2 "Keyframe Definitions"
   - **File**: `src/styles/animations.css` (new file)
-  - **Section**: Global animations
+  - **Lines Changed**: 1-12
   - **Change**: Created fadeInOut keyframe (0% opacity 0, 50% opacity 1, 100% opacity 0) for word rotation effect
 
 - Hover-reveal subheadline
+  - **Spec Reference**: `SPEC-phase6-hero-animation.md` > Section 2.3 "Hover Interactions"
   - **File**: `src/components/Hero.astro`
-  - **Section**: Hero subheadline
+  - **Lines Changed**: 68-75
   - **Change**: Added opacity-based hover state (hidden by default, opacity 1 on headline hover with 300ms transition)
 
 #### Modified
 - Tailwind configuration
+  - **Spec Reference**: `SPEC-phase6-hero-animation.md` > Section 3.1 "Configuration Updates"
   - **File**: `tailwind.config.cjs`
-  - **Section**: Animation definitions (extend.animation)
+  - **Lines Changed**: 15-18
   - **Change**: Registered fadeInOut animation with 2.5s duration and infinite iteration
 
 - Hero component structure
+  - **Spec Reference**: `SPEC-phase6-hero-animation.md` > Section 2.1 "Animation Implementation"
   - **File**: `src/components/Hero.astro`
-  - **Section**: Component imports
+  - **Lines Changed**: 1-5, 42-58
   - **Change**: Added React useEffect and useState hooks for animation timing logic
 
 ### Verification Results
-- ✅ Words rotate continuously with 2.5s interval per word
-- ✅ Fade transitions smooth (300ms duration)
-- ✅ Subheadline reveals on hover without layout shift
-- ✅ No layout shift during word changes (space reserved for longest word)
-- ✅ No console errors on page load or during animation
-- ✅ Animation loops infinitely without stuttering
-- ⚠️  Animation timing ~400ms faster on Safari (acceptable variance, animation-duration handled differently)
+- âœ… Words rotate continuously with 2.5s interval per word
+- âœ… Fade transitions smooth (300ms duration)
+- âœ… Subheadline reveals on hover without layout shift
+- âœ… No layout shift during word changes (space reserved for longest word)
+- âœ… No console errors on page load or during animation
+- âœ… Animation loops infinitely without stuttering
+- âš ï¸  Animation timing ~400ms faster on Safari (acceptable variance, animation-duration handled differently)
 
 ### Notes
 - Chose 2.5s rotation interval (spec allowed 2-3s range) for optimal readability
@@ -271,23 +323,25 @@ Implemented rotating word animation for hero headline. Added animation keyframes
 
 ## Common Mistakes to Avoid
 
-### ❌ Don't Use Relative Dates
+### âŒ Don't Use Relative Dates
 - Wrong: "Today", "Yesterday", "Last week"
 - Right: "2024-12-08"
 
-### ❌ Don't Use Line Numbers
-- Wrong: "Modified lines 42-58"
-- Right: "Modified Hero headline rendering section"
+### ❌ Don't Omit Line Numbers or Spec References
+- Wrong: Missing "Lines Changed" field entirely
+- Wrong: Missing "Spec Reference" field entirely
+- Right: Include both for every change entry (get from git diff and spec section numbers)
 
-### ❌ Don't Be Vague
+
+### âŒ Don't Be Vague
 - Wrong: "Updated component"
 - Right: "Added rotating word animation to hero headline with 5-word rotation sequence"
 
-### ❌ Don't Skip Verification
+### âŒ Don't Skip Verification
 - Wrong: [Leave section empty]
 - Right: Document all checklist items from spec, even if all passed
 
-### ❌ Don't Forget Git Hash
+### âŒ Don't Forget Git Hash
 - Wrong: `## 2024-12-08 - Spec: SPEC-phase6.md`
 - Right: `## 2024-12-08 - Spec: SPEC-phase6.md - Commit: a3f5d8c9e2b1f4a6d7e8c9b0a1f2e3d4c5b6a7f8`
 
