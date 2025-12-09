@@ -8,7 +8,7 @@ const caseStudies = [
     title: 'Data-Driven Content Strategy',
     company: 'Mixed Analytics',
     industry: 'SaaS',
-    industryIcon: '💻',
+    industryIcon: 'lucide:monitor',
     serviceType: null,  // BLANK FOR NOW (awaiting client input)
     serviceIcon: null,  // BLANK FOR NOW
     metric: '900%',
@@ -21,7 +21,7 @@ const caseStudies = [
     title: 'AI-Powered Clinical Trial Patient Matching',
     company: 'Vextras',
     industry: 'Healthcare',
-    industryIcon: '❤️',
+    industryIcon: 'lucide:heart',
     serviceType: 'AI Decision Support',
     serviceIcon: 'lucide:brain',
     metric: '6-7x',
@@ -34,7 +34,7 @@ const caseStudies = [
     title: 'Manufacturing Production Scheduling',
     company: 'Paper Product Manufacturer',
     industry: 'Manufacturing',
-    industryIcon: '🏭',
+    industryIcon: 'lucide:factory',
     serviceType: 'Process Automation',
     serviceIcon: 'lucide:settings',
     metric: '87.5%',
@@ -47,7 +47,7 @@ const caseStudies = [
     title: 'Automated Ad Performance Reporting',
     company: 'Digital Media Publisher',
     industry: 'Publishing & Media',
-    industryIcon: '📰',
+    industryIcon: 'lucide:newspaper',
     serviceType: 'Data Integration',
     serviceIcon: 'lucide:database',
     metric: '16 hrs',
@@ -60,7 +60,7 @@ const caseStudies = [
     title: 'Email Campaign Link Management',
     company: 'E-commerce Company',
     industry: 'Publishing & E-commerce',
-    industryIcon: '📰',
+    industryIcon: 'lucide:package',
     serviceType: null,  // BLANK FOR NOW (awaiting client input)
     serviceIcon: null,  // BLANK FOR NOW
     metric: '$1-5K',
@@ -82,9 +82,19 @@ const caseStudies = [
         <h1 class="mb-6 text-5xl font-light text-gray-900">
           Real Projects. Real Results.
         </h1>
-        <p class="text-xl leading-relaxed text-gray-600">
+        <p class="mb-8 text-xl leading-relaxed text-gray-600">
           From 6-7x capacity increases to 87.5% time reductions—see how we've helped companies automate their most critical processes.
         </p>
+
+        <!-- Top CTA Button -->
+        <div class="flex justify-center">
+          <a
+            href="/#contact"
+            class="rounded-lg bg-gray-900 px-8 py-4 font-medium text-white transition-colors duration-200 hover:bg-gray-800"
+          >
+            Book 15-Minute Discovery Call
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -97,7 +107,7 @@ const caseStudies = [
           <div class="group rounded-xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:shadow-xl">
             <!-- Industry Tag & Service Icon -->
             <div class="mb-4 flex items-center gap-3">
-              <span class="text-3xl">{study.industryIcon}</span>
+              <Icon name={study.industryIcon} class="h-12 w-12 text-gray-700" />
               <span class="text-sm font-semibold uppercase tracking-wide text-gray-500">
                 {study.industry}
               </span>
@@ -140,22 +150,14 @@ const caseStudies = [
               {study.summary}
             </p>
 
-            <!-- Two-Button CTA -->
-            <div class="flex gap-3">
-              <!-- Primary CTA -->
-              <a href={study.link}
-                 class="flex-1 rounded-lg bg-gray-900 px-6 py-3 text-center font-medium text-white
-                        transition-colors duration-200 hover:bg-gray-800">
-                Read case study
-              </a>
-
-              <!-- Secondary CTA -->
-              <a href="/#contact"
-                 class="flex-1 rounded-lg border-2 border-gray-300 bg-white px-6 py-3 text-center
-                        font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50">
-                Book 15-Min Call
-              </a>
-            </div>
+            <!-- Simple Text Link CTA -->
+            <a
+              href={study.link}
+              class="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+            >
+              See more
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
           </div>
         ))}
       </div>

@@ -1,12 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 
 const caseStudy = {
   title: 'Modernizing Manufacturing Production Scheduling',
   company: 'Paper Product Manufacturer',
   industry: 'Manufacturing',
-  industryIcon: '🏭',
+  industryIcon: 'lucide:factory',
   solutionType: 'Process Automation',
+  solutionIcon: 'lucide:settings',
   metric: '87.5%',
   metricLabel: 'Time Reduction',
   timeline: '6 weeks',
@@ -16,21 +18,21 @@ const relatedCases = [
   {
     slug: 'clinical-trial-patient-matching',
     title: 'AI-Powered Clinical Trial Patient Matching',
-    industryIcon: '❤️',
+    industryIcon: 'lucide:heart',
     metric: '6-7x',
     metricLabel: 'Capacity Increase',
   },
   {
     slug: 'ad-performance-reporting',
     title: 'Automated Ad Performance Reporting',
-    industryIcon: '📰',
+    industryIcon: 'lucide:newspaper',
     metric: '16 hrs',
     metricLabel: 'Saved Per Week',
   },
   {
     slug: 'email-campaign-link-management',
     title: 'Email Campaign Link Management',
-    industryIcon: '📰',
+    industryIcon: 'lucide:package',
     metric: '$1-5K',
     metricLabel: 'Monthly Savings',
   },
@@ -66,7 +68,7 @@ const relatedCases = [
           href="/#industries"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
         >
-          <span class="text-xl">{caseStudy.industryIcon}</span>
+          <Icon name={caseStudy.industryIcon} class="h-4 w-4 text-gray-600" />
           {caseStudy.industry}
         </a>
 
@@ -75,6 +77,7 @@ const relatedCases = [
           href="/#services"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
         >
+          <Icon name={caseStudy.solutionIcon} class="h-4 w-4 text-gray-600" />
           {caseStudy.solutionType}
         </a>
       </div>
@@ -95,22 +98,13 @@ const relatedCases = [
       </div>
 
       <!-- Quick Facts Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
             Industry
           </div>
           <div class="text-lg text-gray-900">
             {caseStudy.industry}
-          </div>
-        </div>
-
-        <div>
-          <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
-            Company
-          </div>
-          <div class="text-lg text-gray-900">
-            {caseStudy.company}
           </div>
         </div>
 
@@ -373,23 +367,6 @@ const relatedCases = [
     </div>
   </section>
 
-  <!-- Visual Evidence Section -->
-  <section class="bg-gray-50 py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Placeholder 1 -->
-        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
-          <span class="text-sm text-gray-400">Screenshot Placeholder 1</span>
-        </div>
-
-        <!-- Placeholder 2 -->
-        <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300">
-          <span class="text-sm text-gray-400">Screenshot Placeholder 2</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA Section (After Key Learnings) -->
   <section class="border-t border-gray-200 bg-gray-50 py-16">
     <div class="mx-auto max-w-2xl text-center px-4 sm:px-6 lg:px-8">
@@ -428,7 +405,7 @@ const relatedCases = [
             class="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 group"
           >
             <!-- Icon -->
-            <span class="text-3xl mb-4 block">{study.industryIcon}</span>
+            <Icon name={study.industryIcon} class="h-12 w-12 text-gray-700 mb-4" />
 
             <!-- Title -->
             <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
