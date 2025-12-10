@@ -90,7 +90,7 @@ export default function ContactForm() {
           {...register('name')}
           type="text"
           id="name"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-colors"
           placeholder="Your name"
         />
         {errors.name && (
@@ -110,7 +110,7 @@ export default function ContactForm() {
           {...register('email')}
           type="email"
           id="email"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-colors"
           placeholder="your@email.com"
         />
         {errors.email && (
@@ -130,7 +130,7 @@ export default function ContactForm() {
           {...register('company')}
           type="text"
           id="company"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-colors"
           placeholder="Your company"
         />
         {errors.company && (
@@ -150,7 +150,7 @@ export default function ContactForm() {
           {...register('message')}
           id="message"
           rows={5}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none transition-colors"
           placeholder="Tell us about your biggest operational bottleneck. What manual process is consuming the most time or creating the most errors?"
         />
         {errors.message && (
@@ -162,7 +162,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>

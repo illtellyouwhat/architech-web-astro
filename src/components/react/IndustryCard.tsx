@@ -1,30 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { Settings, Brain, Database } from 'lucide-react';
+import { Scale, Heart, Newspaper, ShoppingCart, GraduationCap, Factory } from 'lucide-react';
 
-interface ServiceCardProps {
+interface IndustryCardProps {
   icon: string;
   title: string;
-  description: string;
-  features: string[];
-  learnMoreUrl?: string;
-  ctaText?: string;
+  items: string[];
+  ctaLink: string;
 }
 
 const iconMap: Record<string, any> = {
-  'lucide:settings': Settings,
-  'lucide:brain': Brain,
-  'lucide:database': Database,
+  'lucide:scale': Scale,
+  'lucide:heart': Heart,
+  'lucide:newspaper': Newspaper,
+  'lucide:shopping-cart': ShoppingCart,
+  'lucide:graduation-cap': GraduationCap,
+  'lucide:factory': Factory,
 };
 
-export default function ServiceCard({
+export default function IndustryCard({
   icon,
   title,
-  description,
-  features,
-  learnMoreUrl = '#contact',
-  ctaText,
-}: ServiceCardProps) {
+  items,
+  ctaLink,
+}: IndustryCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasExpanded, setHasExpanded] = useState(false);
   const { ref, isIntersecting, isMobile } = useIntersectionObserver({ threshold: 0.3 });
@@ -40,6 +39,8 @@ export default function ServiceCard({
   // Determine if card should be expanded
   const shouldExpand = isMobile ? hasExpanded : isExpanded;
 
+  const IconComponent = iconMap[icon];
+
   return (
     <article
       ref={ref}
@@ -54,18 +55,17 @@ export default function ServiceCard({
     >
       {/* Icon - Always visible */}
       <div className="mb-4">
-        {icon.startsWith('lucide:') && iconMap[icon] ? (
-          (() => {
-            const IconComponent = iconMap[icon];
-            return <IconComponent className="h-12 w-12 text-gray-600" />;
-          })()
+        {IconComponent ? (
+          <IconComponent className="h-12 w-12 text-gray-600" />
         ) : (
-          <div className="text-4xl">{icon}</div>
+          <div className="h-12 w-12 bg-gray-200 rounded-lg flex items-center justify-center">
+            <span className="text-gray-900 text-xl">?</span>
+          </div>
         )}
       </div>
 
       {/* Title - Always visible */}
-      <h3 className={`text-2xl font-semibold text-gray-900 leading-tight ${shouldExpand ? 'mb-3' : ''}`}>
+      <h3 className={`text-xl font-semibold text-gray-900 leading-tight ${shouldExpand ? 'mb-4' : ''}`}>
         {title}
       </h3>
 
@@ -81,29 +81,23 @@ export default function ServiceCard({
       >
         {shouldExpand && (
           <>
-            {/* Description */}
-            <p className="text-base text-gray-600 leading-relaxed mb-4">
-              {description}
-            </p>
-
-            {/* Features List */}
-            <ul className="text-sm text-gray-600 space-y-2 mb-4">
-              {features.map((feature, index) => (
-                <li key={index}>• {feature}</li>
+            {/* Description - Bullet List */}
+            <ul className="space-y-2 text-gray-600 mb-6">
+              {items.map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-gray-900 flex-shrink-0 mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
               ))}
             </ul>
 
-            {/* CTA Button */}
+            {/* CTA Link */}
             <a
-              href={learnMoreUrl}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+              href={ctaLink}
+              className="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors"
             >
-              {ctaText || (() => {
-                if (title.includes('Process Automation')) return 'See automation case studies';
-                if (title.includes('AI')) return 'See AI case studies';
-                if (title.includes('Data Integration')) return 'See integration case studies';
-                return 'Learn more';
-              })()} →
+              See case studies
+              {IconComponent && <IconComponent className="ml-2 h-4 w-4" />}
             </a>
           </>
         )}

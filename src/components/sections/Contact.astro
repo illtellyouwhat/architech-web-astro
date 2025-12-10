@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { siteConfig } from '@/config/site';
 import ContactForm from '../react/ContactForm';
+import EmailContactCard from '../react/EmailContactCard';
 ---
 <section id="contact" class="bg-white py-20">
   <div class="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
@@ -16,69 +16,49 @@ import ContactForm from '../react/ContactForm';
       <ContactForm client:visible />
     </div>
 
-    {/* Contact Info Cards */}
+    {/* Contact Method Cards */}
     <div class="mt-12 grid gap-6 md:grid-cols-3">
-      <article class="rounded-2xl border border-gray-100 p-6 text-left shadow-sm">
-        <div class="flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
-            <Icon name="lucide:mail" class="h-5 w-5 text-gray-500" />
-          </span>
-          <div>
-            <p class="text-sm uppercase tracking-wide text-gray-500">Email</p>
-            <a class="text-lg font-medium text-gray-900" href={`mailto:${siteConfig.email}`}>
-              {siteConfig.email}
-            </a>
-          </div>
-        </div>
-        <p class="mt-4 text-sm text-gray-500">
-          Expect a thoughtful reply with next steps inside 24 hours.
-        </p>
-      </article>
+      {/* Card 1: Email */}
+      <EmailContactCard client:load />
 
-      <article class="flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:shadow-lg">
+      {/* Card 2: Video Call */}
+      <article class="flex flex-col items-center justify-between min-h-[280px] bg-gray-50 border border-gray-100 rounded-xl p-6">
         {/* Icon */}
-        <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-          <Icon name="lucide:video" class="h-8 w-8 text-gray-900" />
-        </div>
+        <Icon name="lucide:video" class="w-8 h-8 text-gray-600 mb-6" />
 
-        {/* Label */}
-        <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-          Schedule via Google Meet
-        </p>
-
-        {/* CTA Button */}
-        <a href="https://calendar.app.google/EVcS3xj7ud1BWtkL6"
-           class="mb-3 rounded-lg bg-gray-900 px-6 py-3 font-medium text-white
-                  transition-colors duration-200 hover:bg-gray-800">
-          Schedule via Google Meet
+        {/* Button */}
+        <a
+          href="https://calendar.app.google/EVcS3xj7ud1BWtkL6"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
+        >
+          Schedule Google Meet
         </a>
 
         {/* Subtext */}
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-600 text-center max-w-xs">
           Book a video call at a time that works for you.
         </p>
       </article>
 
-      <article class="flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:shadow-lg">
+      {/* Card 3: Phone Call */}
+      <article class="flex flex-col items-center justify-between min-h-[280px] bg-gray-50 border border-gray-100 rounded-xl p-6">
         {/* Icon */}
-        <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-          <Icon name="lucide:phone" class="h-8 w-8 text-gray-900" />
-        </div>
+        <Icon name="lucide:phone" class="w-8 h-8 text-gray-600 mb-6" />
 
-        {/* Label */}
-        <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-500">
-          Schedule a Phone Call
-        </p>
-
-        {/* CTA Button */}
-        <a href="https://calendar.app.google/mnKPd1jZJn9fyKTu9"
-           class="mb-3 rounded-lg bg-gray-900 px-6 py-3 font-medium text-white
-                  transition-colors duration-200 hover:bg-gray-800">
-          Schedule a Phone Call
+        {/* Button */}
+        <a
+          href="https://calendar.app.google/mnKPd1jZJn9fyKTu9"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
+        >
+          Schedule Phone Call
         </a>
 
         {/* Subtext */}
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-600 text-center max-w-xs">
           Prefer to talk by phone? Schedule a call that fits your schedule.
         </p>
       </article>

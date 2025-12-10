@@ -11,38 +11,36 @@ const serviceFilter = url.searchParams.get('service');
 // Load all case studies
 let caseStudies = await getCollection('case-studies');
 
-// Sort by order field (default)
-caseStudies.sort((a, b) => a.data.order - b.data.order);
-
-// Apply filtering (matching cases first, then others)
-if (industryFilter) {
-  const normalizedFilter = industryFilter.toLowerCase().replace(/-/g, ' ').replace(/publishing media/, 'publishing & media');
-
+// Apply filtering - sort matching cases FIRST, then non-matching
+if (industryFilter || serviceFilter) {
   caseStudies.sort((a, b) => {
-    const aMatches = a.data.industry.some(ind =>
-      ind.toLowerCase() === normalizedFilter
-    );
-    const bMatches = b.data.industry.some(ind =>
-      ind.toLowerCase() === normalizedFilter
-    );
+    // Normalize function for consistent comparison
+    const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
 
+    // Check if case study matches filter
+    let aMatches = false;
+    let bMatches = false;
+
+    if (industryFilter) {
+      // Check if any industry in the array matches the filter
+      aMatches = a.data.industry.some(ind => normalize(ind) === industryFilter);
+      bMatches = b.data.industry.some(ind => normalize(ind) === industryFilter);
+    } else if (serviceFilter) {
+      // Check if solutionType matches the filter
+      aMatches = a.data.solutionType ? normalize(a.data.solutionType) === serviceFilter : false;
+      bMatches = b.data.solutionType ? normalize(b.data.solutionType) === serviceFilter : false;
+    }
+
+    // Sort matching cases first
     if (aMatches && !bMatches) return -1;
     if (!aMatches && bMatches) return 1;
-    return a.data.order - b.data.order; // Maintain order for ties
-  });
-}
 
-if (serviceFilter) {
-  const normalizedFilter = serviceFilter.toLowerCase().replace(/-/g, ' ');
-
-  caseStudies.sort((a, b) => {
-    const aMatches = a.data.solutionType?.toLowerCase() === normalizedFilter;
-    const bMatches = b.data.solutionType?.toLowerCase() === normalizedFilter;
-
-    if (aMatches && !bMatches) return -1;
-    if (!aMatches && bMatches) return 1;
+    // If both match or both don't match, maintain original order
     return a.data.order - b.data.order;
   });
+} else {
+  // No filter applied - sort by order field only
+  caseStudies.sort((a, b) => a.data.order - b.data.order);
 }
 ---
 

@@ -1,7 +1,74 @@
 ---
 // Industries We Serve section
-// Simple Astro component with bullet list descriptions and CTAs
-import { Icon } from 'astro-icon/components';
+import IndustryCard from '../react/IndustryCard';
+
+const industries = [
+  {
+    icon: 'lucide:scale',
+    title: 'Legal Tech',
+    items: [
+      'Legal document processing',
+      'Contract analysis automation',
+      'Compliance workflows'
+    ],
+    ctaLink: '/case-studies?industry=legal-tech'
+  },
+  {
+    icon: 'lucide:heart',
+    title: 'Healthcare',
+    items: [
+      'Clinical trial patient matching',
+      'Eligibility verification',
+      'Medical record processing',
+      'EHR integration'
+    ],
+    ctaLink: '/case-studies?industry=healthcare'
+  },
+  {
+    icon: 'lucide:newspaper',
+    title: 'Publishing & Media',
+    items: [
+      'Campaign coordination and link management',
+      'Multi-platform ad performance reporting',
+      'Content distribution automation',
+      'Audience analytics consolidation'
+    ],
+    ctaLink: '/case-studies?industry=publishing-media'
+  },
+  {
+    icon: 'lucide:shopping-cart',
+    title: 'E-commerce',
+    items: [
+      'Inventory synchronization across channels',
+      'Order routing and fulfillment automation',
+      'Customer data consolidation',
+      'Multi-platform performance tracking'
+    ],
+    ctaLink: '/case-studies?industry=e-commerce'
+  },
+  {
+    icon: 'lucide:graduation-cap',
+    title: 'Education Technology',
+    items: [
+      'Student data integration',
+      'Learning management system automation',
+      'Assessment workflow optimization',
+      'Educational content distribution'
+    ],
+    ctaLink: '/case-studies?industry=education-technology'
+  },
+  {
+    icon: 'lucide:factory',
+    title: 'Manufacturing',
+    items: [
+      'Production scheduling and capacity planning',
+      'Changeover optimization',
+      'Shop floor coordination',
+      'Quality data aggregation and maintenance tracking'
+    ],
+    ctaLink: '/case-studies?industry=manufacturing'
+  }
+];
 ---
 
 <section id="industries" class="py-20 bg-gray-50">
@@ -18,206 +85,15 @@ import { Icon } from 'astro-icon/components';
 
     {/* Industries Grid */}
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {/* Industry Card 1: Legal Tech */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        {/* Icon */}
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:scale" class="h-8 w-8 text-gray-900" />
-        </div>
-
-        {/* Title */}
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Legal Tech
-        </h3>
-
-        {/* Description - bullet list */}
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Legal document processing</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Contract analysis automation</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Compliance workflows</span>
-          </li>
-        </ul>
-
-        {/* CTA */}
-        <a href="/case-studies?industry=legal-tech"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
-
-      {/* Industry 2: Healthcare */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:heart" class="h-8 w-8 text-gray-900" />
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Healthcare
-        </h3>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Clinical trial patient matching</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Eligibility verification</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Medical record processing</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>EHR integration</span>
-          </li>
-        </ul>
-        <a href="/case-studies?industry=healthcare"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
-
-      {/* Industry 3: Publishing & Media */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:newspaper" class="h-8 w-8 text-gray-900" />
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Publishing & Media
-        </h3>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Campaign coordination and link management</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Multi-platform ad performance reporting</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Content distribution automation</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Audience analytics consolidation</span>
-          </li>
-        </ul>
-        <a href="/case-studies?industry=publishing-media"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
-
-      {/* Industry 4: E-commerce */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:shopping-cart" class="h-8 w-8 text-gray-900" />
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          E-commerce
-        </h3>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Inventory synchronization across channels</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Order routing and fulfillment automation</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Customer data consolidation</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Multi-platform performance tracking</span>
-          </li>
-        </ul>
-        <a href="/case-studies?industry=e-commerce"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
-
-      {/* Industry 5: Education Technology */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:graduation-cap" class="h-8 w-8 text-gray-900" />
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Education Technology
-        </h3>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Student data integration</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Learning management system automation</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Assessment workflow optimization</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Educational content distribution</span>
-          </li>
-        </ul>
-        <a href="/case-studies?industry=education-technology"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
-
-      {/* Industry 6: Manufacturing */}
-      <div class="bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 p-8">
-        <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-          <Icon name="lucide:factory" class="h-8 w-8 text-gray-900" />
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">
-          Manufacturing
-        </h3>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Production scheduling and capacity planning</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Changeover optimization</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Shop floor coordination</span>
-          </li>
-          <li class="flex items-start gap-2 text-gray-600">
-            <Icon name="lucide:check" class="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
-            <span>Quality data aggregation and maintenance tracking</span>
-          </li>
-        </ul>
-        <a href="/case-studies?industry=manufacturing"
-           class="inline-flex items-center font-medium text-gray-900 hover:text-gray-700 transition-colors">
-          See case studies
-          <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
-        </a>
-      </div>
+      {industries.map((industry) => (
+        <IndustryCard
+          icon={industry.icon}
+          title={industry.title}
+          items={industry.items}
+          ctaLink={industry.ctaLink}
+          client:idle
+        />
+      ))}
     </div>
   </div>
 </section>
