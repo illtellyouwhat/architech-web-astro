@@ -1,47 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
+import CaseStudiesGrid from '@/components/CaseStudiesGrid.jsx';
 
-// Get URL search params
-const url = new URL(Astro.request.url);
-const industryFilter = url.searchParams.get('industry');
-const serviceFilter = url.searchParams.get('service');
+// Fetch all case studies at build time
+const caseStudies = await getCollection('case-studies');
 
-// Load all case studies
-let caseStudies = await getCollection('case-studies');
-
-// Apply filtering - sort matching cases FIRST, then non-matching
-if (industryFilter || serviceFilter) {
-  caseStudies.sort((a, b) => {
-    // Normalize function for consistent comparison
-    const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
-
-    // Check if case study matches filter
-    let aMatches = false;
-    let bMatches = false;
-
-    if (industryFilter) {
-      // Check if any industry in the array matches the filter
-      aMatches = a.data.industry.some(ind => normalize(ind) === industryFilter);
-      bMatches = b.data.industry.some(ind => normalize(ind) === industryFilter);
-    } else if (serviceFilter) {
-      // Check if solutionType matches the filter
-      aMatches = a.data.solutionType ? normalize(a.data.solutionType) === serviceFilter : false;
-      bMatches = b.data.solutionType ? normalize(b.data.solutionType) === serviceFilter : false;
-    }
-
-    // Sort matching cases first
-    if (aMatches && !bMatches) return -1;
-    if (!aMatches && bMatches) return 1;
-
-    // If both match or both don't match, maintain original order
-    return a.data.order - b.data.order;
-  });
-} else {
-  // No filter applied - sort by order field only
-  caseStudies.sort((a, b) => a.data.order - b.data.order);
-}
+// Convert to plain JavaScript objects (strip Astro metadata)
+const caseStudiesData = caseStudies.map(study => ({
+  title: study.data.title,
+  slug: study.slug,
+  industry: study.data.industry, // Array
+  solutionType: study.data.solutionType, // String
+  metric: study.data.metric,
+  metricLabel: study.data.metricLabel,
+  summary: study.data.summary,
+  order: study.data.order,
+  industryIcon: study.data.industryIcon,
+  solutionIcon: study.data.solutionIcon,
+}));
 ---
 
 <Layout
@@ -73,72 +50,8 @@ if (industryFilter || serviceFilter) {
   <!-- Case Studies Grid -->
   <section class="bg-gray-50 py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {caseStudies.map((study) => (
-          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
-            <div class="p-8">
-              <!-- Industry Icon -->
-              <Icon name={study.data.industryIcon} class="h-12 w-12 text-gray-700 mb-6" />
-
-              <!-- Tags (CLICKABLE) -->
-              <div class="flex flex-wrap gap-2 mb-4">
-                {/* Industry Tags */}
-                {study.data.industry.map((ind) => (
-                  <a
-                    href={`/case-studies?industry=${encodeURIComponent(ind.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-'))}`}
-                    class="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-600 hover:bg-gray-200 transition-colors"
-                  >
-                    <Icon name={study.data.industryIcon} class="h-3 w-3" />
-                    {ind}
-                  </a>
-                ))}
-
-                {/* Service Type Tag (if exists) */}
-                {study.data.solutionType && (
-                  <a
-                    href={`/case-studies?service=${encodeURIComponent(study.data.solutionType.toLowerCase().replace(/ /g, '-'))}`}
-                    class="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-600 hover:bg-gray-200 transition-colors"
-                  >
-                    <Icon name={study.data.solutionIcon} class="h-3 w-3" />
-                    {study.data.solutionType}
-                  </a>
-                )}
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
-                {study.data.title}
-              </h3>
-
-              <!-- Metric -->
-              <div class="mb-4">
-                <div class="text-4xl font-light text-gray-900 mb-1">
-                  {study.data.metric}
-                </div>
-                <div class="text-sm font-medium text-gray-500">
-                  {study.data.metricLabel}
-                </div>
-              </div>
-
-              <!-- Summary -->
-              <p class="text-gray-600 mb-6">
-                {study.data.summary}
-              </p>
-
-              <!-- CTA Link (simple text link, not button) -->
-              <a
-                href={`/case-studies/${study.slug}`}
-                class="inline-flex items-center text-gray-900 font-medium hover:text-gray-700 transition-colors"
-              >
-                See more
-                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* React island handles filtering */}
+      <CaseStudiesGrid caseStudies={caseStudiesData} client:load />
     </div>
   </section>
 

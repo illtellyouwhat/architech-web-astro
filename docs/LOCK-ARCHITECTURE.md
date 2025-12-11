@@ -1,13 +1,13 @@
 # ARCHITECTURE LOCK FILE
 ## Automation Architech - Tech Stack & Structural Rules
 
-**Status**: âœ… LOCKED
-**Last Updated**: December 9, 2024
+**Status**: ✅ LOCKED
+**Last Updated**: December 11, 2025
 **Purpose**: Define immutable technical architecture decisions
 
 ---
 
-## âš ï¸ CRITICAL: TECH STACK IS FIXED
+## ⚠️ CRITICAL: TECH STACK IS FIXED
 
 **Framework**: Astro 4.x
 **Styling**: Tailwind CSS
@@ -33,6 +33,7 @@
   - Hover reveal states
   - Expandable/collapsible sections
   - Animation triggers that require JavaScript
+  - **Client-side filtering** (Phase 10+)
 
 **Rule**: Default to Astro. Only use React when client-side state or events are required.
 
@@ -80,7 +81,7 @@ Only create custom CSS for:
 </div>
 ```
 
-**Always**: Mobile-first breakpoints (sm: â†’ md: â†’ lg: â†’ xl:)
+**Always**: Mobile-first breakpoints (sm: → md: → lg: → xl:)
 
 ---
 
@@ -88,24 +89,24 @@ Only create custom CSS for:
 
 ```
 /src/
-â”œâ”€â”€ components/          # Reusable components (Astro + React)
-â”‚   â”œâ”€â”€ Header.astro
-â”‚   â”œâ”€â”€ ServiceCard.jsx  # React island
-â”‚   â””â”€â”€ RevealOnScroll.jsx
-â”œâ”€â”€ layouts/             # Page templates
-â”‚   â””â”€â”€ Layout.astro
-â”œâ”€â”€ pages/               # Route files (Astro only)
-â”‚   â”œâ”€â”€ index.astro
-â”‚   â”œâ”€â”€ case-studies.astro
-â”‚   â””â”€â”€ [...slug].astro
-â”œâ”€â”€ styles/              # Custom CSS (minimal)
-â”‚   â””â”€â”€ global.css
-â””â”€â”€ content/             # Markdown content (if using)
-    â””â”€â”€ case-studies/
+├── components/          # Reusable components (Astro + React)
+│   ├── Header.astro
+│   ├── ServiceCard.jsx  # React island
+│   └── RevealOnScroll.jsx
+├── layouts/             # Page templates
+│   └── Layout.astro
+├── pages/               # Route files (Astro only)
+│   ├── index.astro
+│   ├── case-studies.astro
+│   └── [...slug].astro
+├── styles/              # Custom CSS (minimal)
+│   └── global.css
+└── content/             # Markdown content (if using)
+    └── case-studies/
 
 /public/                 # Static assets
-â”œâ”€â”€ images/
-â””â”€â”€ fonts/
+├── images/
+└── fonts/
 ```
 
 **Do NOT**:
@@ -117,7 +118,7 @@ Only create custom CSS for:
 
 ## CONTENT COLLECTIONS ARCHITECTURE (Phase 8+)
 
-**Status**: âœ… Implemented in Phase 8
+**Status**: ✅ Implemented in Phase 8
 
 ### When to Use Content Collections
 
@@ -128,28 +129,28 @@ Use Astro Content Collections for any **repeatable content type** that:
 - Benefits from type safety and schema validation
 
 **Examples**:
-- âœ… Case studies (implemented Phase 8)
-- âœ… Blog posts (future)
-- âœ… Team member profiles (future)
-- âœ… Testimonials (future)
+- ✅ Case studies (implemented Phase 8)
+- ✅ Blog posts (future)
+- ✅ Team member profiles (future)
+- ✅ Testimonials (future)
 
 **Not for**:
-- âŒ One-off pages (About, Contact, Homepage)
-- âŒ Configuration data (better suited for JSON/YAML)
-- âŒ Real-time data (use API endpoints)
+- ❌ One-off pages (About, Contact, Homepage)
+- ❌ Configuration data (better suited for JSON/YAML)
+- ❌ Real-time data (use API endpoints)
 
 ### Content Collections Structure
 
 ```
 /src/content/
-â"œâ"€â"€ config.ts              # Collection schemas and validation
-â"œâ"€â"€ case-studies/          # Case study Markdown files
-â"‚   â"œâ"€â"€ case-study-1.md
-â"‚   â"œâ"€â"€ case-study-2.md
-â"‚   â""â"€â"€ case-study-3.md
-â""â"€â"€ blog/                  # Blog posts (future)
-    â"œâ"€â"€ post-1.md
-    â""â"€â"€ post-2.md
+├── config.ts              # Collection schemas and validation
+├── case-studies/          # Case study Markdown files
+│   ├── case-study-1.md
+│   ├── case-study-2.md
+│   └── case-study-3.md
+└── blog/                  # Blog posts (future)
+    ├── post-1.md
+    └── post-2.md
 ```
 
 ### Frontmatter Schema Pattern
@@ -249,7 +250,7 @@ More content...
 - Use `1.` for ordered lists
 - Use `**bold**` and `*italic*` for emphasis
 
-### Filtering & Sorting Pattern
+### Filtering & Sorting Pattern (Phase 10+)
 
 **URL Parameter Filtering**: Use query strings for content filtering
 
@@ -259,26 +260,7 @@ More content...
 /case-studies?service=process-automation # Filtered by service
 ```
 
-**Implementation**:
-```astro
----
-const url = new URL(Astro.request.url);
-const filter = url.searchParams.get('industry');
-
-let entries = await getCollection('case-studies');
-
-// Apply filtering
-if (filter) {
-  entries.sort((a, b) => {
-    const aMatches = a.data.industry.includes(filter);
-    const bMatches = b.data.industry.includes(filter);
-    if (aMatches && !bMatches) return -1;
-    if (!aMatches && bMatches) return 1;
-    return a.data.order - b.data.order;
-  });
-}
----
-```
+**CRITICAL**: For static sites, filtering MUST be client-side (React island), NOT server-side (Astro component).
 
 **Filtering Rules**:
 - Use query parameters, NOT path segments (`?filter=value`, not `/filter/value`)
@@ -304,8 +286,108 @@ if (filter) {
 **Tag Rules**:
 - ALL tags are clickable (index pages, detail pages, anywhere they appear)
 - Encode special characters (`&` becomes `-`)
-- Lowercase and hyphenate for URL (`Publishing & Media` â†' `publishing-media`)
-- Decode and normalize when matching (`publishing-media` â†' `Publishing & Media`)
+- Lowercase and hyphenate for URL (`Publishing & Media` → `publishing-media`)
+- Decode and normalize when matching (`publishing-media` → `Publishing & Media`)
+
+### Client-Side Filtering Implementation (Phase 10+)
+
+**When to use**: Static sites with filterable content <100 items
+
+**Why**: Static sites cannot re-render on URL parameter changes. Server-side filtering in Astro runs only at build time.
+
+**Astro Page Pattern** (`/src/pages/[collection]/index.astro`):
+```astro
+---
+import { getCollection } from 'astro:content';
+import FilterableGrid from '../components/FilterableGrid.jsx';
+
+const items = await getCollection('case-studies');
+
+// Convert to plain objects (strip Astro metadata)
+const itemsData = items.map(item => ({
+  title: item.data.title,
+  slug: item.data.slug,
+  industry: item.data.industry,  // Array field
+  solutionType: item.data.solutionType,  // String field
+  order: item.data.order,
+  // Include all fields needed for display
+}));
+---
+
+<Layout>
+  <!-- React island handles filtering -->
+  <FilterableGrid items={itemsData} client:load />
+</Layout>
+```
+
+**React Island Pattern** (`/src/components/FilterableGrid.jsx`):
+```jsx
+import { useState, useEffect } from 'react';
+
+export default function FilterableGrid({ items }) {
+  const [filtered, setFiltered] = useState(items);
+  
+  useEffect(() => {
+    const updateFilter = () => {
+      const params = new URLSearchParams(window.location.search);
+      const filter = params.get('industry') || params.get('service');
+      
+      if (!filter) {
+        setFiltered([...items].sort((a, b) => a.order - b.order));
+        return;
+      }
+      
+      // Sort: matching first, others after
+      const sorted = [...items].sort((a, b) => {
+        const aMatches = matchesFilter(a, filter, params.get('industry'));
+        const bMatches = matchesFilter(b, filter, params.get('industry'));
+        
+        if (aMatches && !bMatches) return -1;
+        if (!aMatches && bMatches) return 1;
+        return a.order - b.order;
+      });
+      
+      setFiltered(sorted);
+    };
+    
+    updateFilter();
+    window.addEventListener('popstate', updateFilter);
+    return () => window.removeEventListener('popstate', updateFilter);
+  }, [items]);
+  
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {filtered.map(item => <Card key={item.slug} item={item} />)}
+    </div>
+  );
+}
+
+function matchesFilter(item, filter, isIndustryFilter) {
+  if (isIndustryFilter) {
+    // Array field: use .some()
+    return item.industry.some(ind => 
+      normalizeString(ind) === normalizeString(filter)
+    );
+  } else {
+    // String field: direct comparison
+    return normalizeString(item.solutionType) === normalizeString(filter);
+  }
+}
+
+function normalizeString(str) {
+  if (!str) return '';
+  return str.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
+}
+```
+
+**Critical Implementation Rules**:
+- Strip Astro metadata before passing to React (plain objects only)
+- Use `client:load` for filtering islands (immediate hydration required)
+- Listen for `popstate` events (back/forward button support)
+- Normalize both filter value AND data field for comparison
+- Use `.some()` for array fields, direct comparison for strings
+- Sort matching items first, maintain original order within groups
+- Create new array before sorting (don't mutate props)
 
 ### Adding New Content Types
 
@@ -319,26 +401,27 @@ To add a new content collection (e.g., blog posts):
 
 **Follow existing patterns**:
 - Use same frontmatter fields (title, slug, order, etc.)
-- Use same filtering approach (URL parameters)
+- Use same filtering approach (client-side React island)
 - Use same Markdown structure (## for sections)
 - Use same dynamic routing pattern
 
 ### Content Collections Best Practices
 
 **Do**:
-- âœ… Use descriptive schema field names
-- âœ… Validate all frontmatter with Zod schema
-- âœ… Keep Markdown files focused (one entry = one file)
-- âœ… Use consistent heading levels
-- âœ… Make tags clickable for filtering
-- âœ… Include `order` field for default sorting
+- ✅ Use descriptive schema field names
+- ✅ Validate all frontmatter with Zod schema
+- ✅ Keep Markdown files focused (one entry = one file)
+- ✅ Use consistent heading levels
+- ✅ Make tags clickable for filtering
+- ✅ Include `order` field for default sorting
 
 **Don't**:
-- âŒ Mix hardcoded pages with Content Collections
-- âŒ Skip schema validation
-- âŒ Use relative dates in frontmatter (use ISO strings)
-- âŒ Duplicate content between frontmatter and Markdown body
-- âŒ Create separate files for metadata (frontmatter is sufficient)
+- ❌ Mix hardcoded pages with Content Collections
+- ❌ Skip schema validation
+- ❌ Use relative dates in frontmatter (use ISO strings)
+- ❌ Duplicate content between frontmatter and Markdown body
+- ❌ Create separate files for metadata (frontmatter is sufficient)
+- ❌ Use server-side filtering for static sites
 
 ### Migration Pattern
 
@@ -399,6 +482,11 @@ CONTACT_FORM_WEBHOOK=xxx
 - Intersection Observer API (via React island)
 - `RevealOnScroll` component pattern (already implemented)
 
+### Filtering/Sorting
+- Client-side React islands for static content
+- URL parameter-based filtering
+- See "Client-Side Filtering Implementation" section above
+
 ---
 
 ## PERFORMANCE RULES
@@ -416,17 +504,18 @@ CONTACT_FORM_WEBHOOK=xxx
 ### SEO Requirements
 - All pages must have `<title>` and meta description
 - Use semantic HTML (`<header>`, `<nav>`, `<main>`, `<article>`)
-- Proper heading hierarchy (h1 â†’ h2 â†’ h3)
+- Proper heading hierarchy (h1 → h2 → h3)
 
 ---
 
 ## DO NOT CHANGE WITHOUT APPROVAL
 
-- âŒ Migration to Next.js, Remix, SvelteKit, or other frameworks
-- âŒ Introduction of CSS-in-JS libraries (styled-components, emotion)
-- âŒ Backend API implementation (keep static or use serverless functions)
-- âŒ Database integration (not needed for current scope)
-- âŒ Authentication system (not needed for current scope)
+- ❌ Migration to Next.js, Remix, SvelteKit, or other frameworks
+- ❌ Introduction of CSS-in-JS libraries (styled-components, emotion)
+- ❌ Backend API implementation (keep static or use serverless functions)
+- ❌ Database integration (not needed for current scope)
+- ❌ Authentication system (not needed for current scope)
+- ❌ Server-side rendering (SSR mode) - use static builds only
 
 ---
 
@@ -487,7 +576,9 @@ If architectural changes are needed:
 
 ---
 
-**Document Version**: 2.0  
-**Last Updated**: December 9, 2024  
+**Document Version**: 2.1  
+**Last Updated**: December 11, 2025  
 **Approved By**: Phil  
-**Major Changes**: Phase 8 - Added Content Collections Architecture section
+**Major Changes**: 
+- Phase 8: Added Content Collections Architecture section
+- Phase 10: Added Client-Side Filtering Implementation pattern
