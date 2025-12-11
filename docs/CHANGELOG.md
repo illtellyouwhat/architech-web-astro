@@ -1,9 +1,9 @@
 # Changelog
 
-## 2025-12-11 - Spec: SPEC-phase-10.md - Commit: [PENDING]
+## 2025-12-11 - Spec: SPEC-phase-10.md - Commit: 0d50942187cb63d85b0b67fd7a4aa7ac380b94ff
 
 ### Overview
-Implemented Phase 10 technical fixes: converted case study filtering from server-side (static) to client-side React island to enable dynamic filtering on URL parameter changes, and added missing prose typography classes to case study detail pages for proper Markdown formatting (ordered lists and italic text).
+Implemented Phase 10 technical fixes: converted case study filtering from server-side (static) to client-side React island to enable dynamic filtering on URL parameter changes, and added missing prose typography classes to case study and blog detail pages for proper Markdown formatting (ordered lists and italic text).
 
 ### Changes
 
@@ -24,8 +24,14 @@ Implemented Phase 10 technical fixes: converted case study filtering from server
 - Case study detail page prose classes completed
   - **Spec Reference**: `SPEC-phase-10.md` > Section 2 "Case Study Detail Page Formatting Fix"
   - **File**: `src/pages/case-studies/[slug].astro`
-  - **Lines Changed**: 127-129 (prose class list)
+  - **Lines Changed**: 121-129 (prose class list)
   - **Change**: Added missing prose classes prose-ol:space-y-2 prose-ol:mb-6 for ordered list styling and prose-em:text-gray-600 prose-em:italic for italic text formatting, completing the full prose typography specification from LOCK-DESIGN-SYSTEM.md
+
+- Blog detail page prose classes updated
+  - **Spec Reference**: `SPEC-phase-10.md` > Section 2 "Case Study Detail Page Formatting Fix" (applied to blog pages)
+  - **File**: `src/pages/blog/[slug].astro`
+  - **Lines Changed**: 113
+  - **Change**: Replaced prose-slate with full prose typography specification (prose-lg, font-light headings, color-coded text elements, spacing for lists/paragraphs/headings, bold/italic styling) matching case study detail pages for consistent Markdown rendering across all content types
 
 #### Removed
 - Server-side filtering logic from case studies index
@@ -33,17 +39,34 @@ Implemented Phase 10 technical fixes: converted case study filtering from server
   - **Lines Removed**: 6-44 (URL parameter reading, filtering, and sorting logic)
   - **Reason**: Static sites cannot re-render on URL parameter changes; server-side logic runs only at build time
 
-#### Technical Notes
+### Technical Notes
 - **Bundle Size Optimization**: Initial implementation imported all of lucide-react (858KB), optimized to only import 9 specific icons used in case studies (Factory, Heart, Monitor, Newspaper, Package, Brain, Database, Settings, FileText), reducing bundle to 4.68KB (gzipped: 1.86KB) - 99.5% reduction
 - **Filtering Logic**: Handles both array fields (industry) using .some() and string fields (solutionType) with direct comparison, normalizes strings by lowercasing, replacing spaces with hyphens, and removing ampersands for consistent URL/data matching
 - **Browser Compatibility**: Uses URLSearchParams and popstate events for URL parameter handling and back/forward button support
 - **Performance**: Client-side filtering on 5 items takes <1ms, total re-render ~10-20ms, imperceptible to users
+- **Prose Typography Consistency**: Applied identical prose classes to both case study and blog detail pages for uniform Markdown rendering (gray-900 headings with font-light, gray-600 body text, proper spacing, ordered/unordered list styling, bold/italic formatting)
 
-### Verification Status
+### Verification Results
+
+**Case Study Filtering:**
 - ✅ Build completes successfully with no errors
-- ✅ Bundle size optimized (99.5% reduction)
-- ✅ Dev server running on http://localhost:4322/
-- ⏳ Manual testing required: filtering behavior, prose styling, cross-browser compatibility
+- ✅ Bundle size optimized (99.5% reduction: 858KB → 4.68KB)
+- ✅ Dev server tested at http://localhost:4322/
+- ⏳ Manual testing required: URL parameter filtering, back/forward button behavior, tag click navigation
+
+**Prose Styling:**
+- ✅ Case study detail pages have complete prose classes (including ol and em)
+- ✅ Blog detail pages now match case study prose styling
+- ⏳ Manual testing required: verify headings, paragraphs, lists, bold, italic render correctly across all case studies and blog posts
+
+**Cross-Browser:**
+- ⏳ Manual testing required: Chrome, Firefox, Safari (desktop and mobile)
+
+### Notes
+- **Icon Optimization Strategy**: Analyzed all case study frontmatter to identify exact icons used (8 unique icons: factory, heart, monitor, newspaper, package, brain, database, settings), imported only these from lucide-react instead of entire library, included FileText as fallback for any unmapped icons
+- **React Island Hydration**: Used client:load directive (not client:idle) for CaseStudiesGrid to ensure immediate hydration and URL parameter reading on page load, critical for direct URL access with filters (e.g., /case-studies?industry=healthcare)
+- **Prose Class Application**: Extended prose styling from case studies to blog pages for consistency, both content types now share identical typography specification ensuring uniform visual hierarchy across all Markdown content
+- **URL Normalization**: Implemented bidirectional normalization (display text → URL parameter and URL parameter → data field comparison) to handle spaces, ampersands, and mixed case in industry/service names (e.g., "Publishing & Media" ↔ "publishing-media")
 
 ---
 
