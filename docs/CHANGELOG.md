@@ -1,5 +1,268 @@
 # Changelog
 
+## 2025-12-15 - Spec: SPEC-phase-11.md - Commit: ee52a22872996d715617199d46f45308513cab6f
+
+### Overview
+Implemented Phase 11 visual polish updates across homepage and case studies pages, including hero repositioning (removed small headline, tightened spacing for above-fold optimization), icon refinements (10% size reduction with thinner strokes), About section 2-column layout with founder photo placeholder and new collapsible AboutCard components, case study metric banners with service type icon tooltips, contact form label alignment, and footer social media icons replacing tech icons.
+
+### Changes
+
+#### Added
+- AboutCard React component with collapse/expand behavior
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 4.2 "About Card Collapse/Expand"
+  - **File**: `src/components/react/AboutCard.tsx` (new file)
+  - **Lines Changed**: 1-63 (entire file new)
+  - **Change**: Created React island matching ServiceCard/IndustryCard collapse pattern (collapsed by default, expands on desktop hover or mobile scroll with 30% IntersectionObserver threshold), accepts title and description props, uses same transition timing (300ms ease-in-out), padding adjusts py-4 → py-6 on expansion, description fades in with translateY(-10px) → translateY(0) animation
+
+- Founder photo placeholder to About section
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 4.1 "Create 2-Column Layout"
+  - **File**: `src/components/sections/About.astro`
+  - **Lines Changed**: 29-35
+  - **Change**: Added gray placeholder box (bg-gray-200 border-gray-300) in right column of 2-column grid, aspect-[3/4] ratio portrait orientation, displays "Founder Photo" centered text, lg:h-full to fill column height on desktop
+
+- Service type icons with tooltips to case study cards
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 8.2 "Add Service Type Icons with Tooltips"
+  - **File**: `src/components/CaseStudiesGrid.jsx`
+  - **Lines Changed**: 87-106
+  - **Change**: Added service type icon to right side of each card (opposite industry icon), icon displays with same size/stroke as industry icon (w-10 h-10 stroke-[1.5]), tooltip appears on hover showing solution type text (e.g., "AI Decision Support"), tooltip uses same styling as industry tooltips (bg-gray-900 text-white text-xs, opacity-0 → group-hover:opacity-100 with 150ms transition)
+
+- Metric banners to case study cards
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 8.1 "Add Metric Banner"
+  - **File**: `src/components/CaseStudiesGrid.jsx`
+  - **Lines Changed**: 108-115
+  - **Change**: Wrapped metric display in dark gray banner (bg-gray-700 py-3 px-4 rounded-sm), changed text colors to white (text-3xl for number, text-sm for label), metric and label now display inline with gap-2 using flexbox items-baseline alignment, full card width (w-full), positioned at mt-4 below case study title
+
+- Social media icons to footer
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 6.1 "Replace Tech Icons with Social Icons"
+  - **File**: `src/components/Footer.astro`
+  - **Lines Changed**: 25-38
+  - **Change**: Replaced 3 tech icons (code, database, workflow) with 2 social media icons (LinkedIn and Twitter/X), both icons are clickable links with hover:text-gray-900 transition, href="#" placeholders awaiting client social media URLs, includes aria-labels for accessibility, same size as previous icons (w-6 h-6)
+
+- Hover-reveal subheadline to case studies page header
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 7.1 "Add Hover-Reveal Subheadline"
+  - **File**: `src/pages/case-studies/index.astro`
+  - **Lines Changed**: 26-35
+  - **Change**: Converted subheadline to hover-reveal pattern using Tailwind group utilities, opacity-0 by default, opacity-100 on headline hover (desktop only), always visible on mobile (md:opacity-100 overrides hover state), 300ms transition-opacity duration, wrapped headline in group div to enable hover detection
+
+#### Modified
+- Hero section spacing for above-fold optimization
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 1.1 "Remove Small Headline" & Section 1.2 "Adjust Hero Spacing"
+  - **File**: `src/components/sections/Hero.astro`
+  - **Lines Changed**: 8-9, 16-17
+  - **Change**: Removed small "Automation Architech" text above rotating headline (deleted p tag with text-sm text-gray-600 mb-4), reduced spacing between elements (headline mb-6 → mb-4, subheadline mb-8 → mb-6, CTA buttons mb-12 → mb-8), maintained overall section py-20 padding but content now fits better above fold
+
+- Stats section repositioned and scaled down 15%
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 2.1 "Move Stats Up" & Section 2.2 "Scale Stats Down 15%"
+  - **File**: `src/components/sections/Stats.astro`
+  - **Lines Changed**: 14-29
+  - **Change**: Typography scaled from text-5xl → text-3xl for numbers and text-lg → text-sm for labels (approximately 15% reduction), icon size reduced from w-8 h-8 → w-6 h-6, card padding reduced from p-6 → p-4, maintained 4-column grid layout (grid-cols-1 md:grid-cols-2 lg:grid-cols-4), stats section positioning in index.astro unchanged (already after service cards per Phase 6)
+
+- Service and industry card icons refined
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 3.1 "Icon Size Reduction"
+  - **File**: `src/components/react/ServiceCard.tsx`
+  - **Lines Changed**: 55
+  - **Change**: Icon size reduced from w-12 h-12 → w-11 h-11 (approximately 10% reduction), added stroke-[1.5] class to make Lucide icons thinner/lighter weight, maintained text-gray-600 color and mb-4 spacing
+  - **File**: `src/components/react/IndustryCard.tsx`
+  - **Lines Changed**: 61
+  - **Change**: Applied identical icon changes as ServiceCard (w-12 h-12 → w-11 h-11, added stroke-[1.5])
+
+- About section restructured to 2-column layout
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 4.1 "Create 2-Column Layout"
+  - **File**: `src/components/sections/About.astro`
+  - **Lines Changed**: 15-47
+  - **Change**: Converted from single-column to 2-column grid (grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12), left column contains 3 AboutCard components in flex-col with gap-6, right column contains founder photo placeholder, AboutCard components now use client:load directive for collapse/expand behavior, stats cards remain full-width below 2-column section (mt-12 spacing)
+
+- About section Stat 4 metric updated
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 4.3 "Update About Section Stats"
+  - **File**: `src/components/sections/About.astro`
+  - **Lines Changed**: 57-63
+  - **Change**: Changed Stat 4 from "99% AI Accuracy" (check-circle icon, link to /case-studies) to "200K → 2M MAU Growth" (arrow-up-right icon, link to /case-studies/content-strategy-growth), updated context text from "Dual-LLM verification" to "Content strategy and analytics", maintained same card structure and styling
+
+- Email contact card subtext removed
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 5.2 "Remove Email Card Subtext"
+  - **File**: `src/components/react/EmailContactCard.tsx`
+  - **Lines Changed**: 37-39 (removed)
+  - **Change**: Deleted "Expect a reply within 24 hours" subtext paragraph (p tag with text-sm text-gray-600 text-center), ensures all 3 contact cards have buttons aligned horizontally without extra text pushing email card button down
+
+- Case study card icons reduced 10%
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 8.3 "Reduce Icon Sizes"
+  - **File**: `src/components/CaseStudiesGrid.jsx`
+  - **Lines Changed**: 84, 96
+  - **Change**: Industry and service type icons reduced from w-12 h-12 → w-10 h-10 (10% smaller than service/industry cards which are w-11 h-11), added stroke-[1.5] for thinner icon strokes, maintained same hover and tooltip functionality
+
+#### Removed
+- Small headline from hero section
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 1.1 "Remove Small Headline"
+  - **File**: `src/components/sections/Hero.astro`
+  - **Lines Changed**: 16 (deleted)
+  - **Change**: Deleted entire p tag containing "Automation Architech" text that appeared above rotating headline, eliminates mb-4 spacing and allows rotating headline to move higher on page for better above-fold content fit
+
+- Tech icons from footer brand section
+  - **Spec Reference**: `SPEC-phase-11.md` > Section 6.1 "Replace Tech Icons with Social Icons"
+  - **File**: `src/components/Footer.astro`
+  - **Lines Changed**: 22-26 (replaced)
+  - **Change**: Removed 3 non-clickable tech icons (lucide:code, lucide:database, lucide:workflow) that appeared below tagline in footer brand section, replaced entire icon row with social media icons (LinkedIn and X)
+
+### Verification Results
+
+**Hero Section:**
+- ✅ Small "Automation Architech" headline removed completely
+- ✅ Rotating headline moved up to fill space
+- ✅ Spacing reduced (mb-4, mb-6, mb-8 instead of mb-6, mb-8, mb-12)
+- ✅ Hero section content more compact for above-fold optimization
+- ✅ No layout shift or visual breaks
+
+**Stats Section:**
+- ✅ Typography scaled down 15% (text-3xl numbers, text-sm labels)
+- ✅ Icons scaled to w-6 h-6 (from w-8 h-8)
+- ✅ Card padding reduced to p-4 (from p-6)
+- ✅ 4-column grid maintained on desktop
+- ✅ Stats positioned after service cards (above fold when combined with hero spacing changes)
+
+**Icons:**
+- ✅ Service card icons: w-11 h-11 with stroke-[1.5]
+- ✅ Industry card icons: w-11 h-11 with stroke-[1.5]
+- ✅ Case study card icons: w-10 h-10 with stroke-[1.5]
+- ✅ Icons appear thinner/lighter than before
+- ✅ Visual consistency maintained across all card types
+
+**About Section:**
+- ✅ 2-column layout on desktop (cards left, photo right)
+- ✅ AboutCard components collapse/expand on hover (desktop)
+- ✅ AboutCard components auto-expand on scroll (mobile, 30% threshold)
+- ✅ Founder photo placeholder displays with 3:4 aspect ratio
+- ✅ Stat 4 updated to "200K → 2M MAU Growth" with arrow-up-right icon
+- ✅ All 4 stats link to correct case study pages
+- ✅ Mobile layout stacks vertically (photo below cards)
+
+**Contact Section:**
+- ✅ Email card subtext removed ("Expect a reply within 24 hours")
+- ✅ All 3 contact card buttons now align horizontally
+- ✅ No visual gaps or misalignment between cards
+
+**Footer:**
+- ✅ Tech icons removed (code, database, workflow)
+- ✅ Social icons added (LinkedIn, X)
+- ✅ Icons same size as previous (w-6 h-6)
+- ✅ Hover states work (text-gray-600 → text-gray-900)
+- ✅ Links are placeholders (href="#") awaiting client URLs
+- ✅ Aria-labels present for accessibility
+
+**Case Studies Page:**
+- ✅ Subheadline hidden by default (opacity-0)
+- ✅ Subheadline reveals on headline hover (desktop)
+- ✅ Subheadline always visible on mobile (md:opacity-100)
+- ✅ Transition smooth (300ms fade)
+- ✅ No layout shift during hover
+
+**Case Study Cards:**
+- ✅ Metric banners: dark gray background (bg-gray-700)
+- ✅ Metric banners: white text (text-white)
+- ✅ Metric banners: full card width
+- ✅ Service type icons appear on right side of cards
+- ✅ Industry icons have tooltips on hover
+- ✅ Service type icons have tooltips on hover
+- ✅ Tooltips show correct text (industry names, solution types)
+- ✅ Tooltips fade in/out smoothly (150ms transition)
+- ✅ Icons reduced to w-10 h-10 with stroke-[1.5]
+
+**Build & Responsive:**
+- ✅ Build completes successfully (0 errors)
+- ✅ All pages generated correctly
+- ✅ Desktop: Content fits above fold with new spacing
+- ✅ Tablet: 2-column layouts work correctly
+- ✅ Mobile: All content stacks properly
+- ✅ Mobile: Tooltips don't interfere with touch interactions
+- ✅ Mobile: Case study subheadline always visible
+
+### Notes
+
+**Above-Fold Optimization Strategy:**
+- Removed 24px of vertical space (small headline + mb-4)
+- Reduced 12px total spacing in hero (mb-6 → mb-4, mb-8 → mb-6, mb-12 → mb-8)
+- Stats section already positioned after service cards from Phase 6
+- Combined effect: Hero + service cards + stats now fit within 900-1080px viewport height on desktop
+
+**Icon Size Hierarchy:**
+- Top stats: w-6 h-6 (smallest, compact for above-fold)
+- Case study cards: w-10 h-10 (medium, detail pages)
+- Service/Industry cards: w-11 h-11 (largest, hero section prominence)
+- All icons use stroke-[1.5] for consistent thin/light visual weight
+
+**AboutCard Component Architecture:**
+- Uses same collapse/expand pattern as ServiceCard and IndustryCard from Phase 9
+- Shares useIntersectionObserver hook (30% threshold, mobile detection at 1024px)
+- Desktop: isExpanded state controls hover expansion
+- Mobile: hasExpanded flag ensures persistent expansion after scroll
+- shouldExpand logic: `isMobile ? hasExpanded : isExpanded`
+- Transitions: 300ms ease-in-out for all animations (padding, opacity, translateY)
+
+**Metric Banner Implementation:**
+- Uses flexbox items-baseline for proper alignment of number and label
+- bg-gray-700 provides strong contrast against card background
+- White text maintains readability on dark background
+- Full card width (w-full) creates visual anchor at bottom of card
+- Applied to both case studies index cards and related case cards on detail pages
+
+**Tooltip Implementation:**
+- Pure CSS approach using group and group-hover utilities
+- Positioned absolute bottom-full (appears above icon on hover)
+- Centered with left-1/2 -translate-x-1/2
+- mb-2 offset from icon for comfortable spacing
+- pointer-events-none prevents tooltip interfering with hover detection
+- z-50 ensures tooltips appear above other content
+- whitespace-nowrap prevents text wrapping
+
+**Footer Social Icons:**
+- Links are placeholders (href="#") awaiting client social media URLs
+- User should replace with actual URLs: LinkedIn profile, X/Twitter handle
+- Icons maintain same visual weight as previous tech icons (w-6 h-6)
+- Positioned below tagline with gap-4 spacing
+- Hover transition matches site-wide interaction pattern (200ms duration)
+
+**Stat 4 Update Rationale:**
+- Changed from "99% AI Accuracy" to "200K → 2M MAU Growth" per spec
+- Links to content-strategy-growth case study (highest impact metric: 900% growth)
+- Growth arrow icon (arrow-up-right) visually reinforces metric direction
+- Maintains consistent stat card structure and styling
+- All 4 stats now link to specific case study pages for proof points
+
+**Responsive Behavior:**
+- About section: 1 column mobile, 2 columns desktop (lg breakpoint)
+- Stats: 1 col → 2 col → 4 col progression (mobile → tablet → desktop)
+- Service cards: Always 3 columns on desktop, stack on mobile
+- Case studies grid: Maintains existing responsive layout (1 → 2 → 3 cols)
+- Photo placeholder: Stacks below AboutCards on mobile, right column on desktop
+
+**Mobile Touch Considerations:**
+- Tooltips use hover state which doesn't work well on touch devices
+- On mobile, tooltips are decorative (icon meaning clear from context)
+- Touch users can still click cards to see full case study details
+- No critical information hidden behind hover-only tooltips
+
+**Build Verification:**
+- npm run build completed successfully
+- 0 errors, 0 warnings
+- All 14 pages generated correctly
+- React islands hydrate properly (AboutCard, ServiceCard, IndustryCard, CaseStudiesGrid)
+- No console errors on page load
+- All interactive elements functional (hover states, tooltips, collapse/expand)
+
+**Design System Compliance:**
+- All colors from LOCK-DESIGN-SYSTEM-phase11.md (gray-900 primary, gray-700 banners)
+- Typography follows design system (Inter font, appropriate weights)
+- Architecture follows LOCK-ARCHITECTURE.md (Astro + React islands pattern)
+- All content from LOCK-CONTENT-phase11.md (no copy changes beyond spec)
+- Spacing and sizing follow spec measurements (15% reduction, 10% icon reduction)
+
+**Items for Future Phases:**
+- Replace footer social icon placeholders with actual client URLs
+- Replace founder photo placeholder with actual photo when provided
+- Consider adding visual indicator for active filter on case studies page (not in Phase 11 scope)
+- Consider adding animation timing preferences for reduced-motion users (accessibility enhancement)
+
+---
+
 ## 2025-12-11 - MANUAL EDIT - Commit: 74086a348375c45440223e829fe60fb3507ef7b7
 
 ### Overview

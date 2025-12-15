@@ -1,256 +1,102 @@
-# CONTENT LOCK FILE - PHASE 11 UPDATE
-## Automation Architech - Copy Changes
+# CONTENT LOCK FILE - PHASE 12 UPDATE
+## Automation Architech - Service Card Copy Refinements
 
 **Date Updated**: December 15, 2025
-**Phase**: Phase 11
-**Changes**: Stats updates, contact form alignment, footer social icons, case study page updates
+**Phase**: Phase 12
+**Changes**: Remove examples bullets from service cards 1 & 2, remove API workarounds bullet from service card 3
 
 ---
 
-## HERO SECTION (UPDATED - Phase 11)
+## SERVICE CARDS (UPDATED - Phase 12)
 
-### Small Headline
-```
-[REMOVED - Delete this element entirely]
-```
+### Service Card 1: Process Automation
 
-**Previous:** "Automation Architech"
-**Action:** Remove completely to move rotating headline higher on page
-
-### Main Rotating Headline
 ```
-Your [rotating word] needs data
-```
+Title: "Process Automation"
 
-**Rotating words:** "LLM application", "data pipeline", "system workflow"
-**Behavior:** Unchanged (fade in/out with 2.5s intervals)
-**Position:** Move up to fill space left by removed small headline
+Description:
+"Save 10-20 hours per week by eliminating manual work and reducing error rates to near-zero."
 
-### Subheadline
-```
-We help organizations build intelligent LLM applications, deploy robust data pipelines, 
-and create seamless system workflows that scale.
+Expandable Features (shown on hover/scroll):
+• Reduce error rates from 5-10% to <1%
+• Scale capacity 5-10x without additional headcount
+• Free your team to focus on strategic work
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies?service=process-automation
 ```
 
-**Behavior:** Unchanged (remains visible)
+**REMOVED:** "Examples: Email campaign management, production scheduling, link coordination"
 
 ---
 
-## STATS SECTION (UPDATED - Phase 11)
+### Service Card 2: AI-Powered Decision Support
 
-### Top Stats (Above Fold)
-
-**Positioning:** Move these 4 stats UP to appear above fold, immediately below service cards
-**Size Reduction:** Scale down by 15% (approximately text-3xl → text-2xl for numbers, adjust container padding)
-
-**Stat 1:**
 ```
-Number: "50+"
-Label: "Projects Delivered"
-Link: /case-studies
-```
+Title: "AI-Powered Decision Support"
 
-**Stat 2:**
-```
-Number: "8 Years"
-Label: "Industry Experience"
-Link: /case-studies
+Description:
+"Accelerate expert decisions—process thousands of documents in minutes instead of weeks."
+
+Expandable Features (shown on hover/scroll):
+• Match patterns across massive datasets humans can't manually review
+• Reduce expert bottlenecks (legal review, clinical assessment, due diligence)
+• Built-in verification layers to prevent AI hallucinations (99% accuracy)
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies?service=ai-decision-support
 ```
 
-**Stat 3:**
-```
-Number: "87.5%"
-Label: "Average Time Reduction"
-Link: /case-studies
-```
-
-**Stat 4:**
-```
-Number: "99%"
-Label: "AI Accuracy"
-Link: /case-studies
-```
+**REMOVED:** "Examples: Clinical trial patient matching, contract analysis, medical record review"
 
 ---
 
-## ABOUT SECTION (UPDATED - Phase 11)
-
-### About Section Stats (Below About Cards)
-
-**Layout:** 2-column grid (desktop) - About cards on left, founder photo placeholder on right
-**Stat Cards:** 4 cards below the 2-column layout, linking to specific case studies
-
-**Stat 1: Clinical Trial Capacity**
-```
-Icon: lucide:users (or appropriate icon for capacity/scale)
-Number: "6-7x"
-Label: "Capacity Increase"
-Context: "Clinical trial patient matching"
-Link: /case-studies/clinical-trial-patient-matching
-```
-
-**Stat 2: Manufacturing Time Reduction**
-```
-Icon: lucide:clock (or timer icon)
-Number: "87.5%"
-Label: "Time Reduction"
-Context: "Production scheduling optimization"
-Link: /case-studies/manufacturing-production-scheduling
-```
-
-**Stat 3: Ad Reporting Time Saved**
-```
-Icon: lucide:trending-up (or chart icon)
-Number: "16 hrs"
-Label: "Saved Per Week"
-Context: "Ad performance reporting"
-Link: /case-studies/ad-performance-reporting
-```
-
-**Stat 4: Content Strategy Growth** [UPDATED]
-```
-Icon: lucide:arrow-up-right (or growth icon)
-Number: "200K → 2M"
-Label: "MAU Growth"
-Context: "Content strategy and analytics"
-Link: /case-studies/content-strategy-growth
-```
-
-**Note:** Stat 4 changed from "99% AI Accuracy" to "200K → 2M MAU Growth"
-
----
-
-## CONTACT SECTION (UPDATED - Phase 11)
-
-### Contact Form Field Labels
-
-**Alignment:** Left-aligned to input boxes (NOT centered over)
+### Service Card 3: Multi-Platform Data Integration
 
 ```
-Name: [text input]
-Email: [text input]
-Company: [text input]
-Message: [textarea]
+Title: "Multi-Platform Data Integration"
+
+Description:
+"Stop manually compiling data from 5+ platforms. Get unified reporting automatically."
+
+Expandable Features (shown on hover/scroll):
+• Connect Google Analytics, Klaviyo, Salesforce, Shopify, and 50+ other platforms
+• Automate report generation that currently takes hours
+• Enable historical analysis (3+ years) impossible in spreadsheets
+
+CTA Button: "See case studies →"
+CTA Link: /case-studies?service=multi-platform-data-integration
 ```
 
-**Implementation:** Labels should use `text-left` alignment and appear directly above their respective input fields
-
-### Contact Method Cards
-
-#### Card 1: Email (UPDATED)
-
-```
-Icon: lucide:mail
-Icon Size: w-8 h-8
-Icon Color: text-gray-600
-
-Button Text: "Email Us"
-Button Style: bg-gray-900 text-white px-6 py-3 rounded-lg font-medium
-Button Hover: hover:bg-gray-800
-Button Action: Opens mailto:hello@automationarchitech.com
-Button Transition: transition-colors duration-200
-
-Email Address (below button): "hello@automationarchitech.com"
-Email Address Display: Regular text, clickable
-Email Address Action: Copy to clipboard on click
-Email Address Feedback: Show "Copied!" message for 2 seconds after click
-Email Address Style: text-gray-700 hover:text-gray-900 cursor-pointer underline
-
-Subtext: [REMOVED]
-```
-
-**Previous subtext:** "Expect a reply within 24 hours"
-**Action:** Delete this line so all buttons align horizontally across the 3 cards
-
-#### Card 2: Video Call
-```
-[No changes - remains as Phase 9]
-```
-
-#### Card 3: Phone Call
-```
-[No changes - remains as Phase 9]
-```
-
----
-
-## FOOTER (UPDATED - Phase 11)
-
-### Brand Section Icons
-
-**Previous Icons:** code, database, workflow (3 generic tech icons)
-**New Icons:** Social media icons
-
-```
-Icon 1: LinkedIn
-- Icon: lucide:linkedin (or appropriate LinkedIn icon)
-- Link: [PLACEHOLDER - awaiting client social media URL]
-- Size: Same as previous icons
-- Color: text-gray-600 hover:text-gray-900
-
-Icon 2: X (Twitter)
-- Icon: lucide:twitter (or X logo if available)
-- Link: [PLACEHOLDER - awaiting client social media URL]
-- Size: Same as previous icons
-- Color: text-gray-600 hover:text-gray-900
-```
-
-**Positioning:** Below tagline "Intelligent automation with measurable results. Process automation, AI decision support, and data integration for manufacturing, healthcare, and publishing operations."
-
-**Spacing:** gap-4 between icons, same layout as previous icon row
-
----
-
-## CASE STUDIES PAGE (UPDATED - Phase 11)
-
-### Page Header
-
-**Headline:** 
-```
-Real Projects. Real Results.
-```
-
-**Subheadline (NEW BEHAVIOR):**
-```
-From 6-7x capacity increases to 87.5% time reductions—see how we've helped companies 
-automate their most critical processes.
-```
-
-**Hover Behavior:** 
-- Default: Hidden (opacity-0)
-- On headline hover: Reveal subheadline (opacity-100)
-- Transition: 300ms fade (same as hero subheadline)
-
----
-
-## CASE STUDY CARDS (INDEX & RELATED) (No Copy Changes)
-
-**Note:** Card styling changes are in LOCK-DESIGN-SYSTEM.md (metric banner, icon tooltips)
-**Content:** All case study card copy remains unchanged from current inventory
+**REMOVED:** "API workarounds when platforms don't provide direct access"
 
 ---
 
 ## IMPLEMENTATION NOTES FOR CLAUDE CODE
 
-### Phase 11 Changes Summary:
+### What Changed:
 
-**Content Changes:**
-1. Remove small "Automation Architech" headline from hero
-2. Update Stat 4 in About section: "99% AI Accuracy" → "200K → 2M MAU Growth" with growth icon
-3. Update Stat 4 link: /case-studies → /case-studies/content-strategy-growth
-4. Remove "Expect a reply within 24 hours" subtext from email card
-5. Left-align contact form field labels
-6. Replace footer tech icons (code, database, workflow) with social icons (LinkedIn, X)
-7. Add hover-reveal behavior to case studies page subheadline
+**Service Card 1 (Process Automation):**
+- Removed 4th bullet: "Examples: Email campaign management, production scheduling, link coordination"
+- Now 3 bullets total (was 4)
 
-**Reference Other Lock Files:**
-- Icon sizing/styling → LOCK-DESIGN-SYSTEM.md Phase 11
-- Metric banner styling → LOCK-DESIGN-SYSTEM.md Phase 11
-- About section layout → LOCK-DESIGN-SYSTEM.md Phase 11
-- Tooltip implementation → LOCK-DESIGN-SYSTEM.md Phase 11
+**Service Card 2 (AI-Powered Decision Support):**
+- Removed 4th bullet: "Examples: Clinical trial patient matching, contract analysis, medical record review"
+- Now 3 bullets total (was 4)
+
+**Service Card 3 (Multi-Platform Data Integration):**
+- Removed 4th bullet: "API workarounds when platforms don't provide direct access"
+- Now 3 bullets total (was 4)
+
+### Why These Changes:
+
+- Examples bullets were too prescriptive (limiting perceived scope)
+- API workarounds bullet was too technical (implementation detail, not benefit)
+- 3 bullets per card creates visual consistency
+- Features focus on outcomes, not specific applications
 
 ---
 
-**Document Version**: 2.0 (Phase 11 - Visual Polish & Metric Updates)
+**Document Version**: 2.1 (Phase 12 - Service Card Refinements)
 **Last Updated**: December 15, 2025
 **Approved By**: Phil

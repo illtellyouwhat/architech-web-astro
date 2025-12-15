@@ -107,7 +107,7 @@ function CaseStudyCard({ study }) {
         <div className="flex items-start justify-between mb-6">
           {/* Industry Icon with Tooltip */}
           <div className="relative group/icon">
-            {IndustryIcon && <IndustryIcon className="h-10 w-10 text-gray-600" strokeWidth={1.5} />}
+            {IndustryIcon && <IndustryIcon className="h-10 w-10 text-gray-600" strokeWidth={1} />}
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-150 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap pointer-events-none z-50">
               {study.industry[0]}
             </div>
@@ -115,7 +115,7 @@ function CaseStudyCard({ study }) {
 
           {/* Solution Type Icon with Tooltip */}
           <div className="relative group/icon">
-            {SolutionIcon && <SolutionIcon className="h-10 w-10 text-gray-600" strokeWidth={1.5} />}
+            {SolutionIcon && <SolutionIcon className="h-10 w-10 text-gray-600" strokeWidth={1} />}
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-150 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap pointer-events-none z-50">
               {study.solutionType}
             </div>
@@ -152,10 +152,10 @@ function CaseStudyCard({ study }) {
         </h3>
 
         {/* Metric Banner */}
-        <div className="w-full bg-gray-700 py-3 px-4 rounded-sm mb-4">
+        <div className="w-full bg-gray-200 py-3 px-4 rounded-sm mb-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white">{study.metric}</span>
-            <span className="text-sm font-medium text-gray-100">{study.metricLabel}</span>
+            <span className="text-3xl font-bold text-gray-900">{study.metric}</span>
+            <span className="text-sm font-medium text-gray-700">{study.metricLabel}</span>
           </div>
         </div>
 

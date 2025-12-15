@@ -56,7 +56,7 @@ export default function IndustryCard({
       {/* Icon - Always visible */}
       <div className="mb-4">
         {IconComponent ? (
-          <IconComponent className="h-11 w-11 text-gray-600" strokeWidth={1.5} />
+          <IconComponent className="h-11 w-11 text-gray-600" strokeWidth={1} />
         ) : (
           <div className="h-11 w-11 bg-gray-200 rounded-lg flex items-center justify-center">
             <span className="text-gray-900 text-xl">?</span>

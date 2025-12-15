@@ -1,547 +1,293 @@
-# DESIGN SYSTEM LOCK FILE - PHASE 11 UPDATE
-## Automation Architech - Visual Polish & Layout
+# DESIGN SYSTEM LOCK FILE - PHASE 12 UPDATE
+## Automation Architech - Spacing, Icon, and Alignment Refinements
 
 **Date Updated**: December 15, 2025
-**Phase**: Phase 11
-**Changes**: Icon sizing, About section layout, metric banners, tooltips, hero positioning, stats scaling
+**Phase**: Phase 12
+**Changes**: Reduce hero top spacing to ~100px, icon stroke to 1px, fix contact form alignment and button positioning, lighten case study metric banners
 
 ---
 
-## HERO SECTION POSITIONING (Phase 11)
+## HERO SECTION SPACING (Phase 12)
 
-### Spacing Adjustments
+### Top Spacing Reduction
 
-**Remove Small Headline Space:**
-```
-Previous: Small "Automation Architech" headline with mb-4 or mb-6
-Action: Delete element entirely
-Result: Rotating headline moves up by ~40-60px
-```
+**Current:** ~400px whitespace above rotating headline
+**Target:** ~100px whitespace above rotating headline
 
-**Rotating Headline Position:**
-```
-Margin Top: Reduce by amount previously occupied by small headline
-Goal: Fit hero content + service cards + top stats above fold
-Breakpoint consideration: May need different spacing on mobile vs desktop
-```
+**Implementation:**
 
-**Above Fold Target Content:**
-```
-1. Rotating headline: "Your [X] needs data"
-2. Subheadline: "We help organizations..."  
-3. Primary CTA: "See Our Work"
-4. Secondary CTA: "Book 15-Minute Discovery Call"
-5. Service cards: 3 cards (Process Automation, AI Decision Support, Data Integration)
-6. Top stats: 4 cards (50+ Projects, 8 Years, 87.5%, 99%)
+```css
+/* Reduce hero section top padding */
+.hero-section {
+  padding-top: 100px; /* Was ~400px via py-20 or similar */
+}
+
+/* Or using Tailwind */
+<section className="pt-24"> <!-- Instead of pt-40 or pt-48 -->
 ```
 
-**Implementation Strategy:**
-- Reduce vertical spacing between hero elements (mb-6 → mb-4 where possible)
-- Reduce service card padding when needed
-- Scale stats down by 15% to fit within viewport
+**Goal:** Rotating headline should appear near top of viewport, just below navigation bar
+
+**Measurement guide:**
+- Navigation bar height: ~64-80px (typical)
+- Desired spacing below nav: ~100px
+- Total from top of viewport to headline: ~164-180px
+
+**Responsive consideration:**
+```css
+/* Mobile */
+pt-16 (64px top padding)
+
+/* Tablet */
+md:pt-20 (80px top padding)
+
+/* Desktop */
+lg:pt-24 (96px top padding)
+```
+
+**Verification:**
+- Rotating headline should be visible immediately on page load (no scroll)
+- Service cards should be fully visible above fold
+- Top 4 stats cards should appear just at or slightly below fold on 1080px viewport
 
 ---
 
-## STATS SIZING (Phase 11)
+## ICON STROKE WEIGHT (Phase 12)
 
-### Top Stats (Above Fold)
+### Service & Industry Card Icons
 
-**Size Reduction: 15%**
+**Current:** `stroke-[1.5]` (1.5px stroke width)
+**New:** `stroke-1` (1px stroke width)
 
-**Current Sizing (approximate):**
-```
-Number: text-4xl or text-5xl (36-48px)
-Label: text-base or text-lg (16-18px)
-Container padding: p-6 or p-8
-```
+**Implementation:**
 
-**New Sizing (15% reduction):**
-```
-Number: text-3xl (30px) [was text-4xl/5xl ~40px]
-Label: text-sm (14px) [was text-base ~16px]
-Container padding: p-4 or p-5 (reduce by ~15-20%)
-Icon size: w-6 h-6 [was w-8 h-8]
-```
-
-**Formula:**
-- Original: 100% scale
-- Phase 11: 85% scale
-- All typography, spacing, and icons reduced proportionally
-
-**Responsive Behavior:**
-```
-Desktop (1024px+): 4 cards in row, grid-cols-4
-Tablet (768px-1024px): 2 cards per row, grid-cols-2
-Mobile (<768px): 1 card per row, grid-cols-1
-```
-
-**Card Styling:**
-```
-Background: bg-gray-50 or bg-white
-Border: border border-gray-100
-Border Radius: rounded-lg (slightly smaller than service cards)
-Shadow: shadow-sm (subtle)
-Hover Shadow: hover:shadow-md
-Transition: transition-shadow duration-200
-```
-
-### About Section Stats (Link to Specific Cases)
-
-**Sizing:** Keep current sizing (no reduction - these stay below fold)
-
-**Behavior:** Each stat card links to specific case study (not generic /case-studies page)
-
-**Icon Changes:**
-```
-Stat 1 (6-7x Capacity): lucide:users or lucide:trending-up
-Stat 2 (87.5% Time): lucide:clock or lucide:timer
-Stat 3 (16 hrs Saved): lucide:trending-up or lucide:bar-chart
-Stat 4 (200K → 2M): lucide:arrow-up-right or lucide:activity (growth indicator)
-```
-
-**Note:** Stat 4 changed from "99% AI Accuracy" to "200K → 2M MAU Growth"
-
----
-
-## ICON SIZING & STYLING (Phase 11)
-
-### Service Cards (Hero Section)
-
-**Current Icon Size:** w-12 h-12 (48px)
-**New Icon Size:** Reduce by ~10% → w-11 h-11 (~44px) or custom sizing
-
-**Stroke Width Adjustment:**
-```
-Current: Default Lucide stroke (typically 2px)
-New: Thinner stroke (1.5px or stroke-[1.5])
-Implementation: Apply stroke-[1.5] class or custom CSS
-```
-
-**Example:**
 ```jsx
-<Icon className="w-11 h-11 stroke-[1.5] text-gray-600" />
+// Service cards
+<Icon className="w-11 h-11 stroke-1 text-gray-600 mb-4" />
+
+// Industry cards  
+<Icon className="w-11 h-11 stroke-1 text-gray-600 mb-4" />
+
+// Case study card icons (industry + service type)
+<Icon className="w-10 h-10 stroke-1 text-gray-600" />
 ```
 
-**Reference Site:** automationarchitech.com service card icons (thinner, lighter appearance)
+**Apply to:**
+- All 3 service cards (Process Automation, AI Decision Support, Data Integration)
+- All 6 industry cards (Legal Tech, Healthcare, Publishing, E-commerce, Education, Manufacturing)
+- All case study card icons (both industry icons and service type icons)
 
-### Industry Cards (Industries Section)
+**Visual goal:** Icons should appear noticeably thinner/lighter than Phase 11 implementation
 
-**Current Icon Size:** w-12 h-12 (48px)
-**New Icon Size:** Same as service cards - reduce by ~10%
-
-**Stroke Width:**
-```
-Same as service cards: stroke-[1.5]
-Consistent visual weight across all card icons
-```
-
-### Case Study Card Icons
-
-**Industry Icons (Left Side):**
-```
-Current Size: [varies]
-New Size: Reduce by ~10% from current
-Stroke: stroke-[1.5] (thinner)
-Tooltip: Show industry name on hover ("SaaS", "Healthcare", etc.)
-```
-
-**Service Type Icons (Right Side - NEW):**
-```
-Size: Match industry icon size
-Stroke: stroke-[1.5]
-Position: Aligned to right edge of card
-Tooltip: Show service type on hover ("AI Decision Support", "Process Automation", etc.)
-Icons:
-- Process Automation: lucide:settings or lucide:cog
-- AI Decision Support: lucide:brain or lucide:sparkles
-- Multi-Platform Data Integration: lucide:database or lucide:network
-```
-
-**Icon Positioning on Card:**
-```
-Layout: Flexbox with justify-between
-Left: Industry icon
-Right: Service type icon
-Both: Same size, same stroke weight, same color (text-gray-600)
-Spacing: Icons sit at top-right and top-left of card content area
+**Note:** If Lucide icons don't support `stroke-1` class, use:
+```jsx
+<Icon strokeWidth={1} className="w-11 h-11 text-gray-600 mb-4" />
 ```
 
 ---
 
-## TOOLTIPS (Phase 11)
+## CONTACT FORM FIELD LABELS (Phase 12 FIX)
 
-### Implementation Pattern
+### Left-Alignment (Still Not Applied from Phase 11)
 
-**Tooltip Behavior:**
-```
-Trigger: Mouse hover over icon
-Display: Small popup box with text
-Position: Above icon (or below if insufficient space)
-Transition: Fade in 150ms, fade out 150ms
-Z-index: z-50 (above card content)
-```
+**Current:** Labels are centered above input fields
+**Required:** Labels must be left-aligned to input boxes
 
-**Tooltip Styling:**
-```
-Background: bg-gray-900
-Text Color: text-white
-Font Size: text-xs (12px)
-Padding: px-2 py-1
-Border Radius: rounded
-Shadow: shadow-lg
-Arrow: Optional small triangle pointing to icon
-Max Width: max-w-[200px] (for longer text)
-White Space: whitespace-nowrap (for short labels)
-```
+**Implementation:**
 
-**Example Implementation:**
-```jsx
-<div className="relative group">
-  <Icon className="w-10 h-10 stroke-[1.5] text-gray-600" />
-  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity duration-150
-                  bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg
-                  whitespace-nowrap pointer-events-none z-50">
-    SaaS
-  </div>
+```astro
+<!-- Each form field should follow this pattern -->
+<div className="mb-4">
+  <label 
+    htmlFor="name"
+    className="block text-sm font-medium text-gray-700 text-left mb-2"
+  >
+    Name
+  </label>
+  <input
+    id="name"
+    type="text"
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg..."
+  />
 </div>
 ```
 
-**Accessibility:**
-```
-aria-label="{industry or service type name}"
-role="img"
-title="{industry or service type name}" (fallback for non-CSS tooltip support)
-```
+**Key classes for labels:**
+- `block` - Ensures label takes full width
+- `text-left` - Left-aligns text (NOT text-center)
+- `mb-2` - Space between label and input
 
-**Tooltip Content:**
+**Apply to all 4 fields:**
+1. Name
+2. Email
+3. Company
+4. Message
 
-Case Study Index Page & Related Cases:
-- Industry icon hover → "SaaS", "Healthcare", "Manufacturing", "Publishing & Media", "E-commerce", etc.
-- Service type icon hover → "AI Decision Support", "Process Automation", "Multi-Platform Data Integration"
+**Common mistake to avoid:**
+Don't use `text-center` or center the label container with flexbox `items-center` or `justify-center`
 
 ---
 
-## METRIC BANNERS (Phase 11)
+## CONTACT CARD BUTTON ALIGNMENT (Phase 12 FIX)
 
-### Case Study Cards - Metric Highlight
+### Email Card Button Misalignment
 
-**Banner Placement:**
-```
-Location: Behind/around the metric number and label
-Position: Below case study title, spanning full card width
-Background: bg-gray-700 or bg-gray-800 (darker gray)
-```
+**Problem:** Email card button sits a few pixels lower than Video Call and Phone Call buttons
 
-**Banner Styling:**
-```
-Background: bg-gray-700 (darker gray from palette)
-Padding: py-3 px-4 or py-4 px-6 (vertical padding to create banner height)
-Width: Full card width (w-full)
-Border Radius: None on sides, or subtle rounded-sm
-Text Color: text-white (white text on dark gray background)
-```
+**Root cause:** Email card has extra element (email address + subtext) pushing button down
 
-**Metric Display Inside Banner:**
-```
-Number: text-2xl or text-3xl font-bold text-white
-Label: text-sm or text-base font-medium text-gray-100
-Layout: Flexbox column (flex-col) centered, or inline with gap
-```
+**Solution:** Use flexbox with consistent spacing
 
-**Example Structure:**
+**Implementation:**
+
 ```jsx
-<div className="w-full bg-gray-700 py-3 px-4 rounded-sm">
+// All 3 contact cards should use identical structure
+<div className="bg-gray-50 border border-gray-100 rounded-xl p-6
+                flex flex-col items-center justify-between
+                min-h-[280px]"> <!-- Consistent min-height -->
+  
+  {/* Icon - consistent across all cards */}
+  <div className="w-8 h-8 text-gray-600 mb-6">
+    <Icon />
+  </div>
+  
+  {/* Button - consistent margin across all cards */}
+  <button className="bg-gray-900 text-white px-6 py-3 rounded-lg mb-4">
+    {buttonText}
+  </button>
+  
+  {/* Bottom content - consistent spacing even if empty */}
+  <div className="text-sm text-gray-600 text-center min-h-[40px]">
+    {/* Email card: email address + (optional) subtext */}
+    {/* Video/Phone cards: subtext only */}
+  </div>
+  
+</div>
+```
+
+**Key alignment strategies:**
+
+1. **Use `justify-between` on card container** - Distributes space evenly
+2. **Consistent `mb-6` after icon** - Same spacing before button
+3. **Consistent `mb-4` after button** - Same spacing before bottom content
+4. **Use `min-h-[40px]` on bottom content div** - Reserves space even if empty
+5. **Set `min-h-[280px]` on card** - Ensures equal heights
+
+**Specific fix for Email card:**
+
+```jsx
+{/* Email card bottom content */}
+<div className="text-sm text-gray-600 text-center min-h-[40px] flex flex-col gap-2">
+  <a href="mailto:hello@automationarchitech.com" 
+     onClick={handleCopyEmail}
+     className="text-gray-700 hover:text-gray-900 cursor-pointer underline">
+    hello@automationarchitech.com
+  </a>
+  {/* Note: Subtext "Expect reply within 24 hours" was removed in Phase 11 */}
+</div>
+```
+
+**Verification:**
+- All 3 buttons should align horizontally at same Y-position
+- Use browser dev tools to check button top offset (should be identical across all 3 cards)
+
+---
+
+## CASE STUDY METRIC BANNERS (Phase 12)
+
+### Lighten Background Color
+
+**Current:** `bg-gray-700` (darker gray)
+**New:** `bg-gray-200` or `bg-gray-300` (lighter gray)
+
+**Text color adjustment required:**
+- **Current:** `text-white` (white text on dark gray)
+- **New:** `text-gray-900` (dark text on light gray)
+
+**Implementation:**
+
+```jsx
+// Before (Phase 11)
+<div className="w-full bg-gray-700 py-3 px-4 rounded-sm mt-4">
   <div className="flex items-baseline gap-2">
-    <span className="text-3xl font-bold text-white">87.5%</span>
-    <span className="text-sm font-medium text-gray-100">Time Reduction</span>
+    <span className="text-3xl font-bold text-white">{metric}</span>
+    <span className="text-sm font-medium text-gray-100">{metricLabel}</span>
+  </div>
+</div>
+
+// After (Phase 12)
+<div className="w-full bg-gray-200 py-3 px-4 rounded-sm mt-4">
+  <div className="flex items-baseline gap-2">
+    <span className="text-3xl font-bold text-gray-900">{metric}</span>
+    <span className="text-sm font-medium text-gray-700">{metricLabel}</span>
   </div>
 </div>
 ```
 
-**Usage:**
-- Case Studies Index Page: All 5 case study cards
-- Related Cases Section: All 3 related case cards (on individual case study pages)
+**Color options (choose one):**
+- `bg-gray-200` - Lighter gray (subtle)
+- `bg-gray-300` - Medium-light gray (more contrast)
 
-**Consistency:**
+**Apply to:**
+- Case studies index page (all 5 case study cards)
+- Related cases section on individual case study pages (all 3 related case cards)
+
+**Why this change:**
+Dark gray banner was too heavy/dominant on cards. Lighter gray provides visual separation without overpowering card content.
+
+---
+
+## RESPONSIVE VERIFICATION (Phase 12)
+
+### Desktop (1920x1080)
+- [ ] Hero whitespace reduced to ~100px (headline near top)
+- [ ] Rotating headline + service cards + stats visible above fold
+- [ ] Icon strokes visibly thinner (1px not 1.5px)
+- [ ] Contact form labels left-aligned
+- [ ] All 3 contact card buttons align horizontally
+- [ ] Case study metric banners light gray with dark text
+
+### Tablet (768px)
+- [ ] Hero spacing proportionally reduced
+- [ ] Icons maintain 1px stroke
+- [ ] Contact buttons still align
+
+### Mobile (<768px)
+- [ ] Hero spacing reduced (pt-16 or similar)
+- [ ] Icons 1px stroke on all cards
+- [ ] Contact form labels left-aligned
+- [ ] Contact cards stack vertically with consistent button positioning
+
+---
+
+## TAILWIND CLASS REFERENCE
+
+### Spacing Classes
 ```
-Same styling for both index cards and related case cards
-Banner creates visual separation between title and tags
-Draws attention to the impressive metric (primary selling point)
+pt-16  = 64px
+pt-20  = 80px
+pt-24  = 96px
+pt-28  = 112px
+pt-32  = 128px
+```
+
+### Stroke Width
+```
+stroke-1    = 1px
+stroke-[1.5] = 1.5px
+stroke-2    = 2px
+```
+
+### Background Grays
+```
+bg-gray-100 = #f3f4f6
+bg-gray-200 = #e5e7eb (lightest option)
+bg-gray-300 = #d1d5db (medium-light option)
+bg-gray-700 = #374151 (Phase 11 - too dark)
 ```
 
 ---
 
-## ABOUT SECTION LAYOUT (Phase 11)
-
-### Desktop Layout (1024px+)
-
-**Structure:**
-```
-2-column grid: grid-cols-2
-Column 1 (Left): About cards (Tailored Solutions, Proven Results, Expert Team)
-Column 2 (Right): Founder photo placeholder
-Gap: gap-8 or gap-12
-```
-
-**About Cards Column:**
-```
-Layout: Vertical stack (flex-col)
-Card Behavior: Collapse/expand on hover (same as service/industry cards)
-Default State: Show title only
-Expanded State: Show title + description
-Gap Between Cards: gap-4 or gap-6
-```
-
-**Founder Photo Placeholder:**
-```
-Aspect Ratio: 3:4 or 4:5 (portrait orientation)
-Background: bg-gray-200 or bg-gray-100 (placeholder)
-Border: border border-gray-300 (optional)
-Border Radius: rounded-lg or rounded-xl
-Display: Flex container with centered "Photo Placeholder" text
-Height: Match total height of 3 about cards (use flexbox or grid alignment)
-```
-
-**Example Placeholder:**
-```jsx
-<div className="bg-gray-200 border border-gray-300 rounded-xl 
-                flex items-center justify-center
-                aspect-[3/4] h-full">
-  <span className="text-gray-500 text-lg">Founder Photo</span>
-</div>
-```
-
-### Mobile Layout (<768px)
-
-**Structure:**
-```
-Stack vertically (flex-col or grid-cols-1)
-Order:
-1. About cards (3 cards stacked)
-2. Founder photo placeholder (below cards)
-Gap: gap-8
-```
-
-**About Cards:**
-```
-Same collapse/expand behavior as mobile service cards
-Auto-expand on scroll into viewport (IntersectionObserver)
-Gap between cards: gap-6
-```
-
-**Founder Photo:**
-```
-Full width: w-full
-Reduced aspect ratio on mobile: aspect-[4/5] or aspect-square
-Max height: max-h-[400px] (prevent excessive vertical space)
-```
-
----
-
-## CASE STUDIES PAGE HEADER (Phase 11)
-
-### Subheadline Hover Reveal
-
-**Default State:**
-```
-Headline: "Real Projects. Real Results." (visible, always shown)
-Subheadline: Hidden (opacity-0)
-```
-
-**Hover State (Desktop):**
-```
-Trigger: Mouse hover over headline
-Subheadline: Visible (opacity-100)
-Transition: opacity transition-opacity duration-300 ease-in-out
-Position: Directly below headline (no layout shift)
-```
-
-**Mobile Behavior:**
-```
-Subheadline: Always visible (no hover state on mobile)
-Reason: Hover doesn't work well on touch devices
-Implementation: Use media query or conditional rendering
-```
-
-**Styling:**
-```
-Subheadline Font Size: text-lg or text-xl
-Subheadline Color: text-gray-600
-Subheadline Line Height: leading-relaxed
-Subheadline Max Width: max-w-2xl or max-w-3xl (centered)
-```
-
-**Implementation Pattern:**
-```jsx
-<div className="text-center">
-  <h1 className="text-4xl font-bold text-gray-900 group">
-    Real Projects. Real Results.
-    <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mt-4
-                   opacity-0 md:group-hover:opacity-100 md:opacity-100
-                   transition-opacity duration-300">
-      From 6-7x capacity increases to 87.5% time reductions—see how we've 
-      helped companies automate their most critical processes.
-    </p>
-  </h1>
-</div>
-```
-
-**Note:** `md:opacity-100` ensures subheadline is always visible on mobile/tablet
-
----
-
-## CONTACT FORM FIELD LABELS (Phase 11)
-
-### Label Alignment
-
-**Current (if centered):** Labels may be centered above input boxes
-**New:** Labels left-aligned to input boxes
-
-**Styling:**
-```
-Alignment: text-left
-Font Weight: font-medium or font-semibold
-Font Size: text-sm
-Color: text-gray-700
-Margin Bottom: mb-2 (space between label and input)
-```
-
-**Example Structure:**
-```jsx
-<div className="space-y-4">
-  <div>
-    <label className="block text-sm font-medium text-gray-700 text-left mb-2">
-      Name
-    </label>
-    <input type="text" className="w-full..." />
-  </div>
-  
-  <div>
-    <label className="block text-sm font-medium text-gray-700 text-left mb-2">
-      Email
-    </label>
-    <input type="email" className="w-full..." />
-  </div>
-  
-  <!-- etc. -->
-</div>
-```
-
-**Key Classes:**
-```
-block: Ensures label takes full width
-text-left: Left-aligns label text
-mb-2: Space between label and input
-```
-
----
-
-## FOOTER SOCIAL ICONS (Phase 11)
-
-### Icon Replacement
-
-**Remove:**
-```
-- lucide:code
-- lucide:database  
-- lucide:workflow (or similar tech icons)
-```
-
-**Add:**
-```
-- lucide:linkedin
-- lucide:twitter (or custom X logo if Lucide doesn't have updated icon)
-```
-
-**Sizing:**
-```
-Size: Same as previous icons (w-6 h-6 or current size)
-Color: text-gray-600
-Hover: text-gray-900
-Transition: transition-colors duration-200
-```
-
-**Links:**
-```
-LinkedIn: [PLACEHOLDER - href="#" or href="javascript:void(0)" temporarily]
-X/Twitter: [PLACEHOLDER - href="#" or href="javascript:void(0)" temporarily]
-Target: target="_blank" rel="noopener noreferrer" (open in new tab)
-```
-
-**Layout:**
-```
-Display: flex gap-4 or gap-6
-Position: Below tagline text
-Alignment: Centered (justify-center) or left-aligned depending on footer layout
-```
-
-**Example:**
-```jsx
-<div className="flex gap-4 mt-4">
-  <a href="#" target="_blank" rel="noopener noreferrer"
-     className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-    <LinkedInIcon className="w-6 h-6" />
-  </a>
-  <a href="#" target="_blank" rel="noopener noreferrer"
-     className="text-gray-600 hover:text-gray-900 transition-colors duration-200">
-    <TwitterIcon className="w-6 h-6" />
-  </a>
-</div>
-```
-
----
-
-## RESPONSIVE CONSIDERATIONS (Phase 11)
-
-### Hero Above-Fold Target
-
-**Desktop (1024px+):**
-```
-Goal: Fit hero + service cards + stats in single viewport (~900-1080px height)
-Strategy: Reduce spacing, scale stats down 15%, remove small headline
-Service cards: May need to reduce padding from py-8 to py-6 when collapsed
-Stats: Definitely reduce padding from p-6 to p-4
-```
-
-**Tablet (768px-1024px):**
-```
-Service cards: 2-column grid (may not all fit above fold)
-Stats: 2-column grid (may not fit above fold)
-Acceptable: Some scrolling on tablet viewports
-```
-
-**Mobile (<768px):**
-```
-All elements stack vertically
-Above fold not critical (mobile users expect scrolling)
-Focus: Ensure elements are properly sized and spaced for mobile viewing
-```
-
-### About Section
-
-**Desktop:** 2-column (cards left, photo right)
-**Tablet:** May stack or remain 2-column depending on space
-**Mobile:** Stack vertically (cards first, then photo)
-
----
-
-## PHASE 11 SUMMARY
-
-### Key Visual Changes:
-
-1. **Hero:** Remove small headline, move rotating headline up
-2. **Icons:** Reduce size by ~10%, thinner stroke (1.5px)
-3. **Stats:** Top 4 stats scaled down 15%, moved above fold
-4. **About:** 2-column layout (cards + photo), stat 4 updated to growth metric
-5. **Contact:** Form labels left-aligned, email card subtext removed
-6. **Footer:** Replace tech icons with social media icons (LinkedIn, X)
-7. **Case Studies:** Metric banners (dark gray bg), service type icons with tooltips, hover subheadline
-8. **Tooltips:** Industry and service type icons show labels on hover
-
----
-
-**Document Version**: 3.0 (Phase 11 - Visual Polish)
+**Document Version**: 3.1 (Phase 12 - Spacing & Alignment Refinements)
 **Last Updated**: December 15, 2025
 **Approved By**: Phil

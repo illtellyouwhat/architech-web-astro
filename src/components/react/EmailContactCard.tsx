@@ -27,14 +27,16 @@ export default function EmailContactCard() {
         Email Us
       </a>
 
-      {/* Clickable email address with copy-to-clipboard */}
-      <button
-        onClick={handleCopyEmail}
-        className="text-gray-700 hover:text-gray-900 underline cursor-pointer text-sm"
-        aria-label="Copy email address to clipboard"
-      >
-        {copied ? 'Copied!' : 'hello@automationarchitech.com'}
-      </button>
+      {/* Bottom content - consistent spacing with other cards */}
+      <div className="text-sm text-gray-600 text-center min-h-[40px]">
+        <button
+          onClick={handleCopyEmail}
+          className="text-gray-700 hover:text-gray-900 underline cursor-pointer"
+          aria-label="Copy email address to clipboard"
+        >
+          {copied ? 'Copied!' : 'hello@automationarchitech.com'}
+        </button>
+      </div>
     </div>
   );
 }
