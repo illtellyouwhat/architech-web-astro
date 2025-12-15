@@ -1,48 +1,35 @@
 ---
 import { Icon } from 'astro-icon/components';
-
-const differentiators = [
-  {
-    icon: 'lucide:wrench',
-    title: 'Tailored Solutions',
-    description: 'Every project is unique. We build custom solutions that fit your specific needs and scale with your growth.'
-  },
-  {
-    icon: 'lucide:trending-up',
-    title: 'Proven Results',
-    description: 'Our clients see measurable improvements in efficiency cost reduction and revenue growth.'
-  },
-  {
-    icon: 'lucide:users',
-    title: 'Expert Team',
-    description: 'Our team stays at the forefront of AI and automation technologies to deliver cutting edge solutions. Our globally distributed team means faster turnaround for your projects.'
-  }
-];
+import AboutCard from '../react/AboutCard';
 
 const stats = [
   {
-    icon: 'lucide:trending-up',
+    icon: 'lucide:users',
     number: '6-7x',
     label: 'Capacity Increase',
-    context: 'Clinical trial patient matching'
+    context: 'Clinical trial patient matching',
+    link: '/case-studies/clinical-trial-patient-matching'
   },
   {
     icon: 'lucide:clock',
     number: '87.5%',
     label: 'Time Reduction',
-    context: 'Production scheduling optimization'
+    context: 'Production scheduling optimization',
+    link: '/case-studies/manufacturing-production-scheduling'
   },
   {
-    icon: 'lucide:alarm-clock',
+    icon: 'lucide:trending-up',
     number: '16 hrs',
     label: 'Saved Per Week',
-    context: 'Ad performance reporting'
+    context: 'Ad performance reporting',
+    link: '/case-studies/ad-performance-reporting'
   },
   {
-    icon: 'lucide:check-circle',
-    number: '99%',
-    label: 'AI Accuracy',
-    context: 'Dual-LLM verification'
+    icon: 'lucide:arrow-up-right',
+    number: '200K → 2M',
+    label: 'MAU Growth',
+    context: 'Content strategy and analytics',
+    link: '/case-studies/content-strategy-growth'
   }
 ];
 ---
@@ -55,32 +42,43 @@ const stats = [
     </p>
 
     <!-- Headline -->
-    <h2 class="mb-6 text-4xl font-light text-gray-900">
+    <h2 class="mb-8 text-4xl font-light text-gray-900">
       Why Companies Choose Us
     </h2>
 
-    <!-- Subheadline -->
-    <p class="mb-12 text-lg text-gray-600">
-      We're not just another development agency. We're automation specialists who understand the intricacies of modern AI, data processing, and system integration. Our expertise spans from cutting-edge LLM applications to robust data pipelines that scale. We combine LLM expertise, low-code implementation, and a focus on measurable results. From 6-week implementations to 99% AI accuracy and API workarounds—we solve the problems other agencies can't.
-    </p>
+    <!-- 2-Column Layout: About Cards + Founder Photo -->
+    <div class="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
 
-    <!-- Differentiator Cards -->
-    <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-      {differentiators.map((item) => (
-        <div class="rounded-xl border border-gray-100 bg-white p-8">
-          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100">
-            <Icon name={item.icon} class="h-6 w-6 text-gray-900" />
-          </div>
-          <h3 class="mb-3 text-xl font-semibold text-gray-900">{item.title}</h3>
-          <p class="text-gray-600">{item.description}</p>
-        </div>
-      ))}
+      <!-- Column 1: About Cards -->
+      <div class="flex flex-col gap-6">
+        <AboutCard
+          title="Tailored Solutions"
+          description="Every project is unique. We build custom solutions that fit your specific needs and scale with your growth."
+          client:idle
+        />
+        <AboutCard
+          title="Proven Results"
+          description="Our clients see measurable improvements in efficiency, cost reduction, and revenue growth."
+          client:idle
+        />
+        <AboutCard
+          title="Expert Team"
+          description="Our team stays at the forefront of AI and automation technologies to deliver cutting-edge solutions. Our globally distributed team means faster turnaround for your projects."
+          client:idle
+        />
+      </div>
+
+      <!-- Column 2: Founder Photo Placeholder -->
+      <div class="flex items-center justify-center rounded-xl border border-gray-300 bg-gray-200 aspect-[3/4] lg:h-full">
+        <span class="text-lg text-gray-500">Founder Photo</span>
+      </div>
+
     </div>
 
-    <!-- Stats Cards -->
+    <!-- Stats Cards (Full Width Below) -->
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => (
-        <a href="/case-studies" class="block rounded-xl border border-gray-100 bg-white p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+        <a href={stat.link} class="block rounded-xl border border-gray-100 bg-white p-6 text-center shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer">
           <div class="mb-3 flex justify-center">
             <Icon name={stat.icon} class="h-8 w-8 text-gray-900" />
           </div>

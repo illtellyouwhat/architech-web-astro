@@ -57,7 +57,7 @@ export default function ServiceCard({
         {icon.startsWith('lucide:') && iconMap[icon] ? (
           (() => {
             const IconComponent = iconMap[icon];
-            return <IconComponent className="h-12 w-12 text-gray-600" />;
+            return <IconComponent className="h-11 w-11 text-gray-600" strokeWidth={1.5} />;
           })()
         ) : (
           <div className="text-4xl">{icon}</div>

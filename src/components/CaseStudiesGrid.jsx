@@ -103,8 +103,24 @@ function CaseStudyCard({ study }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
       <div className="p-8">
-        {/* Industry Icon */}
-        {IndustryIcon && <IndustryIcon className="h-12 w-12 text-gray-700 mb-6" />}
+        {/* Icon Row: Industry (left) and Solution Type (right) with Tooltips */}
+        <div className="flex items-start justify-between mb-6">
+          {/* Industry Icon with Tooltip */}
+          <div className="relative group/icon">
+            {IndustryIcon && <IndustryIcon className="h-10 w-10 text-gray-600" strokeWidth={1.5} />}
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-150 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap pointer-events-none z-50">
+              {study.industry[0]}
+            </div>
+          </div>
+
+          {/* Solution Type Icon with Tooltip */}
+          <div className="relative group/icon">
+            {SolutionIcon && <SolutionIcon className="h-10 w-10 text-gray-600" strokeWidth={1.5} />}
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-150 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap pointer-events-none z-50">
+              {study.solutionType}
+            </div>
+          </div>
+        </div>
 
         {/* Tags (CLICKABLE) */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -115,7 +131,6 @@ function CaseStudyCard({ study }) {
               href={`/case-studies?industry=${encodeURIComponent(ind.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-'))}`}
               className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-600 hover:bg-gray-200 transition-colors"
             >
-              {IndustryIcon && <IndustryIcon className="h-3 w-3" />}
               {ind}
             </a>
           ))}
@@ -126,24 +141,21 @@ function CaseStudyCard({ study }) {
               href={`/case-studies?service=${encodeURIComponent(study.solutionType.toLowerCase().replace(/ /g, '-'))}`}
               className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-600 hover:bg-gray-200 transition-colors"
             >
-              {SolutionIcon && <SolutionIcon className="h-3 w-3" />}
               {study.solutionType}
             </a>
           )}
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-gray-700 transition-colors">
           {study.title}
         </h3>
 
-        {/* Metric */}
-        <div className="mb-4">
-          <div className="text-4xl font-light text-gray-900 mb-1">
-            {study.metric}
-          </div>
-          <div className="text-sm font-medium text-gray-500">
-            {study.metricLabel}
+        {/* Metric Banner */}
+        <div className="w-full bg-gray-700 py-3 px-4 rounded-sm mb-4">
+          <div className="flex items-baseline gap-2">
+            <span className="text-3xl font-bold text-white">{study.metric}</span>
+            <span className="text-sm font-medium text-gray-100">{study.metricLabel}</span>
           </div>
         </div>
 

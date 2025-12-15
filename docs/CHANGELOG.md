@@ -1,5 +1,15 @@
 # Changelog
 
+## 2025-12-11 - MANUAL EDIT - Commit: 74086a348375c45440223e829fe60fb3507ef7b7
+
+### Overview
+Body of Case Studies pages we're not rendering with the proper styling and typography.
+
+### Cahnges
+
+#### Fixed
+Added the tailwind CSS typography package via NPM And included it in the tailwind.config.Ts file.
+
 ## 2025-12-11 - Spec: SPEC-phase-10.md - Commit: 0d50942187cb63d85b0b67fd7a4aa7ac380b94ff
 
 ### Overview

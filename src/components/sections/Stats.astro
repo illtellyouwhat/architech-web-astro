@@ -9,18 +9,18 @@ const stats = [
 ];
 ---
 <!-- Stats Section -->
-<section class="border-b border-t border-gray-100 bg-white py-12">
+<section class="border-b border-t border-gray-100 bg-white py-8">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Stats Grid - 4 cards in horizontal row -->
-    <div class="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+    <!-- Stats Grid - 4 cards in horizontal row (15% smaller) -->
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
 
       {stats.map((stat) => (
-        <a href="/case-studies" class="block text-center transition-all duration-300 hover:scale-105">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gray-50">
-            <Icon name={stat.icon} class="h-6 w-6 text-gray-900" />
+        <a href="/case-studies" class="block rounded-lg border border-gray-100 bg-gray-50 p-4 text-center shadow-sm transition-all duration-300 hover:shadow-md">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white">
+            <Icon name={stat.icon} class="h-5 w-5 text-gray-900" />
           </div>
-          <div class="mb-2 text-3xl font-light text-gray-900 md:text-4xl">{stat.number}</div>
-          <div class="text-sm font-medium text-gray-900">{stat.label}</div>
+          <div class="mb-1 text-2xl font-light text-gray-900 md:text-3xl">{stat.number}</div>
+          <div class="text-xs font-medium text-gray-600 md:text-sm">{stat.label}</div>
         </a>
       ))}
 
