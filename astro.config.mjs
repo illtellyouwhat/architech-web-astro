@@ -6,6 +6,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import astroIcon from 'astro-icon';
+import remarkGfm from 'remark-gfm';
 
 const SITE_URL = process.env.SITE_URL ?? 'https://automationarchitech.com';
 
@@ -21,6 +22,9 @@ export default defineConfig({
     sitemap(),
     astroIcon()
   ],
+  markdown: {
+    remarkPlugins: [remarkGfm],
+  },
   vite: {
     resolve: {
       alias: {
