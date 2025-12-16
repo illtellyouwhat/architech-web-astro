@@ -17,8 +17,6 @@ relatedCases: ["email-campaign-link-management", "manufacturing-production-sched
 
 ## Quick Facts
 
-| | | | |
-|----------------------|------------------------------------------------------------------|------------------|-----------------------------------------------|
 | **Industry** | Digital Publishing & Media | **Company Size** | 9-person sales/ops team, 500+ advertising customers |
 | **Challenge** | 16 hrs/week manual reporting, $1-5K monthly errors from data entry | **Solution Type** | Multi-Platform Data Integration & Automated Reporting |
 | **Timeline** | 6 months (phased rollout) | **Key Outcome** | 94% time reduction (16hrs → <1hr/week), zero errors |

@@ -17,8 +17,6 @@ relatedCases: ["manufacturing-production-scheduling", "ad-performance-reporting"
 
 ## Quick Facts
 
-| | | | |
-|----------------------|------------------------------------------------------------------|------------------|-----------------------------------------------|
 | **Industry** | Healthcare (Clinical Research) | **Company Size** | Software agency serving clinical research organization |
 | **Challenge** | 60+ min per patient record, 30 records/week capacity bottleneck | **Solution Type** | AI Decision Support with Dual-LLM Verification |
 | **Timeline** | Early LLM era project | **Key Outcome** | 6-7x capacity increase (30 → 200+ records/week) |

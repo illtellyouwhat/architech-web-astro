@@ -18,7 +18,9 @@ export default defineConfig({
     tailwind({
       config: './tailwind.config.ts'
     }),
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkGfm],
+    }),
     sitemap(),
     astroIcon()
   ],

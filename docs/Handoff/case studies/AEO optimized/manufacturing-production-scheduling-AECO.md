@@ -17,8 +17,6 @@ relatedCases: ["clinical-trial-patient-matching", "ad-performance-reporting", "e
 
 ## Quick Facts
 
-| | | | |
-|----------------------|------------------------------------------------------------------|------------------|-----------------------------------------------|
 | **Industry** | Paper Product Manufacturing | **Company Size** | $60M revenue, 116 operators |
 | **Challenge** | 8 hours/week manual Excel scheduling across 27 machines | **Solution Type** | Low-code Process Automation with ERP Integration |
 | **Timeline** | 6 weeks | **Key Outcome** | 87.5% time reduction (8hrs → 1hr/week) |

@@ -17,8 +17,6 @@ relatedCases: ["ad-performance-reporting", "manufacturing-production-scheduling"
 
 ## Quick Facts
 
-| | | | |
-|----------------------|------------------------------------------------------------------|------------------|-----------------------------------------------|
 | **Industry** | Publishing & E-commerce | **Company Size** | ~100 employees, 5-person editorial team |
 | **Challenge** | 4+ hrs/week manual link entry, 1-4 errors/month costing $1-5K | **Solution Type** | Process Automation (Notion + Coda + Zapier Integration) |
 | **Timeline** | 2 months | **Key Outcome** | Zero link errors, $12-60K annual savings, 4 hrs/week time savings |

@@ -17,8 +17,6 @@ relatedCases: ["clinical-trial-patient-matching", "ad-performance-reporting", "m
 
 ## Quick Facts
 
-| | | | |
-|----------------------|------------------------------------------------------------------|------------------|-----------------------------------------------|
 | **Industry** | SaaS (Data Integration Tools) | **Company Size** | Chrome extension product, content strategy project |
 | **Challenge** | 200K MAU plateau, needed user acquisition growth strategy | **Solution Type** | Data-Driven Content Strategy (SEO + YouTube) |
 | **Timeline** | Pre-ChatGPT era (manual content research) | **Key Outcome** | 900% MAU growth (200K → 2M+), organic traffic became primary acquisition channel |
