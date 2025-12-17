@@ -4,7 +4,7 @@ Hey Doug throw the files that are in this folder into the file sections of a pro
 ------------------------
 PROMPT:
 
-I'm the owner of Automation Architech (automationarchitech.com). I've received an Answer Engine Content Optimization (AECO) analysis that recommends significant copy changes to my website. Go through all the files in the main section here to get a grounding on what we're doing here. The content inventory file is a map of the current website, the case studies files copy supplements that show you the full text for all the case studies pages. The AECO analysis is a comprehensive view on what possibly needs to change. The executive summary is a condensed version of that analysis. Read the analysis first and then reference this case study when needed to save on tokens.
+I'm the owner of Automation Architech (automationarchitech.com). I've received an Answer Engine Content Optimization (AECO) analysis that recommends significant copy changes to my website. Go through all the files in the main section here to get a grounding on what we're doing here. The content inventory file is a map of the current website, the CASE-STUDY-xxx files show you the full text for all the case studies pages. The AECO analysis is a comprehensive view on what possibly needs to change. The executive summary is a condensed version of that analysis. Read the analysis first and then reference this case study when needed to save on tokens.
 
 I need you to walk me through a strategic decision framework to determine the right positioning for my business. The AECO analysis is in my project files.
 
